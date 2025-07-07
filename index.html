@@ -13,21 +13,21 @@
   <nav>
     <div class="logo">Prateeksha</div>
     <ul>
-      <li onclick="openModal('about')">About</li>
-      <li onclick="openModal('skills')">Skills</li>
-      <li onclick="openModal('projects')">Projects</li>
-      <li onclick="openModal('achievements')">Achievements</li>
-      <li onclick="openModal('contact')">Contact</li>
+      <li onclick="openOnly('about')">About</li>
+      <li onclick="openOnly('skills')">Skills</li>
+      <li onclick="openOnly('projects')">Projects</li>
+      <li onclick="openOnly('achievements')">Achievements</li>
+      <li onclick="openOnly('contact')">Contact</li>
     </ul>
   </nav>
 
   <header>
     <h1 class="gradient-text">Hi, I’m Prateeksha 👩‍🔧</h1>
     <p class="subtitle">They say precision heals, but creativity transforms — and I try to live at that intersection.</p>
-    <button onclick="openModal('projects')">Explore My Work</button>
+    <button onclick="openOnly('projects')">Explore My Work</button>
   </header>
 
-  <!-- About -->
+  <!-- Modals -->
   <div id="about" class="modal">
     <span class="close-btn" onclick="closeModal('about')">×</span>
     <div class="modal-content">
@@ -36,12 +36,10 @@
       I’ve always loved asking <span class="highlight">"Why?"</span> and chasing down the <span class="highlight">"What if?"</span> 💭🔍.<br>
       I enjoy weaving together <span class="highlight">science</span>, <span class="highlight">logic</span>, and a little <span class="highlight">magic</span> to make sense of the world around me.<br>
       When I’m not diving into technical concepts, I’m probably doodling, playlist-making, or explaining complicated things in super-simple ways 🖍️🎧.<br>
-      Basically? I’m here to <span class="highlight">create</span> and have fun doing it.
-      </p>
+      Basically? I’m here to <span class="highlight">create</span> and have fun doing it.</p>
     </div>
   </div>
 
-  <!-- Skills -->
   <div id="skills" class="modal">
     <span class="close-btn" onclick="closeModal('skills')">×</span>
     <div class="modal-content">
@@ -53,32 +51,30 @@
     </div>
   </div>
 
-  <!-- Projects -->
   <div id="projects" class="modal">
     <span class="close-btn" onclick="closeModal('projects')">×</span>
     <div class="modal-content grid">
-      <div class="card"><img src="projects/lifi.jpg" alt=""><h3>Li-Fi Audio Transmission 🔊</h3><p>Audio via LED light — secure & fast!</p></div>
-      <div class="card"><img src="projects/pcb.jpg" alt=""><h3>12V SMPS Circuit ⚡</h3><p>Stable DC power via custom SMPS.</p></div>
-      <div class="card"><img src="projects/lm35.jpg" alt=""><h3>Temp Threshold (LM35) 🌡️</h3><p>Sensor-based temp monitor for ICs.</p></div>
-      <div class="card"><img src="projects/cornea.jpg" alt=""><h3>Artificial Cornea 👁️</h3><p>Demo prototype for corneal model.</p></div>
-      <div class="card"><img src="projects/fracture.jpg" alt=""><h3>Fracture Repair Model 🦴</h3><p>Shows biomaterial-based fracture repair.</p></div>
-      <div class="card"><img src="projects/opamp.jpg" alt=""><h3>Op-Amp Amplifier 🔈</h3><p>Non-inverting op-amp circuit.</p></div>
-      <div class="card"><img src="projects/gsr.jpg" alt=""><h3>GSR Stress Monitor 🧠</h3><p>Tracks stress using skin sensors.</p></div>
+      <!-- Repeat for each project -->
+      <div class="card"><img src="projects/lifi.jpg"><h3>Li-Fi Audio Transmission 🔊</h3><p>Audio via LED light — secure & fast!</p></div>
+      <div class="card"><img src="projects/pcb.jpg"><h3>12V SMPS Circuit ⚡</h3><p>Stable DC power via custom SMPS.</p></div>
+      <div class="card"><img src="projects/lm35.jpg"><h3>Temp Threshold (LM35) 🌡️</h3><p>Sensor-based temp monitor for ICs.</p></div>
+      <div class="card"><img src="projects/cornea.jpg"><h3>Artificial Cornea 👁️</h3><p>Demo prototype for corneal model.</p></div>
+      <div class="card"><img src="projects/fracture.jpg"><h3>Fracture Repair Model 🦴</h3><p>Shows biomaterial-based fracture repair.</p></div>
+      <div class="card"><img src="projects/opamp.jpg"><h3>Op-Amp Amplifier 🔈</h3><p>Non-inverting op-amp circuit.</p></div>
+      <div class="card"><img src="projects/gsr.jpg"><h3>GSR Stress Monitor 🧠</h3><p>Tracks stress using skin sensors.</p></div>
       <div class="card"><a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank"><h3>AI Tower of Hanoi 🗼</h3><p>Smart puzzle solver using AI!</p></a></div>
     </div>
   </div>
 
-  <!-- Achievements -->
   <div id="achievements" class="modal">
     <span class="close-btn" onclick="closeModal('achievements')">×</span>
     <div class="modal-content grid">
-      <div class="card"><img src="achievements/logo.jpg" alt=""><h3>Logo Design Winner 🎨</h3><p>Co-designed BME Dept. logo (team).</p></div>
-      <div class="card"><img src="achievements/tekmedica.jpg" alt=""><h3>Tekmedica 1st 🥇</h3><p>Neurotransmitter model won 1st place!</p></div>
-      <div class="card"><img src="achievements/scholarship.jpg" alt=""><h3>Academic Scholarship 🎓</h3><p>9.88 GPA (Year 1), 10.0 (3rd Sem).</p></div>
+      <div class="card"><img src="achievements/logo.jpg"><h3>Logo Design Winner 🎨</h3><p>Co-designed BME Dept. logo (team).</p></div>
+      <div class="card"><img src="achievements/tekmedica.jpg"><h3>Tekmedica 1st 🥇</h3><p>Neurotransmitter model won 1st place!</p></div>
+      <div class="card"><img src="achievements/scholarship.jpg"><h3>Academic Scholarship 🎓</h3><p>9.88 GPA (Year 1), 10.0 (3rd Sem).</p></div>
     </div>
   </div>
 
-  <!-- Contact -->
   <div id="contact" class="modal">
     <span class="close-btn" onclick="closeModal('contact')">×</span>
     <div class="modal-content">
