@@ -1,36 +1,119 @@
-body, html {
+/* Reset */
+* {
   margin: 0;
   padding: 0;
-  height: 100%;
+  box-sizing: border-box;
+}
+
+body, html {
   font-family: 'Segoe UI', sans-serif;
+  height: 100%;
+  background: url('bg.png') no-repeat center center fixed;
+  background-size: cover;
   color: white;
 }
 
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar .logo {
+  font-weight: bold;
+  font-size: 20px;
+  color: #7cc6ff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links li {
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.nav-links li:hover {
+  color: #a3d4ff;
+}
+
+/* Hero Section */
 .hero {
-  background: url("bg.png") no-repeat center center fixed;
-  background-size: cover;
   height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
-.content h1 {
-  font-size: 3em;
+.content-box {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 600px;
+}
+
+.content-box h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, #a3a3ff, #7cc6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.explore-button {
+  margin-top: 20px;
+  background: linear-gradient(to right, #6f86ff, #b57fff);
+  color: white;
+  padding: 10px 25px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.explore-button:hover {
+  transform: scale(1.1);
+}
+
+/* Modal Section */
+.modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.8);
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+}
+
+.modal-content {
+  background: #121212;
+  padding: 30px;
+  max-width: 700px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #00ffff;
+  position: relative;
+}
+
+.modal-content h2 {
+  color: #7cc6ff;
   margin-bottom: 10px;
 }
 
-.content p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
-}
-
-.content a {
-  padding: 12px 24px;
-  background-color: #4f46e5;
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
   color: white;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
 }
