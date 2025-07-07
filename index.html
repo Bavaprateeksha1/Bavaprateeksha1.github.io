@@ -1,73 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prateeksha Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prateeksha | Biomedical Portfolio</title>
+  <link href="style.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="background-stars"></div>
+  <div class="background"></div>
 
-  <nav class="navbar">
-    <div class="logo">Prateeksha</div>
-    <ul>
-      <li><button onclick="toggleModal('home')">Home</button></li>
-      <li><button onclick="toggleModal('about')">About</button></li>
-      <li><button onclick="toggleModal('projects')">Projects</button></li>
-      <li><button onclick="toggleModal('skills')">Skills</button></li>
-      <li><button onclick="toggleModal('contact')">Contact</button></li>
-    </ul>
-  </nav>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#projects">Projects</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <section class="hero">
-    <h1>Hi, I'm Prateeksha</h1>
-    <p>Crafting impactful digital experiences with creativity and code.</p>
-    <a href="#projects" class="explore-btn">Explore My Work</a>
-  </section>
+  <main>
 
-  <!-- Modals -->
-  <div class="modal" id="home">
-    <div class="modal-content">
-      <span class="close-btn" onclick="toggleModal('home')">&times;</span>
-      <h2>Home</h2>
-      <p>This is the home section content.</p>
-    </div>
-  </div>
+    <section id="home" class="hero">
+      <h1>Hi, I'm Prateeksha</h1>
+      <p>Crafting healthcare innovations with tech & creativity</p>
+      <a href="#projects" class="explore-btn">Explore My Work</a>
+    </section>
 
-  <div class="modal" id="about">
-    <div class="modal-content">
-      <span class="close-btn" onclick="toggleModal('about')">&times;</span>
-      <h2>About</h2>
-      <p>Write about yourself here.</p>
-    </div>
-  </div>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        They say precision heals, but creativity transforms — and I try to live at that intersection.<br><br>
+        I'm Prateeksha, an aspiring biomedical engineer at SRMIST, passionate about using technology to improve lives.<br><br>
+        Whether it's exploring advanced diagnostics or developing novel solutions, I bring with me a commitment to detail, empathy, and innovation.<br><br>
+        Design and photography aren’t just hobbies — they fuel the way I think and build, allowing me to see systems as stories waiting to be told and improved.
+      </p>
+    </section>
 
-  <div class="modal" id="projects">
-    <div class="modal-content">
-      <span class="close-btn" onclick="toggleModal('projects')">&times;</span>
-      <h2>Projects</h2>
-      <p>Highlight your projects here.</p>
-    </div>
-  </div>
+    <section id="skills">
+      <h2>🛠️ Skills</h2>
+      <h3>🔧 Hardware Design & Simulation</h3>
+      <ul><li>Cadence</li><li>KiCad</li><li>EasyEDA</li></ul>
+      <h3>🎨 Design & Prototyping</h3>
+      <ul><li>Figma</li><li>Canva</li><li>Wireframing & UI/UX</li></ul>
+      <h3>💻 Development Tools</h3>
+      <ul><li>Google Colab</li><li>Firebase</li><li>GitHub</li><li>Streamlit</li><li>Blynk (IoT)</li></ul>
+      <h3>🌐 Languages & Web</h3>
+      <ul><li>Python</li><li>JavaScript (ES6+)</li><li>TypeScript</li><li>HTML5, CSS3</li><li>Node.js, REST API</li></ul>
+    </section>
 
-  <div class="modal" id="skills">
-    <div class="modal-content">
-      <span class="close-btn" onclick="toggleModal('skills')">&times;</span>
-      <h2>Skills</h2>
-      <p>List your technical skills and tools here.</p>
-    </div>
-  </div>
+    <section id="achievements">
+      <h2>🏆 Achievements</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="images/achievements/logo.png" alt="Logo Design">
+          <h3>🎨 Logo Design Winner</h3>
+          <p>Co-designed the official logo of the Biomedical Engineering Department (Group).</p>
+        </div>
+        <div class="card">
+          <img src="images/achievements/tekmedica.jpg" alt="Tekmedica">
+          <h3>🥇 Tekmedica Open Bio Event – 1st Place</h3>
+          <p>Built a neurotransmitter model and secured first place in the intercollegiate biomedical event.</p>
+        </div>
+        <div class="card">
+          <img src="images/achievements/scholarship.jpg" alt="Scholarship">
+          <h3>🎓 Academic Scholarship</h3>
+          <p>Received merit-based scholarships for GPA of 9.88 in the first year and 10.0 in third semester.</p>
+        </div>
+      </div>
+    </section>
 
-  <div class="modal" id="contact">
-    <div class="modal-content">
-      <span class="close-btn" onclick="toggleModal('contact')">&times;</span>
-      <h2>Contact</h2>
-      <p>Email: prateeksha@example.com</p>
-    </div>
-  </div>
+    <section id="projects">
+      <h2>💡 Projects</h2>
+      <div class="grid">
+        <div class="card"><img src="images/projects/lifi.jpg" alt=""><h3>🔊 Audio Transmission Using Li-Fi</h3><p>Built a Li-Fi system to transmit audio via LED light.</p></div>
+        <div class="card"><img src="images/projects/smps.jpg" alt=""><h3>⚡ 12V SMPS Circuit</h3><p>Designed a 12V SMPS for stable DC output.</p></div>
+        <div class="card"><img src="images/projects/temp.jpg" alt=""><h3>🌡️ Temperature Threshold System</h3><p>Used LM35 sensor to control IC temperature.</p></div>
+        <div class="card"><img src="images/projects/cornea.jpg" alt=""><h3>👁️ Artificial Cornea Model</h3><p>Demonstrated artificial cornea functionality.</p></div>
+        <div class="card"><img src="images/projects/fracture.jpg" alt=""><h3>🦴 Fracture Repair Model</h3><p>Showcased fracture repair using biomaterials.</p></div>
+        <div class="card"><img src="images/projects/opamp.jpg" alt=""><h3>🔈 Op-Amp Amplifier</h3><p>Built analog amplifier circuit using op-amp.</p></div>
+        <div class="card"><img src="images/projects/gsr.jpg" alt=""><h3>🧠 GSR-Based Stress Monitor</h3><p>Used GSR sensor to detect stress responses.</p></div>
+        <div class="card"><h3><a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank">🗼 AI-Based Tower of Hanoi Game ↗</a></h3><p>Created a smart version of the puzzle using AI.</p></div>
+      </div>
+    </section>
 
-  <script src="script.js"></script>
+  </main>
 </body>
 </html>
