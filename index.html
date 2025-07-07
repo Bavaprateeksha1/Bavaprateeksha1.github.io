@@ -4,76 +4,77 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Prateeksha | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="background"></div>
+  <div class="bg-container"></div>
 
   <nav>
     <div class="logo">Prateeksha</div>
     <ul>
-      <li onclick="openModal('home')">Home</li>
       <li onclick="openModal('about')">About</li>
-      <li onclick="openModal('projects')">Projects</li>
       <li onclick="openModal('skills')">Skills</li>
+      <li onclick="openModal('projects')">Projects</li>
       <li onclick="openModal('achievements')">Achievements</li>
+      <li onclick="openModal('contact')">Contact</li>
     </ul>
   </nav>
 
-  <section class="hero">
-    <h1>Hi, I'm <span>Prateeksha</span></h1>
-    <p>They say precision heals, but creativity transforms — and I try to live at that intersection.</p>
+  <header>
+    <h1 class="gradient-text">Hi, I’m Prateeksha</h1>
+    <p class="subtitle">They say precision heals, but creativity transforms — and I try to live at that intersection.</p>
     <button onclick="openModal('projects')">Explore My Work</button>
-  </section>
+  </header>
 
-  <!-- Modal Sections -->
-  <div id="home" class="modal"><span class="close" onclick="closeModal('home')">×</span><h2>Welcome Home</h2></div>
-
-  <div id="about" class="modal">
-    <span class="close" onclick="closeModal('about')">×</span>
-    <h2>About Me</h2>
-    <p>I'm Prateeksha, an aspiring biomedical engineer at SRMIST, passionate about using technology to improve lives.<br>
-      Whether it's exploring advanced diagnostics or developing novel solutions, I bring with me a commitment to detail, empathy, and innovation.
-      <br>Design and photography aren’t just hobbies — they fuel the way I think and build.</p>
-  </div>
-
-  <div id="projects" class="modal grid-modal">
-    <span class="close" onclick="closeModal('projects')">×</span>
-    <h2>Projects</h2>
-    <div class="grid">
-      <div class="card"><img src="assets/lifi.jpg" alt=""><h3>Li-Fi Audio Transmission</h3><p>Transmits audio via LED light for high-speed, energy-efficient communication.</p></div>
-      <div class="card"><img src="assets/smps.jpg" alt=""><h3>12V SMPS – PCB</h3><p>Designed & fabricated 12V Switch Mode Power Supply.</p></div>
-      <div class="card"><img src="assets/lm35.jpg" alt=""><h3>LM35 Temp System</h3><p>Sensor-based system to monitor and control temperature.</p></div>
-      <div class="card"><img src="assets/cornea.jpg" alt=""><h3>Artificial Cornea</h3><p>Prototype demonstrating cornea functionality.</p></div>
-      <div class="card"><img src="assets/fracture.jpg" alt=""><h3>Fracture Repair</h3><p>Model showcasing bone fracture repair techniques.</p></div>
-      <div class="card"><img src="assets/opamp.jpg" alt=""><h3>Non-Inverting Amplifier</h3><p>Amplifier circuit to demonstrate signal amplification.</p></div>
-      <div class="card"><img src="assets/gsr.jpg" alt=""><h3>GSR Stress Monitor</h3><p>Monitors stress via galvanic skin response sensors.</p></div>
-      <div class="card">
-        <h3>AI Tower of Hanoi</h3>
-        <p><a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank">View Live Project</a></p>
-      </div>
+  <!-- Modal Template -->
+  <div id="about" class="modal"><span onclick="closeModal('about')" class="close-btn">&times;</span>
+    <div class="modal-content">
+      <h2>About Me</h2>
+      <p>
+        I'm Prateeksha, an aspiring biomedical engineer at SRMIST, passionate about using technology to improve lives.<br>
+        Whether it's exploring advanced diagnostics or developing novel solutions, I bring with me a commitment to detail, empathy, and innovation.<br>
+        Design and photography aren’t just hobbies — they fuel the way I think and build, allowing me to see systems as stories waiting to be told and improved.
+      </p>
     </div>
   </div>
 
-  <div id="skills" class="modal">
-    <span class="close" onclick="closeModal('skills')">×</span>
-    <h2>Skills</h2>
-    <ul>
-      <li>Firebase</li>
-      <li>Blynk</li>
-      <li>GitHub</li>
-      <li>Streamlit</li>
-    </ul>
+  <div id="skills" class="modal"><span onclick="closeModal('skills')" class="close-btn">&times;</span>
+    <div class="modal-content">
+      <h2>Skills</h2>
+      <ul>
+        <li><strong>Design & Prototyping:</strong> Figma, UI/UX, Prototyping</li>
+        <li><strong>Languages & Scripting:</strong> Python, JavaScript</li>
+        <li><strong>Tools:</strong> Firebase, Streamlit, GitHub, Blynk</li>
+      </ul>
+    </div>
   </div>
 
-  <div id="achievements" class="modal grid-modal">
-    <span class="close" onclick="closeModal('achievements')">×</span>
-    <h2>Achievements</h2>
-    <div class="grid">
-      <div class="card"><img src="assets/logo.jpg" alt=""><h3>Logo Design Winner</h3><p>Co-designed official logo for Biomedical Dept.</p></div>
-      <div class="card"><img src="assets/tekmedica.jpg" alt=""><h3>Tekmedica 1st Prize</h3><p>Built neurotransmitter model & won 1st place.</p></div>
-      <div class="card"><img src="assets/scholarship.jpg" alt=""><h3>Academic Scholarship</h3><p>Received for GPA of 9.88 and 10.0 in 1st & 3rd sem.</p></div>
+  <div id="projects" class="modal"><span onclick="closeModal('projects')" class="close-btn">&times;</span>
+    <div class="modal-content grid">
+      <div class="card"><img src="projects/lifi.jpg"/><h3>Audio Transmission Using Li-Fi</h3><p>Built a Li-Fi system for secure audio transmission using LED modulation.</p></div>
+      <div class="card"><img src="projects/pcb.jpg"/><h3>12V SMPS Circuit</h3><p>Designed & fabricated a 12V Switch Mode Power Supply for DC output.</p></div>
+      <div class="card"><img src="projects/lm35.jpg"/><h3>LM35 Temp Monitor</h3><p>Sensor system to monitor/control temperature in circuits.</p></div>
+      <div class="card"><img src="projects/cornea.jpg"/><h3>Artificial Cornea</h3><p>Prototype demonstrating artificial cornea functionality.</p></div>
+      <div class="card"><img src="projects/fracture.jpg"/><h3>Fracture Repair Model</h3><p>Model showcasing bone fracture repair using biomaterials.</p></div>
+      <div class="card"><img src="projects/opamp.jpg"/><h3>Op-Amp Amplifier</h3><p>Non-inverting amplifier circuit to demonstrate analog amplification.</p></div>
+      <div class="card"><img src="projects/gsr.jpg"/><h3>Stress Monitor (GSR)</h3><p>Biomedical system to detect stress via GSR sensors.</p></div>
+      <div class="card"><a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank"><h3>AI Tower of Hanoi</h3><p>Smart puzzle solver using AI algorithms (no image).</p></a></div>
+    </div>
+  </div>
+
+  <div id="achievements" class="modal"><span onclick="closeModal('achievements')" class="close-btn">&times;</span>
+    <div class="modal-content grid">
+      <div class="card"><img src="achievements/logo.jpg"/><h3>Logo Design Winner</h3><p>Co-designed the Biomedical Dept. logo (Group).</p></div>
+      <div class="card"><img src="achievements/tekmedica.jpg"/><h3>Tekmedica 1st Prize</h3><p>Built neurotransmitter model, won intercollegiate event.</p></div>
+      <div class="card"><img src="achievements/scholarship.jpg"/><h3>Academic Scholarship</h3><p>Secured GPA 9.88 (1st year) and 10.0 (3rd sem).</p></div>
+    </div>
+  </div>
+
+  <div id="contact" class="modal"><span onclick="closeModal('contact')" class="close-btn">&times;</span>
+    <div class="modal-content">
+      <h2>Contact</h2>
+      <p>📧 Email: your.email@example.com<br>🔗 GitHub: github.com/bavaprateeksha1</p>
     </div>
   </div>
 
