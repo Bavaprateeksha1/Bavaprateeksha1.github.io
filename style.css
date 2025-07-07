@@ -3,6 +3,7 @@ body {
   font-family: 'Poppins', sans-serif;
   background: #0b0f1a;
   color: #f0f0f0;
+  overflow-x: hidden;
 }
 
 .background {
@@ -12,7 +13,8 @@ body {
   top: 0; left: 0;
   width: 100%; height: 100%;
   z-index: -1;
-  animation: moveBg 60s linear infinite;
+  animation: moveBg 80s linear infinite;
+  opacity: 0.8;
 }
 
 @keyframes moveBg {
@@ -28,6 +30,7 @@ header nav ul {
   background: rgba(255,255,255,0.05);
   border-bottom: 1px solid rgba(255,255,255,0.1);
   margin: 0;
+  backdrop-filter: blur(10px);
 }
 
 nav ul li {
