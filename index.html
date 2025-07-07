@@ -1,49 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Prateeksha | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="bg-container">
-    <div class="stars"></div>
-    <div class="twinkling"></div>
-    <div class="shooting-stars"></div>
-  </div>
+  <div class="background"></div>
+  <canvas id="stars"></canvas>
 
   <nav>
-    <div class="logo">Prateeksha</div>
-    <ul>
-      <li class="nav-link" onclick="openOnly('about')">About</li>
-      <li class="nav-link" onclick="openOnly('skills')">Skills</li>
-      <li class="nav-link" onclick="openOnly('projects')">Projects</li>
-      <li class="nav-link" onclick="openOnly('achievements')">Achievements</li>
-      <li class="nav-link" onclick="openOnly('contact')">Contact</li>
+    <div class="nav-left">Prateeksha</div>
+    <ul class="nav-right">
+      <li onclick="openOnly('about')">About</li>
+      <li onclick="openOnly('skills')">Skills</li>
+      <li onclick="openOnly('projects')">Projects</li>
+      <li onclick="openOnly('achievements')">Achievements</li>
+      <li onclick="openOnly('contact')">Contact</li>
     </ul>
   </nav>
 
-  <header>
+  <section id="hero">
     <div class="hero-text" id="hero-text">
-      <h1>Hi, I’m <span class="highlight">Prateeksha</span> 👩‍🔧</h1>
+      <h1>Hi, I'm <span class="gradient-text">Prateeksha</span> 👩‍🔧</h1>
       <p>Crafting biomedical ideas with a spark of creativity ✨</p>
       <button onclick="openOnly('projects')">🚀 Explore My Work</button>
     </div>
-  </header>
+  </section>
 
   <!-- About Modal -->
   <div class="modal" id="about">
     <div class="modal-box">
-      <div class="modal-title">🙋‍♀️ About</div>
       <span class="close" onclick="closeModal('about')">×</span>
+      <h2 class="modal-title">🙋‍♀️ About</h2>
       <p>
         <strong>Thinking in Circuits, Dreaming in Doodles 🎨🔌</strong><br><br>
-        Hi there! I'm Prateeksha 👩‍🔧 — thinker, tinkerer, and Biomedical Engineering enthusiast. I’ve always loved asking "Why?" and chasing down the "What if?" 💭🔍
-        <br><br>
-        I enjoy weaving together science, logic, and a little magic to make sense of the world around me. Whether it’s sketching ideas on paper or thinking in code, I believe learning should always feel a little like an adventure.
-        <br><br>
+        Hi there! I'm Prateeksha 👩‍🔧 — thinker, tinkerer, and Biomedical Engineering enthusiast. I’ve always loved asking "Why?" and chasing down the "What if?" 💭🔍<br><br>
+        I enjoy weaving together science, logic, and a little magic to make sense of the world around me. Whether it’s sketching ideas on paper or thinking in code, I believe learning should always feel a little like an adventure.<br><br>
         When I’m not diving into technical concepts, I’m probably doodling, playlist-making, or explaining complicated things in super-simple ways 🖍️🎧. Basically? I’m here to create and have fun doing it.
       </p>
     </div>
@@ -52,13 +47,13 @@
   <!-- Skills Modal -->
   <div class="modal" id="skills">
     <div class="modal-box">
-      <div class="modal-title">🛠️ Skills</div>
       <span class="close" onclick="closeModal('skills')">×</span>
+      <h2 class="modal-title">🛠️ Skills</h2>
       <ul>
         <li>🔌 Streamlit, Firebase, Blynk, GitHub</li>
-        <li>🧠 UI/UX & Prototyping</li>
-        <li>📐 CAD Modelling, Circuit Simulation</li>
-        <li>📊 Data Visualization & MATLAB</li>
+        <li>📐 UI/UX & Prototyping</li>
+        <li>🧠 Biomedical Design Thinking</li>
+        <li>📊 Data Visualization, MATLAB</li>
         <li>💻 Python, JavaScript, HTML/CSS</li>
       </ul>
     </div>
@@ -67,47 +62,19 @@
   <!-- Projects Modal -->
   <div class="modal" id="projects">
     <div class="modal-box">
-      <div class="modal-title">💡 Projects</div>
       <span class="close" onclick="closeModal('projects')">×</span>
+      <h2 class="modal-title">💡 Projects</h2>
       <div class="grid">
-        <div class="card">
-          <img src="images/projects/lifi.jpg" alt="Li-Fi">
-          <h3>🔊 Audio Transmission Using Li-Fi</h3>
-          <p>Built a secure, energy-efficient audio transmission system using LED modulation.</p>
-        </div>
-        <div class="card">
-          <img src="images/projects/smps.jpg" alt="SMPS">
-          <h3>⚡ 12V SMPS Circuit</h3>
-          <p>Fabricated a Switch Mode Power Supply for reliable DC output.</p>
-        </div>
-        <div class="card">
-          <img src="images/projects/temp.jpg" alt="Temperature System">
-          <h3>🌡️ Temperature Threshold System</h3>
-          <p>Created a sensor-based circuit with LM35 to monitor and control temperature.</p>
-        </div>
-        <div class="card">
-          <img src="images/projects/cornea.jpg" alt="Cornea Model">
-          <h3>👁️ Artificial Cornea Model</h3>
-          <p>Built a prototype demonstrating corneal implant principles.</p>
-        </div>
-        <div class="card">
-          <img src="images/projects/fracture.jpg" alt="Fracture Repair">
-          <h3>🦴 Fracture Repair Model</h3>
-          <p>Constructed a biomaterials-based demonstration of bone healing.</p>
-        </div>
-        <div class="card">
-          <img src="images/projects/opamp.jpg" alt="Op-Amp">
-          <h3>🔈 Non-Inverting Amplifier</h3>
-          <p>Analog signal amplification using op-amp circuit design.</p>
-        </div>
-        <div class="card">
-          <img src="images/projects/gsr.jpg" alt="GSR Stress Monitor">
-          <h3>🧠 GSR Stress Monitoring System</h3>
-          <p>Biomedical system using galvanic skin response for stress detection.</p>
-        </div>
+        <div class="card"><img src="images/projects/lifi.jpg"><h3>🔊 Audio Transmission Using Li-Fi</h3><p>Built a secure, energy-efficient audio system using LED light modulation.</p></div>
+        <div class="card"><img src="images/projects/smps.jpg"><h3>⚡ 12V SMPS Circuit</h3><p>Designed and fabricated a Switch Mode Power Supply circuit for stable output.</p></div>
+        <div class="card"><img src="images/projects/temp.jpg"><h3>🌡️ Temperature Threshold System</h3><p>Sensor-based circuit using LM35 for real-time temperature monitoring.</p></div>
+        <div class="card"><img src="images/projects/cornea.jpg"><h3>👁️ Artificial Cornea Model</h3><p>Prototype built to mimic corneal implant functionality.</p></div>
+        <div class="card"><img src="images/projects/fracture.jpg"><h3>🦴 Fracture Repair Model</h3><p>Biomaterials-based model demonstrating bone repair.</p></div>
+        <div class="card"><img src="images/projects/opamp.jpg"><h3>🔈 Non-Inverting Amplifier</h3><p>Op-amp based analog circuit to amplify signals non-inversely.</p></div>
+        <div class="card"><img src="images/projects/gsr.jpg"><h3>🧠 GSR Stress Monitor</h3><p>Detected stress using galvanic skin response sensors.</p></div>
         <div class="card">
           <h3>🗼 AI-Based Tower of Hanoi</h3>
-          <p>Smart version using AI algorithms. <a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank">🔗 View Project</a></p>
+          <p>Smart puzzle solver using AI.<br><a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank">🔗 Live Project</a></p>
         </div>
       </div>
     </div>
@@ -116,24 +83,12 @@
   <!-- Achievements Modal -->
   <div class="modal" id="achievements">
     <div class="modal-box">
-      <div class="modal-title">🏆 Achievements</div>
       <span class="close" onclick="closeModal('achievements')">×</span>
+      <h2 class="modal-title">🏆 Achievements</h2>
       <div class="grid">
-        <div class="card">
-          <img src="images/achievements/logo.jpg" alt="Logo Winner">
-          <h3>🎨 Logo Design Winner</h3>
-          <p>Co-designed the official Biomedical Engineering Dept logo.</p>
-        </div>
-        <div class="card">
-          <img src="images/achievements/tekmedica.jpg" alt="Tekmedica">
-          <h3>🥇 Tekmedica – 1st Place</h3>
-          <p>Built a neurotransmitter model for an intercollegiate event.</p>
-        </div>
-        <div class="card">
-          <img src="images/achievements/scholarship.jpg" alt="Scholarship">
-          <h3>🎓 Academic Scholarship</h3>
-          <p>Awarded for GPA 9.88 (1st year), 10.0 (3rd semester).</p>
-        </div>
+        <div class="card"><img src="images/achievements/logo.jpg"><h3>🎨 Logo Design Winner</h3><p>Co-designed the official logo of the Biomedical Engineering Dept.</p></div>
+        <div class="card"><img src="images/achievements/tekmedica.jpg"><h3>🥇 Tekmedica Bio Event</h3><p>Built neurotransmitter model; secured 1st place.</p></div>
+        <div class="card"><img src="images/achievements/scholarship.jpg"><h3>🎓 Academic Scholarship</h3><p>Awarded for GPA 9.88 (1st year) & 10.0 (3rd sem).</p></div>
       </div>
     </div>
   </div>
@@ -141,10 +96,10 @@
   <!-- Contact Modal -->
   <div class="modal" id="contact">
     <div class="modal-box">
-      <div class="modal-title">📬 Contact</div>
       <span class="close" onclick="closeModal('contact')">×</span>
-      <p>📧 Reach at: <strong>bavaprateeksha123@gmail.com</strong></p>
-      <p>🔗 <a href="https://www.linkedin.com/in/bava-prateeksha-k-52811a28a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">LinkedIn Profile</a></p>
+      <h2 class="modal-title">📬 Contact</h2>
+      <p>📧 Reach me: <strong>bavaprateeksha123@gmail.com</strong></p>
+      <p>🔗 <a href="https://www.linkedin.com/in/bava-prateeksha-k-52811a28a" target="_blank">LinkedIn Profile</a></p>
     </div>
   </div>
 
