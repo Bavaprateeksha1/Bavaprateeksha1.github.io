@@ -1,14 +1,20 @@
 function openOnly(id) {
-  // Close all modals first
+  // Hide all modals
   const modals = document.querySelectorAll('.modal');
   modals.forEach(modal => {
     modal.style.display = 'none';
   });
 
-  // Open the selected modal
+  // Hide hero text
+  const hero = document.getElementById('hero-text');
+  if (hero) hero.style.display = 'none';
+
+  // Open selected modal
   document.getElementById(id).style.display = 'block';
 }
 
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
+  const hero = document.getElementById('hero-text');
+  if (hero) hero.style.display = 'block';
 }
