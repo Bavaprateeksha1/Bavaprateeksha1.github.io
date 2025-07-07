@@ -1,55 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prateeksha's Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prateeksha Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="background-stars"></div>
+
   <nav class="navbar">
     <div class="logo">Prateeksha</div>
-    <ul class="nav-links">
-      <li onclick="openSection('home')">Home</li>
-      <li onclick="openSection('about')">About</li>
-      <li onclick="openSection('projects')">Projects</li>
-      <li onclick="openSection('skills')">Skills</li>
-      <li onclick="openSection('contact')">Contact</li>
+    <ul>
+      <li><button onclick="toggleModal('home')">Home</button></li>
+      <li><button onclick="toggleModal('about')">About</button></li>
+      <li><button onclick="toggleModal('projects')">Projects</button></li>
+      <li><button onclick="toggleModal('skills')">Skills</button></li>
+      <li><button onclick="toggleModal('contact')">Contact</button></li>
     </ul>
   </nav>
 
-  <section class="hero" id="home">
-    <div class="content-box">
-      <h1>Hi, I'm Prateeksha</h1>
-      <p>Crafting meaningful digital experiences with creativity and clarity.</p>
-      <a href="#" class="explore-button">Explore My Work</a>
-    </div>
+  <section class="hero">
+    <h1>Hi, I'm Prateeksha</h1>
+    <p>Crafting impactful digital experiences with creativity and code.</p>
+    <a href="#projects" class="explore-btn">Explore My Work</a>
   </section>
 
-  <!-- Modal Section Template -->
-  <div id="modal" class="modal">
+  <!-- Modals -->
+  <div class="modal" id="home">
     <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-      <div id="modal-body">Content goes here...</div>
+      <span class="close-btn" onclick="toggleModal('home')">&times;</span>
+      <h2>Home</h2>
+      <p>This is the home section content.</p>
     </div>
   </div>
 
-  <script>
-    const sections = {
-      about: `<h2>About Me</h2><p>[You will give me this content]</p>`,
-      projects: `<h2>Projects</h2><p>[You will give me this content]</p>`,
-      skills: `<h2>Skills</h2><p>[You will give me this content]</p>`,
-      contact: `<h2>Contact</h2><p>[You will give me this content]</p>`
-    };
+  <div class="modal" id="about">
+    <div class="modal-content">
+      <span class="close-btn" onclick="toggleModal('about')">&times;</span>
+      <h2>About</h2>
+      <p>Write about yourself here.</p>
+    </div>
+  </div>
 
-    function openSection(name) {
-      document.getElementById('modal-body').innerHTML = sections[name];
-      document.getElementById('modal').style.display = 'flex';
-    }
+  <div class="modal" id="projects">
+    <div class="modal-content">
+      <span class="close-btn" onclick="toggleModal('projects')">&times;</span>
+      <h2>Projects</h2>
+      <p>Highlight your projects here.</p>
+    </div>
+  </div>
 
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-    }
-  </script>
+  <div class="modal" id="skills">
+    <div class="modal-content">
+      <span class="close-btn" onclick="toggleModal('skills')">&times;</span>
+      <h2>Skills</h2>
+      <p>List your technical skills and tools here.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="contact">
+    <div class="modal-content">
+      <span class="close-btn" onclick="toggleModal('contact')">&times;</span>
+      <h2>Contact</h2>
+      <p>Email: prateeksha@example.com</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
