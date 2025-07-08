@@ -229,28 +229,15 @@ a {
 a:hover {
   text-decoration: underline;
 }
-/* ✨ White-Beige-Blue Glow for Modal Content Text */
-.modal-box p,
-.modal-box li,
-.modal-box h2,
-.modal-box h3 {
-  color: #ffffff;
-  text-shadow: 
-    0 0 4px #ffffff,    /* white glow */
-    0 0 6px #d2b48c,     /* beige glow */
-    0 0 10px #00bfff;    /* blue glow */
-}
-
-/* 💫 Gradient Headings (optional) */
-.modal-title,
-.modal-box h3 {
-  background: linear-gradient(45deg, #ffffff, #d2b48c, #00bfff);
+/* 💫 Blue Sparkly Text Style */
+.sparkly-text {
+  background: linear-gradient(45deg, #7EC8E3, #5F9EA0, #87CEFA);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 
-    0 0 4px #ffffff,
-    0 0 8px #d2b48c,
-    0 0 12px #00bfff;
+  text-shadow:
+    0 0 3px rgba(135, 206, 250, 0.7),
+    0 0 5px rgba(94, 173, 201, 0.6),
+    0 0 8px rgba(126, 200, 227, 0.5);
 }
 
 @media (max-width: 768px) {
