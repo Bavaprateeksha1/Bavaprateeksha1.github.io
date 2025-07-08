@@ -229,6 +229,29 @@ a {
 a:hover {
   text-decoration: underline;
 }
+/* ✨ White-Beige-Blue Glow for Modal Content Text */
+.modal-box p,
+.modal-box li,
+.modal-box h2,
+.modal-box h3 {
+  color: #ffffff;
+  text-shadow: 
+    0 0 4px #ffffff,    /* white glow */
+    0 0 6px #d2b48c,     /* beige glow */
+    0 0 10px #00bfff;    /* blue glow */
+}
+
+/* 💫 Gradient Headings (optional) */
+.modal-title,
+.modal-box h3 {
+  background: linear-gradient(45deg, #ffffff, #d2b48c, #00bfff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 
+    0 0 4px #ffffff,
+    0 0 8px #d2b48c,
+    0 0 12px #00bfff;
+}
 
 @media (max-width: 768px) {
   .nav-right {
