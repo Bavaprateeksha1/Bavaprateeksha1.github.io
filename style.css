@@ -120,8 +120,8 @@ nav {
   font-size: 1rem;
   border: none;
   border-radius: 25px;
-  background-color: #D2B48C;
-  color: #000449;
+  background-color: #4A102A;
+  color: #d2b48c;
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -168,7 +168,7 @@ nav {
   right: 20px;
   font-size: 2rem;
   cursor: pointer;
-  color: #FF0000;
+  color: white;
   background: #fff2;
   border-radius: 50%;
   width: 36px;
@@ -222,7 +222,7 @@ nav {
 }
 
 a {
-  color: #0077B5;
+  color: #4A102A;
   text-decoration: none;
 }
 
