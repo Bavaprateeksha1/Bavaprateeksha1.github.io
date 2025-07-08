@@ -1,4 +1,3 @@
-/* BASE STYLES */
 body, html {
   margin: 0;
   padding: 0;
@@ -8,7 +7,7 @@ body, html {
   color: white;
 }
 
-/* BACKGROUND */
+/* BACKGROUND IMAGE */
 .background {
   background: url('bg.png') no-repeat center center fixed;
   background-size: cover;
@@ -26,7 +25,7 @@ body, html {
   100% { transform: scale(1) translate(0, 0); }
 }
 
-/* SHOOTING STARS BACKGROUND CANVAS */
+/* CANVAS STARS */
 #stars {
   position: fixed;
   top: 0; left: 0;
@@ -36,7 +35,7 @@ body, html {
   pointer-events: none;
 }
 
-/* SHOOTING STAR DIVS */
+/* SHOOTING STARS CONTAINER */
 .shooting-stars {
   position: fixed;
   top: 0; left: 0;
@@ -46,9 +45,10 @@ body, html {
   pointer-events: none;
 }
 
+/* SHOOTING STAR ANIMATION */
 .shooting-star {
   position: absolute;
-  width: 150px;
+  width: 200px;
   height: 2px;
   background: linear-gradient(90deg, white, transparent);
   opacity: 0;
@@ -74,30 +74,32 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 20px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 15px 40px;
   z-index: 10;
 }
 
 .nav-left {
-  font-weight: 700;
   font-size: 1.5rem;
+  font-weight: 700;
   color: white;
 }
 
 .nav-right {
-  list-style: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
+  list-style: none;
   gap: 25px;
-  margin-right: 40px;
 }
 
 .nav-right li {
   cursor: pointer;
   font-weight: 500;
-  background: linear-gradient(45deg, #DCC5B2, #F0E4D3, #FAF7F3);
+  background: linear-gradient(45deg, #87CEFA, #FF69B4, #00FFFF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: transform 0.2s ease;
@@ -167,7 +169,7 @@ nav {
 .modal-box {
   width: 90%;
   max-width: 800px;
-  background: rgba(28, 28, 43, 0.9); /* 90% opaque */
+  background: rgba(28, 28, 43, 0.9); /* 90% opacity */
   border-radius: 15px;
   padding: 30px;
   color: #fff;
@@ -178,7 +180,7 @@ nav {
 
 .modal-title {
   font-size: 1.5rem;
-  background: linear-gradient(45deg, #00FFFF, #FFD700, #7FFF00);
+  background: linear-gradient(45deg, #DCC5B2, #F0E4D3, #FAF7F3);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 20px;
@@ -193,7 +195,7 @@ nav {
   color: #fff;
 }
 
-/* GRID FOR PROJECTS & ACHIEVEMENTS */
+/* GRID FOR CARDS */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -230,7 +232,6 @@ nav {
   color: #ccc;
 }
 
-/* MODAL SCROLLBAR */
 .modal-box::-webkit-scrollbar {
   width: 6px;
 }
