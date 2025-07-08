@@ -155,20 +155,22 @@ nav {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
-/* ✅ Heading inside modal */
-.modal-title {
-  font-size: 2rem;         /* Increased size */
-  font-weight: 700;        /* Thicker text */
+/* ✅ Extra bold modal heading */
+.modal-title,
+.modal-box h2,
+.modal-box h3 {
+  font-size: 2rem;
+  font-weight: 800; /* Extra Bold */
   color: #0B0F5E;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
-/* ✅ Modal body content — paragraphs and list items */
+/* ✅ Bold paragraph and list content */
 .modal-box p,
 .modal-box li {
-  font-size: 1.15rem;      /* Increased size */
-  font-weight: 600;        /* Medium-bold text */
-  color: #0B0F5E;          /* Dark readable text */
+  font-size: 1.15rem;
+  font-weight: 700; /* Bold */
+  color: #0B0F5E;
   line-height: 1.7;
 }
 
