@@ -1,273 +1,255 @@
 body, html {
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-  overflow: hidden;
-  height: 100%;
-  color: white;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  height: 100%;
+  color: white;
 }
 
 /* Background */
 .background {
-  background: url('bg.png') no-repeat center center fixed;
-  background-size: cover;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -10;
-  animation: zoomMove 25s infinite linear;
+  background: url('bg.png') no-repeat center center fixed;
+  background-size: cover;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  animation: zoomMove 25s infinite linear;
 }
 
 @keyframes zoomMove {
-  0% { transform: scale(1) translate(0, 0); }
-  50% { transform: scale(1.1) translate(-10px, -10px); }
-  100% { transform: scale(1) translate(0, 0); }
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.1) translate(-10px, -10px); }
+  100% { transform: scale(1) translate(0, 0); }
 }
 
 /* Star canvas */
 #stars {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -9;
-  pointer-events: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -9;
+  pointer-events: none;
 }
 
 /* Sparkle stars */
 .sparkle-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -8;
-  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -8;
+  pointer-events: none;
 }
 
 .sparkle {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  border-radius: 50%;
-  animation: twinkle 2s infinite ease-in-out;
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite ease-in-out;
 }
 
 @keyframes twinkle {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 1; }
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
 }
 
-/* Shooting stars container (unchanged, but good for context) */
-/* --- Shooting Stars Container --- */
+/* Shooting stars */
 .shooting-stars {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -7; /* Adjust if needed based on your other layers */
-    pointer-events: none; /* Allows clicks to pass through */
-    overflow: hidden; /* **Crucial:** Prevents scrollbars if stars start/end off-screen */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -7;
+  pointer-events: none;
 }
 
-/* --- Shooting Star Styling --- */
 .shooting-star {
-    position: absolute;
-    /* Use CSS variables for dynamic size and length, set by JavaScript */
-    width: var(--length, 100px); /* Default if JS isn't loaded */
-    height: var(--size, 2px);    /* Default if JS isn't loaded */
-    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
-    border-radius: 50%; /* Makes the ends rounded for a light trail look */
-    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.7); /* Adds a strong glow */
-    opacity: 0; /* Initially hidden, will fade in during animation */
-    animation-timing-function: linear; /* Ensures constant speed */
-    animation-iteration-count: infinite; /* Makes the animation loop endlessly */
-    transform-origin: center left; /* Important for correct rotation around its starting point */
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, white, transparent);
+  animation: shoot 4s linear infinite;
+  opacity: 0.6;
 }
 
-/* --- Keyframes for the Shooting Star Animation --- */
 @keyframes shoot {
-    0% {
-        /* Start position (X, Y) and rotation (angle) are controlled by JavaScript
-           via CSS custom properties (variables like --start-x, --rotation) */
-        transform: translate(var(--start-x), var(--start-y)) rotate(var(--rotation));
-        opacity: 0; /* Star is invisible at the very beginning of its path */
-    }
-    10% {
-        opacity: 1; /* Star quickly fades in as it starts its visible trail */
-    }
-    90% {
-        opacity: 1; /* Star remains fully visible for the majority of its journey */
-    }
-    100% {
-        /* End position (X, Y) is controlled by JavaScript, maintaining its rotation */
-        transform: translate(var(--end-x), var(--end-y)) rotate(var(--rotation));
-        opacity: 0; /* Star fades out as it completes its path */
-    }
+  0% {
+    transform: translate(-200px, -100px) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(120vw, 120vh) rotate(45deg);
+    opacity: 0;
+  }
+}
 
 /* Navigation */
 nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 20px 40px;
-  z-index: 10;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px 40px;
+  z-index: 10;
 }
 
 .nav-left {
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: white;
 }
 
 .nav-right {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .nav-right li {
-  cursor: pointer;
-  font-weight: 500;
-  background: linear-gradient(45deg, #00BFFF, #1E90FF, #00CED1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  font-weight: 500;
+  background: linear-gradient(45deg, #00BFFF, #1E90FF, #00CED1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Hero section */
 #hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  text-align: center;
-  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 0 20px;
 }
 
 .hero-text h1 {
-  font-size: 3rem;
-  margin: 0;
+  font-size: 3rem;
+  margin: 0;
 }
 
 .hero-text p {
-  margin-top: 10px;
-  font-size: 1.2rem;
+  margin-top: 10px;
+  font-size: 1.2rem;
 }
 
 .hero-text button {
-  margin-top: 20px;
-  padding: 10px 25px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 25px;
-  background-color: #00BFFF;
-  color: white;
-  cursor: pointer;
+  margin-top: 20px;
+  padding: 10px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  background-color: #00BFFF;
+  color: white;
+  cursor: pointer;
 }
 
 .gradient-text {
-  background: linear-gradient(45deg, #FF69B4, #87CEFA, #BA55D3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: linear-gradient(45deg, #FF69B4, #87CEFA, #BA55D3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Modals */
 .modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: transparent;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 20;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
 }
 
 .modal-box {
-  width: 80vw;
-  max-width: 800px;
-  background: rgba(28, 28, 43, 0.95);
-  border-radius: 15px;
-  padding: 30px;
-  color: #fff;
-  position: relative;
-  max-height: 90vh;
-  overflow-y: auto;
-  text-align: left;
+  width: 80vw;
+  max-width: 800px;
+  background: rgba(28, 28, 43, 0.95);
+  border-radius: 15px;
+  padding: 30px;
+  color: #fff;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: left;
 }
 
 .modal-box::-webkit-scrollbar {
-  width: 6px;
+  width: 6px;
 }
 .modal-box::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 10px;
+  background: #888;
+  border-radius: 10px;
 }
 
 /* Modal title */
 .modal-title {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  padding-left: 10px;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  padding-left: 10px;
 }
 
 .blue-gradient {
-  background: linear-gradient(45deg, #FF69B4, #87CEFA, #BA55D3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: linear-gradient(45deg, #FF69B4, #87CEFA, #BA55D3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 2rem;
-  cursor: pointer;
-  color: #fff;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff;
 }
 
 /* Cards */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
 
 .card {
-  background: #2a2a40;
-  padding: 15px;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+  background: #2a2a40;
+  padding: 15px;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .card img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
 .card h3 {
-  margin: 10px 0 5px 0;
-  font-size: 1.1rem;
+  margin: 10px 0 5px 0;
+  font-size: 1.1rem;
 }
 
 .card p {
-  font-size: 0.95rem;
-  color: #ccc;
-} 
+  font-size: 0.95rem;
+  color: #ccc;
+}
