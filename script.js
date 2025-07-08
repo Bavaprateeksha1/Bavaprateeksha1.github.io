@@ -1,26 +1,19 @@
 function openOnly(id) {
-  // Close all modals first
   const modals = document.querySelectorAll('.modal');
   modals.forEach(modal => modal.style.display = 'none');
-
-  // Hide hero text
   document.getElementById('hero-text').style.display = 'none';
-
-  // Open selected modal
   document.getElementById(id).style.display = 'flex';
 }
 
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
-
-  // Show hero text again only if all modals are closed
   const openModals = [...document.querySelectorAll('.modal')].filter(modal => modal.style.display === 'flex');
   if (openModals.length === 0) {
     document.getElementById('hero-text').style.display = 'block';
   }
 }
 
-// Shooting stars canvas effect
+// Canvas Stars
 const canvas = document.getElementById('stars');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -57,3 +50,13 @@ function drawStars() {
   requestAnimationFrame(drawStars);
 }
 drawStars();
+
+// Sparkles
+const sparkleContainer = document.querySelector('.sparkle-container');
+for (let i = 0; i < 40; i++) {
+  const sparkle = document.createElement('div');
+  sparkle.classList.add('sparkle');
+  sparkle.style.top = `${Math.random() * 100}%`;
+  sparkle.style.left = `${Math.random() * 100}%`;
+  sparkleContainer.appendChild(sparkle);
+}
