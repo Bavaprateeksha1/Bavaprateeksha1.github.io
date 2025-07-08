@@ -67,7 +67,7 @@ nav {
 .nav-left {
   font-weight: 700;
   font-size: 1.5rem;
-  background: linear-gradient(45deg, #DCC5B2, #F0E4D3, #FAF7F3);
+  background: linear-gradient(45deg, #DCC5B2, #F0E4D3, #FAF7F3); /* ✅ beige-white gradient */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -148,21 +148,21 @@ nav {
 .modal-box {
   width: 90%;
   max-width: 800px;
-  background: linear-gradient(135deg, #F0E4D3 0%, #FAF7F3 100%);
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-  padding: 30px;
+  background: linear-gradient(to bottom right, #F0E4D3, #FAF7F3); /* ✅ FULLY GRADUATED background */
   border-radius: 15px;
-  color: #111;
-  font-family: 'Poppins', sans-serif;
+  padding: 30px;
+  position: relative;
   max-height: 90vh;
   overflow-y: auto;
+  color: #111;
 }
 
 .modal-title {
   font-size: 1.5rem;
-  color: #090040;
+  color: #090040;  /* ✅ Uniform heading color inside modals */
   margin-bottom: 20px;
 }
+/* ☝️ This is the area you asked for – where modal heading color is set */
 
 .close {
   position: absolute;
