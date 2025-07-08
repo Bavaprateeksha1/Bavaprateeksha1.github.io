@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bava Prateeksha | Portfolio</title>
   <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="background"></div>
@@ -12,7 +13,6 @@
   <div class="nebula"></div>
 
   <nav>
-    <div class="nav-left">Bava Prateeksha</div>
     <ul class="nav-right">
       <li onclick="openOnly('about')">About</li>
       <li onclick="openOnly('skills')">Skills</li>
@@ -26,13 +26,11 @@
 
   <section id="hero">
     <div class="hero-text">
-      <h1 id="typed"></h1>
-      <p class="gradient-text">Crafting biomedical ideas with a dash of creativity 🚀</p>
+      <h1 id="typed"></h1> <p class="gradient-text">Crafting biomedical ideas with a dash of creativity 🚀</p>
       <button onclick="openOnly('about')">Welcome to my cosmic web 🪐</button>
     </div>
   </section>
 
-  <!-- About Modal -->
   <div class="modal" id="about">
     <div class="modal-box">
       <button class="close-btn" onclick="closeModal('about')">×</button>
@@ -46,7 +44,6 @@
     </div>
   </div>
 
-  <!-- Skills Modal -->
   <div class="modal" id="skills">
     <div class="modal-box">
       <button class="close-btn" onclick="closeModal('skills')">×</button>
@@ -59,7 +56,6 @@
     </div>
   </div>
 
-  <!-- Interests Modal -->
   <div class="modal" id="interest">
     <div class="modal-box">
       <button class="close-btn" onclick="closeModal('interest')">×</button>
@@ -75,7 +71,6 @@
     </div>
   </div>
 
-  <!-- Experience Modal -->
   <div class="modal" id="experience">
     <div class="modal-box">
       <button class="close-btn" onclick="closeModal('experience')">×</button>
@@ -102,7 +97,6 @@
     </div>
   </div>
 
-  <!-- Projects Modal -->
   <div class="modal" id="projects">
     <div class="modal-box">
       <button class="close-btn" onclick="closeModal('projects')">×</button>
@@ -122,28 +116,7 @@
           <h3>🌡️ Temperature Threshold System</h3>
           <img src="images/projects/temp.jpg" alt="Temperature">
           <p>Sensor‑based circuit using LM35 for real-time temperature monitoring.</p>
-        </div>
-      </div>
-      <div class="grid-3">
-        <div class="proj-card">
-          <h3>👁️ Artificial Cornea Model</h3>
-          <img src="images/projects/cornea.jpg" alt="Cornea Model">
-          <p>Prototype built to mimic corneal implant functionality.</p>
-        </div>
-        <div class="proj-card">
-          <h3>🦴 Fracture Repair Model</h3>
-          <img src="images/projects/fracture.jpg" alt="Fracture Model">
-          <p>Biomaterials‑based model demonstrating bone repair.</p>
-        </div>
-        <div class="proj-card">
-          <h3>🔈 Non-Inverting Amplifier</h3>
-          <img src="images/projects/opamp.jpg" alt="Non-Inverting Amplifier">
-          <p>Op‑amp based analog circuit to amplify signals non-inversely.</p>
-        </div>
-      </div>
-      <div class="grid-3">
-        <div class="proj-card">
-          <h3>🧠 GSR Stress Monitor</h3>
+        GSR Stress Monitor</h3>
           <img src="images/projects/gsr.jpg" alt="GSR">
           <p>Detected stress using galvanic skin response sensors.</p>
         </div>
@@ -156,7 +129,6 @@
     </div>
   </div>
 
-  <!-- Achievements Modal -->
   <div class="modal" id="achievements">
     <div class="modal-box">
       <button class="close-btn" onclick="closeModal('achievements')">×</button>
@@ -181,13 +153,12 @@
     </div>
   </div>
 
-  <!-- Contact Modal -->
   <div class="modal" id="contact">
     <div class="modal-box">
       <button class="close-btn" onclick="closeModal('contact')">×</button>
       <h2 class="modal-title">📬 Contact</h2>
       <p><strong>Email:</strong> bavaprateeksha123@gmail.com</p>
-      <p><strong><a href="https://linkedin.com/in/bava-prateeksha" class="linkedin">LinkedIn</a></strong></p>
+      <p><strong><a href="https://linkedin.com/in/bava-prateeksha" target="_blank" class="linkedin">LinkedIn</a></strong></p>
     </div>
   </div>
 
