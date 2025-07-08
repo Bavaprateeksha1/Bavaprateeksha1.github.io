@@ -1,87 +1,70 @@
-// Open only one modal
 function openOnly(id) {
-  // Close all modals
-  const modals = document.querySelectorAll('.modal');
-  modals.forEach(modal => modal.style.display = 'none');
-
-  // Hide hero section
-  document.getElementById('hero').style.display = 'none';
-
-  // Show selected modal
-  const target = document.getElementById(id);
-  if (target) {
-    target.style.display = 'flex';
-  }
+  document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+  document.getElementById('hero-text').style.display = 'none';
+  document.getElementById(id).style.display = 'flex';
 }
 
-// Close modal and show hero if all are closed
 function closeModal(id) {
-  const modal = document.getElementById(id);
-  if (modal) modal.style.display = 'none';
-
-  // Check if all modals are closed
-  const stillOpen = [...document.querySelectorAll('.modal')].some(
-    modal => modal.style.display === 'flex'
-  );
-
-  if (!stillOpen) {
-    document.getElementById('hero').style.display = 'flex';
+  document.getElementById(id).style.display = 'none';
+  if (![...document.querySelectorAll('.modal')]
+        .some(m => m.style.display === 'flex')) {
+    document.getElementById('hero-text').style.display = 'block';
   }
 }
 
-// Sparkling Stars Effect
-const canvas = document.getElementById('stars');
-const ctx = canvas.getContext('2d');
+// Starfield
+const canvas = document.getElementById('stars'),
+      ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-
-let stars = [];
-for (let i = 0; i < 120; i++) {
+let stars=[]; 
+for(let i=0;i<100;i++){
   stars.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 2 + 1,
-    alpha: Math.random(),
-    delta: Math.random() * 0.02
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*1.2,
+    a:Math.random(),
+    dx:(Math.random()-0.5)*0.5,
+    dy:(Math.random()-0.5)*0.5
   });
 }
 
-function drawStars() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  stars.forEach(star => {
-    star.alpha += star.delta;
-    if (star.alpha <= 0 || star.alpha >= 1) {
-      star.delta *= -1;
-    }
-    ctx.globalAlpha = star.alpha;
+function draw() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='white';
+  stars.forEach(s=>{
+    ctx.globalAlpha=s.a;
     ctx.beginPath();
-    ctx.arc(star.x, star.y, star.r, 0, 2 * Math.PI);
-    ctx.fillStyle = 'white';
+    ctx.arc(s.x,s.y,s.r,0,2*Math.PI);
     ctx.fill();
-  });
-  requestAnimationFrame(drawStars);
-}
-drawStars();
-
-// Typed effect for "Hi, I’m Bava Prateeksha"
-document.addEventListener("DOMContentLoaded", function () {
-  const typedText = "Hi, I’m Bava Prateeksha";
-  const typedTarget = document.getElementById("typed");
-
-  if (typedTarget) {
-    let index = 0;
-    function typeNextChar() {
-      if (index < typedText.length) {
-        typedTarget.innerHTML += typedText.charAt(index);
-        index++;
-        setTimeout(typeNextChar, 80);
-      }
+    s.x+=s.dx; s.y+=s.dy;
+    if(s.x<0||s.x>canvas.width||s.y<0||s.y>canvas.height){
+      s.x=Math.random()*canvas.width;
+      s.y=Math.random()*canvas.height;
     }
-    typeNextChar();
-  }
-});
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+
+// Sparkles
+const sparkCon = document.querySelector('.sparkle-container');
+for(let i=0;i<30;i++){
+  let sp = document.createElement('div');
+  sp.className='sparkle';
+  sp.style.top = `${Math.random()*100}%`;
+  sp.style.left = `${Math.random()*100}%`;
+  sparkCon.appendChild(sp);
+}
+
+// Shooting Stars
+const shootCon = document.querySelector('.shooting-stars');
+for(let i=0;i<4;i++){
+  let ss = document.createElement('div');
+  ss.className='shooting-star';
+  ss.style.top = `${Math.random()*80}%`;
+  ss.style.left = `${Math.random()*150 - 50}%`;
+  ss.style.animationDelay = `${i * 2}s`;
+  shootCon.appendChild(ss);
+}
