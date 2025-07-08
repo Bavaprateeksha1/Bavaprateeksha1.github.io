@@ -74,8 +74,8 @@ nav {
 
 .nav-right li {
   cursor: pointer;
-  font-weight: 500;
-  background: linear-gradient(45deg, #DCC5B2, #F0E4D3, #FAF7F3);
+  font-weight: 800;
+  background: linear-gradient(45deg, #DCC5B2, #F0E4D3, #101a61);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: transform 0.2s ease;
@@ -120,14 +120,14 @@ nav {
   font-size: 1rem;
   border: none;
   border-radius: 25px;
-  background-color: #00BFFF;
+  background-color: #101a61;
   color: #fff;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 .hero-text button:hover {
-  background-color: #009ACD;
+  background-color: #101a61;
 }
 
 .modal {
@@ -146,13 +146,13 @@ nav {
 .modal-box {
   width: 90%;
   max-width: 800px;
-   background: linear-gradient(45deg, #1B3C53, #456882, #D2C1B6);
+   background: linear-gradient(45deg, #000449, #1F5084, #2D729E);
   border-radius: 15px;
   padding: 30px;
   position: relative;
   max-height: 90vh;
   overflow-y: auto;
-  color: #090040;
+  color: #EEDEC5;
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
