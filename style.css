@@ -136,7 +136,7 @@ nav {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.4); /* Changed from 0.88 to 0.4 */
+  background: rgba(0, 0, 0, 0.4);
   display: none;
   justify-content: center;
   align-items: center;
@@ -146,20 +146,30 @@ nav {
 .modal-box {
   width: 90%;
   max-width: 800px;
-   background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
+  background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
   border-radius: 15px;
   padding: 30px;
   position: relative;
   max-height: 90vh;
   overflow-y: auto;
-  color: #0B0F5E;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
+/* ✅ Heading inside modal */
 .modal-title {
-  font-size: 1.5rem;
+  font-size: 2rem;         /* Increased size */
+  font-weight: 700;        /* Thicker text */
   color: #0B0F5E;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+}
+
+/* ✅ Modal body content — paragraphs and list items */
+.modal-box p,
+.modal-box li {
+  font-size: 1.15rem;      /* Increased size */
+  font-weight: 600;        /* Medium-bold text */
+  color: #0B0F5E;          /* Dark readable text */
+  line-height: 1.7;
 }
 
 .close {
