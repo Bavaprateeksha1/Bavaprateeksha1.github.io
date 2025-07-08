@@ -13,7 +13,7 @@ function closeModal(id) {
   }
 }
 
-// Canvas Stars
+// Star canvas
 const canvas = document.getElementById('stars');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -53,10 +53,21 @@ drawStars();
 
 // Sparkles
 const sparkleContainer = document.querySelector('.sparkle-container');
-for (let i = 0; i < 40; i++) {
+for (let i = 0; i < 30; i++) {
   const sparkle = document.createElement('div');
   sparkle.classList.add('sparkle');
   sparkle.style.top = `${Math.random() * 100}%`;
   sparkle.style.left = `${Math.random() * 100}%`;
   sparkleContainer.appendChild(sparkle);
+}
+
+// Shooting stars
+const shootingContainer = document.querySelector('.shooting-stars');
+for (let i = 0; i < 4; i++) {
+  const star = document.createElement('div');
+  star.className = 'shooting-star';
+  star.style.top = `${Math.random() * 80}%`;
+  star.style.left = `${Math.random() * 100 - 50}%`;
+  star.style.animationDelay = `${i * 2}s`;
+  shootingContainer.appendChild(star);
 }
