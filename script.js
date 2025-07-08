@@ -1,32 +1,26 @@
 function openOnly(id) {
-  // Close all modals first
   const modals = document.querySelectorAll('.modal');
   modals.forEach(modal => modal.style.display = 'none');
-
-  // Hide hero text
   document.getElementById('hero-text').style.display = 'none';
-
-  // Open selected modal
   document.getElementById(id).style.display = 'flex';
 }
 
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
-
-  // Show hero text again only if all modals are closed
   const openModals = [...document.querySelectorAll('.modal')].filter(modal => modal.style.display === 'flex');
   if (openModals.length === 0) {
     document.getElementById('hero-text').style.display = 'block';
   }
 }
 
-// Shooting stars canvas effect
+// Starry canvas with multiple shooting stars
 const canvas = document.getElementById('stars');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let stars = [];
+let stars = [], shootingStars = [];
+
 for (let i = 0; i < 100; i++) {
   stars.push({
     x: Math.random() * canvas.width,
@@ -38,11 +32,29 @@ for (let i = 0; i < 100; i++) {
   });
 }
 
+function createShootingStar() {
+  return {
+    x: Math.random() * canvas.width,
+    y: 0,
+    length: Math.random() * 200 + 100,
+    speed: 6,
+    angle: Math.PI / 4,
+    opacity: 1
+  };
+}
+
+setInterval(() => {
+  shootingStars.push(createShootingStar());
+  if (shootingStars.length > 4) shootingStars.shift(); // keep 3-4
+}, 3000);
+
 function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'white';
+
+  // Normal stars
   stars.forEach(star => {
     ctx.globalAlpha = star.alpha;
+    ctx.fillStyle = 'white';
     ctx.beginPath();
     ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
     ctx.fill();
@@ -54,6 +66,24 @@ function drawStars() {
       star.y = Math.random() * canvas.height;
     }
   });
+
+  // Shooting stars
+  shootingStars.forEach(star => {
+    ctx.strokeStyle = `rgba(255,255,255,${star.opacity})`;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(star.x, star.y);
+    ctx.lineTo(
+      star.x - Math.cos(star.angle) * star.length,
+      star.y - Math.sin(star.angle) * star.length
+    );
+    ctx.stroke();
+
+    star.x += star.speed * Math.cos(star.angle);
+    star.y += star.speed * Math.sin(star.angle);
+    star.opacity -= 0.01;
+  });
+
   requestAnimationFrame(drawStars);
 }
 drawStars();
