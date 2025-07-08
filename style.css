@@ -75,7 +75,7 @@ nav {
 .nav-right li {
   cursor: pointer;
   font-weight: 800;
-  background: linear-gradient(45deg, #DCC5B2, #F0E4D3, #D2B48C);
+  background: linear-gradient(45deg, #F0E4D3, #A53860, #F0E4D3);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: transform 0.2s ease;
