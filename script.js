@@ -1,5 +1,5 @@
 function openOnly(id) {
-  document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
+  document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
   document.getElementById(id).style.display = 'flex';
 }
 
@@ -9,34 +9,32 @@ function closeModal(id) {
 
 // Typing Effect
 const typedText = "Hi, I’m Bava Prateeksha";
-let i = 0;
-
+let ti = 0;
 function startTyping() {
-  const el = document.getElementById("typed");
-  el.innerText = "";
-  i = 0;
-  typeLetter();
+  const el = document.getElementById('typed');
+  if (!el) return;
+  el.innerText = '';
+  ti = 0;
+  type();
 }
-
-function typeLetter() {
-  const el = document.getElementById("typed");
-  if (i <= typedText.length) {
-    el.innerText = typedText.slice(0, i) + (i % 2 === 0 ? "|" : "");
-    i++;
-    setTimeout(typeLetter, 130);
+function type() {
+  const el = document.getElementById('typed');
+  if (ti <= typedText.length) {
+    el.innerText = typedText.slice(0, ti) + (ti % 2 === 0 ? '|' : '');
+    ti++;
+    setTimeout(type, 130);
   }
 }
-
 startTyping();
 
 // Sparkling Stars
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
+const canvas = document.getElementById('stars'),
+      ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let stars = [];
-for (let i = 0; i < 120; i++) {
+for (let k = 0; k < 120; k++) {
   stars.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
@@ -49,17 +47,17 @@ for (let i = 0; i < 120; i++) {
 
 function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "white";
-  stars.forEach(star => {
-    ctx.globalAlpha = star.alpha;
+  ctx.fillStyle = 'white';
+  stars.forEach(s => {
+    ctx.globalAlpha = s.alpha;
     ctx.beginPath();
-    ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+    ctx.arc(s.x, s.y, s.r, 0, 2*Math.PI);
     ctx.fill();
-    star.x += star.dx;
-    star.y += star.dy;
-    if (star.x < 0 || star.x > canvas.width || star.y < 0 || star.y > canvas.height) {
-      star.x = Math.random() * canvas.width;
-      star.y = Math.random() * canvas.height;
+    s.x += s.dx;
+    s.y += s.dy;
+    if (s.x < 0 || s.x > canvas.width || s.y < 0 || s.y > canvas.height) {
+      s.x = Math.random() * canvas.width;
+      s.y = Math.random() * canvas.height;
     }
   });
   requestAnimationFrame(drawStars);
