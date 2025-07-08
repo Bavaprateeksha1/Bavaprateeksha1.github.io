@@ -1,3 +1,7 @@
+// ========================
+// script.js
+// ========================
+
 function openOnly(id) {
   document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
   document.getElementById(id).style.display = 'flex';
@@ -7,14 +11,34 @@ function closeModal(id) {
   document.getElementById(id).style.display = 'none';
 }
 
-// Sparkling Stars
-const canvas = document.getElementById('stars');
-const ctx = canvas.getContext('2d');
+// Typing Effect
+const typedText = "Hi, I’m Bava Prateeksha";
+let ti = 0;
+function startTyping() {
+  const el = document.getElementById('typed');
+  if (!el) return;
+  el.innerText = '';
+  ti = 0;
+  type();
+}
+function type() {
+  const el = document.getElementById('typed');
+  if (ti <= typedText.length) {
+    el.innerText = typedText.slice(0, ti) + (ti % 2 === 0 ? '|' : '');
+    ti++;
+    setTimeout(type, 130);
+  }
+}
+startTyping();
+
+// Sparkling Stars (High Intensity)
+const canvas = document.getElementById('stars'),
+      ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let stars = [];
-for (let i = 0; i < 250; i++) {
+for (let k = 0; k < 250; k++) {
   stars.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
@@ -31,7 +55,7 @@ function drawStars() {
   stars.forEach(s => {
     ctx.globalAlpha = s.alpha;
     ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, 2 * Math.PI);
+    ctx.arc(s.x, s.y, s.r, 0, 2*Math.PI);
     ctx.fill();
     s.x += s.dx;
     s.y += s.dy;
