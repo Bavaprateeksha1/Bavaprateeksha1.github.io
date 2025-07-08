@@ -98,7 +98,7 @@ nav {
 #typed {
   font-size: 3rem;
   margin: 0;
-  background: linear-gradient(45deg, #FF69B4, #87CEFA, #BA55D3);
+  background: linear-gradient(45deg, #D9BB9B, #000449, #D9BB9B);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -152,13 +152,13 @@ nav {
   position: relative;
   max-height: 90vh;
   overflow-y: auto;
-  color: #21255E;
+  color: #D2B48C;
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
 .modal-title {
   font-size: 1.5rem;
-  color: #21255E;
+  color: #D2B48C;
   margin-bottom: 20px;
 }
 
