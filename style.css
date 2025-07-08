@@ -1,97 +1,240 @@
-// ====== Modal Logic ======
-function openOnly(id) {
-  // Close all modals first
-  const modals = document.querySelectorAll('.modal');
-  modals.forEach(modal => modal.style.display = 'none');
-
-  // Hide hero text
-  document.getElementById('hero-text').style.display = 'none';
-
-  // Open selected modal
-  document.getElementById(id).style.display = 'flex';
+/* BASE STYLES */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  height: 100%;
+  color: white;
 }
 
-function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
+/* BACKGROUND */
+.background {
+  background: url('bg.png') no-repeat center center fixed;
+  background-size: cover;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  animation: zoomMove 25s infinite linear;
+}
 
-  // Show hero text again only if all modals are closed
-  const openModals = [...document.querySelectorAll('.modal')].filter(modal => modal.style.display === 'flex');
-  if (openModals.length === 0) {
-    document.getElementById('hero-text').style.display = 'block';
+@keyframes zoomMove {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.1) translate(-10px, -10px); }
+  100% { transform: scale(1) translate(0, 0); }
+}
+
+/* SHOOTING STARS BACKGROUND CANVAS */
+#stars {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -9;
+  pointer-events: none;
+}
+
+/* SHOOTING STAR DIVS */
+.shooting-stars {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -8;
+  pointer-events: none;
+}
+
+.shooting-star {
+  position: absolute;
+  width: 150px;
+  height: 2px;
+  background: linear-gradient(90deg, white, transparent);
+  opacity: 0;
+  animation: shoot 4s linear forwards;
+}
+
+@keyframes shoot {
+  0% {
+    transform: translate(-200px, -100px) rotate(45deg);
+    opacity: 1;
+  }
+  90% {
+    transform: translate(120vw, 120vh) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
-// ====== Starfield Background ======
-const canvas = document.getElementById('stars');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let stars = [];
-for (let i = 0; i < 100; i++) {
-  stars.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    radius: Math.random() * 1.2,
-    alpha: Math.random(),
-    dx: (Math.random() - 0.5) * 0.3,
-    dy: (Math.random() - 0.5) * 0.3
-  });
+/* NAVIGATION BAR */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
 }
 
-function drawStars() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'white';
-  stars.forEach(star => {
-    ctx.globalAlpha = star.alpha;
-    ctx.beginPath();
-    ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
-    ctx.fill();
-    star.x += star.dx;
-    star.y += star.dy;
-
-    if (star.x < 0 || star.x > canvas.width || star.y < 0 || star.y > canvas.height) {
-      star.x = Math.random() * canvas.width;
-      star.y = Math.random() * canvas.height;
-    }
-  });
-  requestAnimationFrame(drawStars);
-}
-drawStars();
-
-// ====== Shooting Star Animation ======
-const shootingContainer = document.querySelector('.shooting-stars');
-
-function createShootingStar() {
-  const star = document.createElement('div');
-  star.classList.add('shooting-star');
-
-  // Random top/left starting point
-  const startX = Math.random() * window.innerWidth * 0.3;
-  const startY = Math.random() * window.innerHeight * 0.3;
-  star.style.top = `${startY}px`;
-  star.style.left = `${startX}px`;
-
-  shootingContainer.appendChild(star);
-
-  // Remove after animation completes
-  setTimeout(() => {
-    star.remove();
-  }, 4000);
+.nav-left {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: white;
 }
 
-// Launch 1 star every 3–4 seconds (max 2 at a time)
-let shootingCount = 0;
-function launchStars() {
-  if (shootingCount < 2) {
-    createShootingStar();
-    shootingCount++;
-    setTimeout(() => {
-      shootingCount--;
-    }, 4000);
-  }
-
-  // Launch new star every 3.5s
-  setTimeout(launchStars, 3500 + Math.random() * 500);
+.nav-right {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin-right: 40px;
 }
-launchStars();
+
+.nav-right li {
+  cursor: pointer;
+  font-weight: 500;
+  background: linear-gradient(45deg, #DCC5B2, #F0E4D3, #FAF7F3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.2s ease;
+}
+
+.nav-right li:hover {
+  transform: scale(1.1);
+}
+
+/* HERO SECTION */
+#hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.hero-text p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+.hero-text button {
+  margin-top: 20px;
+  padding: 10px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  background-color: #00BFFF;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.hero-text button:hover {
+  background-color: #009ACD;
+}
+
+/* GRADIENT TEXT */
+.gradient-text {
+  background: linear-gradient(45deg, #FF69B4, #87CEFA, #BA55D3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* MODALS */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.modal-box {
+  width: 90%;
+  max-width: 800px;
+  background: rgba(28, 28, 43, 0.9); /* 90% opaque */
+  border-radius: 15px;
+  padding: 30px;
+  color: #fff;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  background: linear-gradient(45deg, #00FFFF, #FFD700, #7FFF00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* GRID FOR PROJECTS & ACHIEVEMENTS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #2a2a40;
+  padding: 15px;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  margin: 10px 0 5px 0;
+  font-size: 1.1rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* MODAL SCROLLBAR */
+.modal-box::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-box::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
