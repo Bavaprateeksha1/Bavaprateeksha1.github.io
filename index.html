@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prateeksha | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background">
+    <img src="bg.png" class="background-img" alt="Background" />
+    <div class="shooting-stars"></div>
+    <div class="stars"></div>
+  </div>
+
+  <nav>
+    <div class="logo">Prateeksha</div>
+    <ul>
+      <li onclick="openOnly('about')"><span class="gradient-text">About</span></li>
+      <li onclick="openOnly('projects')"><span class="gradient-text">Projects</span></li>
+      <li onclick="openOnly('skills')"><span class="gradient-text">Skills</span></li>
+      <li onclick="openOnly('achievements')"><span class="gradient-text">Achievements</span></li>
+      <li onclick="openOnly('experience')"><span class="gradient-text">Experience</span></li>
+      <li onclick="openOnly('interests')"><span class="gradient-text">Interests</span></li>
+      <li onclick="openOnly('contact')"><span class="gradient-text">Contact</span></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-text" id="hero-text">
+      <h1>Hi, I’m <span class="gradient-text">Prateeksha</span></h1>
+      <p class="gradient-text">Crafting biomedical ideas with a dash of creativity 🚀</p>
+      <p class="quote-line">They say precision heals, but creativity transforms — and I try to live at the intersection.</p>
+      <button onclick="openOnly('projects')">Explore My Work</button>
+    </div>
+  </section>
+
+  <!-- Example modal -->
+  <div id="about" class="modal">
+    <div class="modal-box">
+      <span class="close" onclick="closeModal('about')">×</span>
+      <h2 class="modal-title gradient-text">About Me</h2>
+      <p>
+        <strong>Thinking in Circuits, Dreaming in Doodles 🎨🔌</strong><br><br>
+        Hi there! I'm Prateeksha 👩‍🔧 — thinker, tinkerer, and Biomedical Engineering enthusiast. I’ve always loved asking "Why?" and chasing down the "What if?" 💭🔍<br><br>
+        I enjoy weaving together science, logic, and a little magic to make sense of the world around me. Whether it’s sketching ideas on paper or thinking in code, I believe learning should always feel a little like an adventure.<br><br>
+        When I’m not diving into technical concepts, I’m probably doodling, playlist-making, or explaining complicated things in super-simple ways 🖍️🎧. Basically? I’m here to create and have fun doing it.
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
