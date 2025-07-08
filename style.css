@@ -67,7 +67,9 @@ nav {
 .nav-left {
   font-weight: 700;
   font-size: 1.5rem;
-  color: #fff;
+  background: linear-gradient(45deg, #DCC5B2, #F0E4D3, #FAF7F3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .nav-right {
@@ -146,20 +148,19 @@ nav {
 .modal-box {
   width: 90%;
   max-width: 800px;
-  background: linear-gradient(to bottom right, #F0E4D3, #FAF7F3);
-  border-radius: 15px;
+  background: linear-gradient(135deg, #F0E4D3 0%, #FAF7F3 100%);
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
   padding: 30px;
-  position: relative;
+  border-radius: 15px;
+  color: #111;
+  font-family: 'Poppins', sans-serif;
   max-height: 90vh;
   overflow-y: auto;
-  color: #111;
 }
 
 .modal-title {
   font-size: 1.5rem;
-  background: linear-gradient(45deg, #00FFFF, #FFD700, #7FFF00);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #090040;
   margin-bottom: 20px;
 }
 
