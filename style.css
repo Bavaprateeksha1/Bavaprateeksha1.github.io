@@ -1,273 +1,325 @@
+/* --- Base Styles --- */
 body, html {
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-  overflow: hidden;
-  height: 100%;
-  color: white;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif; /* Good choice! */
+    overflow: hidden; /* Prevents scrollbars from background effects */
+    height: 100%; /* Ensures body/html take full viewport height */
+    color: white; /* Default text color */
 }
 
-/* Background */
+/* --- Background Image --- */
 .background {
-  background: url('bg.png') no-repeat center center fixed;
-  background-size: cover;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -10;
-  animation: zoomMove 25s infinite linear;
+    background: url('bg.png') no-repeat center center fixed;
+    background-size: cover; /* Ensures the image covers the entire viewport */
+    position: fixed; /* Stays in place during scroll (though overflow: hidden prevents scrolling) */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Takes full viewport width */
+    height: 100vh; /* Takes full viewport height */
+    z-index: -10; /* Furthest back */
+    animation: zoomMove 25s infinite linear; /* Smooth, continuous animation */
 }
 
 @keyframes zoomMove {
-  0% { transform: scale(1) translate(0, 0); }
-  50% { transform: scale(1.1) translate(-10px, -10px); }
-  100% { transform: scale(1) translate(0, 0); }
+    0% { transform: scale(1) translate(0, 0); }
+    50% { transform: scale(1.1) translate(-10px, -10px); } /* Subtle zoom and slight shift */
+    100% { transform: scale(1) translate(0, 0); }
 }
 
-/* Star canvas */
+/* --- Canvas Stars (Background, subtle movement) --- */
 #stars {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -9;
-  pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -9; /* Just above the background image */
+    pointer-events: none; /* Allows clicks to pass through */
 }
 
-/* Sparkle stars */
+/* --- Sparkle Stars (Twinkling effect) --- */
 .sparkle-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -8;
-  pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -8; /* Above canvas stars */
+    pointer-events: none;
 }
 
 .sparkle {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  border-radius: 50%;
-  animation: twinkle 2s infinite ease-in-out;
+    position: absolute; /* Positioned within .sparkle-container */
+    width: 2px;
+    height: 2px;
+    background: white; /* Solid white for a sharp sparkle */
+    border-radius: 50%;
+    animation: twinkle 2s infinite ease-in-out; /* Continuous twinkle */
 }
 
 @keyframes twinkle {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 1; }
+    0%, 100% { opacity: 0.2; } /* Less visible at start/end */
+    50% { opacity: 1; } /* Fully visible in the middle */
 }
 
-/* Shooting stars container (unchanged, but good for context) */
+/* --- Shooting Stars (Dynamic, moving streaks) --- */
 .shooting-stars {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -7;
+    z-index: -7; /* Above sparkle stars */
     pointer-events: none;
-    overflow: hidden; /* Important: Prevents scrollbars if stars go off-screen initially */
+    overflow: hidden; /* Crucial to contain stars within the viewport */
 }
 
-/* Base styling for a single shooting star */
 .shooting-star {
     position: absolute;
-    /* Use a longer gradient for a better tail effect */
+    /* Gradient for the tail effect */
     background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
-    /* Make it look like a rounded light trail */
-    border-radius: 50%;
-    /* Add a subtle glow */
-    box-shadow: 0 0 8px 3px rgba(255, 255, 255, 0.6);
-    opacity: 0; /* Initially hidden */
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    /* Set initial size/length, will be overridden by JS for variation */
-    height: var(--size, 2px);
-    width: var(--length, 100px);
+    border-radius: 50%; /* Rounded ends for the light trail */
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.7); /* Stronger glow effect */
+    opacity: 0; /* Starts invisible, becomes visible during animation */
+    animation-timing-function: linear; /* Consistent speed throughout the animation */
+    animation-iteration-count: infinite; /* Loops forever */
+    /* CSS Variables for dynamic sizing, set by JavaScript */
+    height: var(--size, 2px); /* Default if JS isn't loaded or fails */
+    width: var(--length, 100px); /* Default if JS isn't loaded or fails */
+    transform-origin: center left; /* Ensures rotation is around its starting point */
 }
 
-/* Keyframes for the shooting star animation */
 @keyframes shoot {
     0% {
-        /* Start from a random position defined by --start-x, --start-y */
+        /* Start position and rotation defined by JS-set CSS variables */
         transform: translate(var(--start-x, -200px), var(--start-y, -100px)) rotate(var(--rotation, 45deg));
-        opacity: 0; /* Start invisible */
+        opacity: 0;
     }
     10% {
-        opacity: 1; /* Fade in quickly at the beginning of the trail */
+        opacity: 1; /* Quick fade-in */
     }
     90% {
-        opacity: 1; /* Stay visible for most of the trail */
+        opacity: 1; /* Maintain full visibility */
     }
     100% {
-        /* End at a random position defined by --end-x, --end-y */
+        /* End position maintaining the same rotation */
         transform: translate(var(--end-x, 120vw), var(--end-y, 120vh)) rotate(var(--rotation, 45deg));
         opacity: 0; /* Fade out at the end */
     }
+}
 
-/* Navigation */
+/* --- Navigation Bar --- */
 nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 20px 40px;
-  z-index: 10;
+    position: fixed; /* Stays at the top */
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Pushes left and right items to edges */
+    align-items: center; /* Vertically centers items in the nav */
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    padding: 20px 40px;
+    z-index: 10; /* On top of most content */
+    box-sizing: border-box; /* Ensures padding doesn't add to total width */
 }
 
 .nav-left {
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: white;
 }
 
 .nav-right {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
+    list-style: none; /* Removes bullet points */
+    display: flex;
+    gap: 25px; /* Increased gap for better spacing */
+    flex-wrap: wrap;
+    margin: 0; /* Remove default ul margin */
+    padding: 0; /* Remove default ul padding */
 }
 
 .nav-right li {
-  cursor: pointer;
-  font-weight: 500;
-  background: linear-gradient(45deg, #00BFFF, #1E90FF, #00CED1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    font-weight: 500;
+    background: linear-gradient(45deg, #00BFFF, #1E90FF, #00CED1); /* Blue-cyan gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
 }
 
-/* Hero section */
+.nav-right li:hover {
+    transform: scale(1.05); /* Slight grow on hover */
+}
+
+/* --- Hero Section --- */
 #hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  text-align: center;
-  padding: 0 20px;
+    display: flex;
+    align-items: center; /* Centers content vertically */
+    justify-content: center; /* Centers content horizontally */
+    height: 100vh; /* Takes full viewport height */
+    text-align: center;
+    padding: 0 20px;
+    position: relative; /* For z-index context if needed */
+    z-index: 5; /* Above background elements, below modals */
 }
 
 .hero-text h1 {
-  font-size: 3rem;
-  margin: 0;
+    font-size: 3.5rem; /* Slightly larger for impact */
+    margin: 0;
+    line-height: 1.2; /* Better readability */
 }
 
 .hero-text p {
-  margin-top: 10px;
-  font-size: 1.2rem;
+    margin-top: 15px; /* Slightly more space */
+    font-size: 1.3rem; /* Slightly larger for readability */
+    max-width: 700px; /* Limits line length */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-text button {
-  margin-top: 20px;
-  padding: 10px 25px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 25px;
-  background-color: #00BFFF;
-  color: white;
-  cursor: pointer;
+    margin-top: 30px; /* More space below text */
+    padding: 12px 30px; /* Larger button */
+    font-size: 1.1rem; /* Larger font */
+    border: none;
+    border-radius: 30px; /* More rounded */
+    background-color: #00BFFF; /* Solid color for button */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+}
+
+.hero-text button:hover {
+    background-color: #009acd; /* Slightly darker blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
 }
 
 .gradient-text {
-  background: linear-gradient(45deg, #FF69B4, #87CEFA, #BA55D3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    background: linear-gradient(45deg, #FF69B4, #87CEFA, #BA55D3); /* Consistent pink-blue-purple gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* Modals */
+/* --- Modals (Pop-up windows) --- */
 .modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: transparent;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 20;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+    display: none; /* Hidden by default, shown by JS */
+    justify-content: center;
+    align-items: center;
+    z-index: 20; /* Highest z-index to cover everything */
+    backdrop-filter: blur(5px); /* Adds a subtle blur to the background behind the modal */
 }
 
 .modal-box {
-  width: 80vw;
-  max-width: 800px;
-  background: rgba(28, 28, 43, 0.95);
-  border-radius: 15px;
-  padding: 30px;
-  color: #fff;
-  position: relative;
-  max-height: 90vh;
-  overflow-y: auto;
-  text-align: left;
+    width: 85vw; /* Slightly wider */
+    max-width: 800px;
+    background: rgba(28, 28, 43, 0.98); /* Slightly more opaque background */
+    border-radius: 15px;
+    padding: 30px;
+    color: #fff;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto; /* Allows scrolling within the modal if content is too long */
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* More prominent shadow */
+    animation: fadeInScale 0.3s ease-out forwards; /* Entry animation */
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .modal-box::-webkit-scrollbar {
-  width: 6px;
+    width: 8px; /* Slightly wider scrollbar */
 }
 .modal-box::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 10px;
+    background: #555; /* Darker scrollbar thumb */
+    border-radius: 10px;
+}
+.modal-box::-webkit-scrollbar-track {
+    background: #333; /* Darker scrollbar track */
+    border-radius: 10px;
 }
 
 /* Modal title */
 .modal-title {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  padding-left: 10px;
+    font-size: 1.8rem; /* Larger title */
+    margin-bottom: 25px; /* More space below title */
+    padding-left: 0; /* Remove left padding if not needed for specific designs */
+    text-align: center; /* Center modal titles */
 }
 
-.blue-gradient {
-  background: linear-gradient(45deg, #FF69B4, #87CEFA, #BA55D3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.blue-gradient { /* Used for modal titles, consistent with hero text */
+    background: linear-gradient(45deg, #FF69B4, #87CEFA, #BA55D3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 2rem;
-  cursor: pointer;
-  color: #fff;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2.2rem; /* Larger close button */
+    cursor: pointer;
+    color: #ccc; /* Lighter color */
+    transition: color 0.2s ease; /* Smooth hover effect */
 }
 
-/* Cards */
+.close:hover {
+    color: #fff; /* White on hover */
+    transform: rotate(90deg); /* Little spin on hover */
+}
+
+/* --- Grid & Cards (for modal content like projects/experience) --- */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Min card width slightly larger */
+    gap: 25px; /* Increased gap */
+    padding-top: 10px; /* Space above the grid in the modal */
 }
 
 .card {
-  background: #2a2a40;
-  padding: 15px;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    background: #2a2a40;
+    padding: 20px; /* Increased padding inside cards */
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Softer, more pronounced shadow */
+    cursor: pointer; /* Implies clickability */
 }
 
 .card:hover {
-  transform: translateY(-5px);
+    transform: translateY(-7px); /* More pronounced lift on hover */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5); /* Stronger shadow on hover */
 }
 
 .card img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
+    width: 100%;
+    height: 160px; /* Slightly taller images */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px; /* More space below image */
 }
 
 .card h3 {
-  margin: 10px 0 5px 0;
-  font-size: 1.1rem;
+    margin: 0 0 8px 0; /* Adjusted margin */
+    font-size: 1.25rem; /* Larger card title */
+    line-height: 1.3;
 }
 
 .card p {
-  font-size: 0.95rem;
-  color: #ccc;
+    font-size: 0.95rem;
+    color: #bbb; /* Slightly lighter gray for body text */
+    line-height: 1.5;
 }
