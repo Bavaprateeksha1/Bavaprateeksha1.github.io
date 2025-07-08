@@ -1,4 +1,4 @@
-// ===== Modal Logic =====
+// Open/Close Modals
 function openOnly(id) {
   document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
   document.getElementById('hero-text').style.display = 'none';
@@ -13,18 +13,18 @@ function closeModal(id) {
   }
 }
 
-// ===== Star Canvas Background =====
+// Sparkling Stars (canvas)
 const canvas = document.getElementById('stars');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let stars = [];
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 80; i++) {
   stars.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    radius: Math.random() * 1.2,
+    radius: Math.random() * 2.2 + 1,
     alpha: Math.random(),
     dx: (Math.random() - 0.5) * 0.3,
     dy: (Math.random() - 0.5) * 0.3
@@ -51,7 +51,7 @@ function drawStars() {
 }
 drawStars();
 
-// ===== Shooting Star Logic =====
+// ONE shooting star at a time
 const shootingContainer = document.querySelector('.shooting-stars');
 
 function createShootingStar() {
@@ -59,18 +59,12 @@ function createShootingStar() {
   star.classList.add('shooting-star');
   star.style.top = `${Math.random() * window.innerHeight * 0.4}px`;
   star.style.left = `${Math.random() * window.innerWidth * 0.4}px`;
-
   shootingContainer.appendChild(star);
   setTimeout(() => star.remove(), 4000);
 }
 
-let shootingCount = 0;
-function launchStars() {
-  if (shootingCount < 2) {
-    createShootingStar();
-    shootingCount++;
-    setTimeout(() => shootingCount--, 4000);
-  }
-  setTimeout(launchStars, 3500 + Math.random() * 500);
+function loopOneShootingStar() {
+  createShootingStar();
+  setTimeout(loopOneShootingStar, 6000 + Math.random() * 3000);
 }
-launchStars();
+loopOneShootingStar();
