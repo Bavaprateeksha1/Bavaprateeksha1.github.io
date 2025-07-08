@@ -229,8 +229,11 @@ a {
 a:hover {
   text-decoration: underline;
 }
-/* 💫 Blue Sparkly Text Style */
-.sparkly-text {
+/* 🌟 Make all modal text sparkly */
+.modal-box p,
+.modal-box li,
+.modal-box h2,
+.modal-box h3 {
   background: linear-gradient(45deg, #7EC8E3, #5F9EA0, #87CEFA);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
