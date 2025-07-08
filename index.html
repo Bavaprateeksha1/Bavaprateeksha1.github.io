@@ -3,112 +3,149 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Prateeksha | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Prateeksha | Biomedical Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
-  <div class="background">
-    <img src="bg.png" alt="Background" class="background-img" />
-    <div class="stars"></div>
-    <div class="shooting-stars"></div>
-  </div>
+  <!-- Background -->
+  <div class="background"></div>
+  <canvas id="stars"></canvas>
+  <div id="sparkles"></div>
 
+  <!-- Navbar -->
   <nav>
-    <div class="logo">Prateeksha</div>
-    <ul>
-      <li onclick="openOnly('about')"><span class="gradient-text">About</span></li>
-      <li onclick="openOnly('projects')"><span class="gradient-text">Projects</span></li>
-      <li onclick="openOnly('skills')"><span class="gradient-text">Skills</span></li>
-      <li onclick="openOnly('achievements')"><span class="gradient-text">Achievements</span></li>
-      <li onclick="openOnly('experience')"><span class="gradient-text">Experience</span></li>
-      <li onclick="openOnly('interests')"><span class="gradient-text">Interests</span></li>
-      <li onclick="openOnly('contact')"><span class="gradient-text">Contact</span></li>
+    <div class="nav-left">Prateeksha</div>
+    <ul class="nav-right">
+      <li onclick="openOnly('about')">About</li>
+      <li onclick="openOnly('projects')">Projects</li>
+      <li onclick="openOnly('skills')">Skills</li>
+      <li onclick="openOnly('achievements')">Achievements</li>
+      <li onclick="openOnly('interest')">Interests</li>
+      <li onclick="openOnly('experience')">Experience</li>
+      <li onclick="openOnly('contact')">Contact</li>
     </ul>
   </nav>
 
+  <!-- Hero Section -->
   <section id="hero">
-    <div class="hero-text">
+    <div class="hero-text" id="hero-text">
       <h1>Hi, I’m <span class="gradient-text">Prateeksha</span></h1>
-      <p class="gradient-text">Crafting biomedical ideas with a dash of creativity 🚀</p>
-      <p class="quote-line">They say precision heals, but creativity transforms — and I try to live at the intersection.</p>
+      <p class="gradient-text">They say precision heals, but creativity transforms — and I try to live at the intersection.</p>
       <button onclick="openOnly('projects')">Explore My Work</button>
     </div>
   </section>
 
-  <!-- Modals -->
-  <div id="about" class="modal"><div class="modal-box"><span class="close" onclick="closeModal('about')">×</span>
-    <h2 class="gradient-text">About Me</h2>
-    <p><strong>Thinking in Circuits, Dreaming in Doodles 🎨🔌</strong><br><br>
-    Hi there! I'm Prateeksha 👩‍🔧 — thinker, tinkerer, and Biomedical Engineering enthusiast. I’ve always loved asking "Why?" and chasing down the "What if?" 💭🔍<br><br>
-    I enjoy weaving together science, logic, and a little magic to make sense of the world around me. Whether it’s sketching ideas on paper or thinking in code, I believe learning should always feel a little like an adventure.<br><br>
-    When I’m not diving into technical concepts, I’m probably doodling, playlist-making, or explaining complicated things in super-simple ways 🖍️🎧. Basically? I’m here to create and have fun doing it.</p>
-  </div></div>
-
-  <div id="projects" class="modal"><div class="modal-box"><span class="close" onclick="closeModal('projects')">×</span>
-    <h2 class="gradient-text">Projects</h2>
-    <div class="grid">
-      <div class="card"><img src="images/projects/lifi.jpg"><h3>🔊 Audio Transmission Using Li-Fi</h3><p>Built a Li-Fi system...</p></div>
-      <div class="card"><img src="images/projects/smps.jpg"><h3>⚡ 12V SMPS Circuit</h3><p>Designed a power supply...</p></div>
-      <div class="card"><img src="images/projects/temp.jpg"><h3>🌡️ Temperature System</h3><p>Used LM35 for IC temp control...</p></div>
-      <div class="card"><img src="images/projects/cornea.jpg"><h3>👁️ Artificial Cornea</h3><p>Modeled prosthetic eye components...</p></div>
-      <div class="card"><img src="images/projects/fracture.jpg"><h3>🦴 Fracture Model</h3><p>Demonstration using biomaterials...</p></div>
-      <div class="card"><img src="images/projects/gsr.jpg"><h3>🧠 GSR Stress Monitor</h3><p>Detected stress via GSR sensors...</p></div>
-      <div class="card"><img src="images/projects/opamp.jpg"><h3>🔈 Op-Amp Amplifier</h3><p>Non-inverting analog amplifier...</p></div>
-      <div class="card"><a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank"><h3>🗼 AI Tower of Hanoi</h3><p>Interactive puzzle using AI</p></a></div>
+  <!-- ABOUT Modal -->
+  <div class="modal" id="about">
+    <div class="modal-box">
+      <span class="close" onclick="closeModal('about')">×</span>
+      <h2 class="modal-title">👩‍🔧 About Me</h2>
+      <p>
+        <strong>Thinking in Circuits, Dreaming in Doodles 🎨🔌</strong><br><br>
+        Hi there! I'm Prateeksha 👩‍🔧 — thinker, tinkerer, and Biomedical Engineering enthusiast.<br><br>
+        I’ve always loved asking "Why?" and chasing down the "What if?" 💭🔍<br><br>
+        I enjoy weaving together science, logic, and a little magic to make sense of the world around me. Whether it’s sketching ideas on paper or thinking in code, I believe learning should always feel a little like an adventure.<br><br>
+        When I’m not diving into technical concepts, I’m probably doodling, playlist-making, or explaining complicated things in super-simple ways 🖍️🎧. Basically? I’m here to create and have fun doing it.
+      </p>
     </div>
-  </div></div>
+  </div>
 
-  <div id="skills" class="modal"><div class="modal-box"><span class="close" onclick="closeModal('skills')">×</span>
-    <h2 class="gradient-text">Skills</h2>
-    <ul>
-      <li>Firebase</li>
-      <li>Blynk</li>
-      <li>GitHub</li>
-      <li>Streamlit</li>
-      <li>HTML5, CSS3, JavaScript</li>
-      <li>Figma, Prototyping</li>
-    </ul>
-  </div></div>
-
-  <div id="achievements" class="modal"><div class="modal-box"><span class="close" onclick="closeModal('achievements')">×</span>
-    <h2 class="gradient-text">🏆 Achievements</h2>
-    <div class="grid">
-      <div class="card"><img src="images/achievements/logo.jpg"><h3>🎨 Logo Design Winner</h3><p>Co-designed the BME Dept. logo</p></div>
-      <div class="card"><img src="images/achievements/tekmedica.jpg"><h3>🥇 Tekmedica 1st Prize</h3><p>Neurotransmitter model build</p></div>
-      <div class="card"><img src="images/achievements/scholarship.jpg"><h3>🎓 Academic Scholarship</h3><p>GPA 9.88 (1st Yr), 10.0 (3rd Sem)</p></div>
+  <!-- PROJECTS Modal -->
+  <div class="modal" id="projects">
+    <div class="modal-box">
+      <span class="close" onclick="closeModal('projects')">×</span>
+      <h2 class="modal-title">💡 Projects</h2>
+      <div class="grid">
+        <div class="card"><img src="images/projects/lifi.jpg"><h3>🔊 Audio Transmission Using Li-Fi</h3><p>LED-based secure audio transmission</p></div>
+        <div class="card"><img src="images/projects/smps.jpg"><h3>⚡ 12V SMPS Circuit – PCB</h3><p>Stable DC output supply</p></div>
+        <div class="card"><img src="images/projects/temp.jpg"><h3>🌡️ Temperature Threshold System</h3><p>Temp monitor using LM35</p></div>
+        <div class="card"><img src="images/projects/cornea.jpg"><h3>👁️ Artificial Cornea Model</h3><p>Simulates cornea replacement</p></div>
+        <div class="card"><img src="images/projects/fracture.jpg"><h3>🦴 Fracture Repair Demonstration</h3><p>Biomedical fracture model</p></div>
+        <div class="card"><img src="images/projects/opamp.jpg"><h3>🔈 Non-Inverting Amplifier</h3><p>Analog signal amplification</p></div>
+        <div class="card"><img src="images/projects/gsr.jpg"><h3>🧠 GSR-Based Stress Monitoring</h3><p>Detects stress using GSR sensors</p></div>
+        <div class="card"><h3><a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank">🗼 AI-Based Tower of Hanoi Game ↗</a></h3><p>Created a smart version of the puzzle using AI.</p></div>
+      </div>
     </div>
-  </div></div>
+  </div>
 
-  <div id="experience" class="modal"><div class="modal-box"><span class="close" onclick="closeModal('experience')">×</span>
-    <h2 class="gradient-text">Experience</h2>
-    <ul>
-      <li><strong>Designer</strong> – Electronics Club @ SRM (Oct '24 – Present)</li>
-      <li><strong>Designer</strong> – ECE Association @ SRM (Oct '24 – Present)</li>
-      <li><strong>Volunteer</strong> – YUCI (Feb–Mar '25)</li>
-      <li><strong>Intern</strong> – Kauvery Hospital, Trichy (Dec '24)</li>
-      <li><strong>Research Intern</strong> – NIT Trichy (Jun '25 – Present)</li>
-    </ul>
-  </div></div>
+  <!-- ACHIEVEMENTS Modal -->
+  <div class="modal" id="achievements">
+    <div class="modal-box">
+      <span class="close" onclick="closeModal('achievements')">×</span>
+      <h2 class="modal-title">🏆 Achievements</h2>
+      <div class="grid">
+        <div class="card"><img src="images/achievements/logo.jpg"><h3>🎨 Logo Design Winner</h3><p>Co-designed Biomedical logo</p></div>
+        <div class="card"><img src="images/achievements/tekmedica.jpg"><h3>🥇 Tekmedica Open Bio – 1st Place</h3><p>Neurotransmitter model</p></div>
+        <div class="card"><img src="images/achievements/scholarship.jpg"><h3>🎓 Academic Scholarship</h3><p>9.88 GPA Year 1, 10.0 GPA Sem 3</p></div>
+      </div>
+    </div>
+  </div>
 
-  <div id="interests" class="modal"><div class="modal-box"><span class="close" onclick="closeModal('interests')">×</span>
-    <h2 class="gradient-text">Areas of Interest</h2>
-    <ul>
-      <li>Biomedical Instrumentation</li>
-      <li>Non-invasive Devices</li>
-      <li>Computer Vision</li>
-      <li>Embedded Systems</li>
-      <li>Telemedicine & Monitoring</li>
-      <li>Wearable Health Tech</li>
-    </ul>
-  </div></div>
+  <!-- SKILLS Modal -->
+  <div class="modal" id="skills">
+    <div class="modal-box">
+      <span class="close" onclick="closeModal('skills')">×</span>
+      <h2 class="modal-title">🛠️ Skills</h2>
+      <ul>
+        <li>🔌 Dev Tools - Streamlit, Firebase, Blynk, Google Colab, GitHub</li>
+        <li>📐 Design - Canva</li>
+        <li>🧠 Hardware Design and Simulation - Cadence, Kicad, EasyEDA</li>
+      </ul>
+    </div>
+  </div>
 
-  <div id="contact" class="modal"><div class="modal-box"><span class="close" onclick="closeModal('contact')">×</span>
-    <h2 class="gradient-text">Contact</h2>
-    <p>📧 Reach me at: <a href="mailto:bavaprateeksha123@gmail.com">bavaprateeksha123@gmail.com</a></p>
-    <p>🔗 <a href="https://www.linkedin.com/in/bava-prateeksha-k-52811a28a">LinkedIn</a></p>
-  </div></div>
+  <!-- AREAS OF INTEREST Modal -->
+  <div class="modal" id="interest">
+    <div class="modal-box">
+      <span class="close" onclick="closeModal('interest')">×</span>
+      <h2 class="modal-title">🧠 Areas of Interest</h2>
+      <ul>
+        <li>🧪 Biomedical Instrumentation</li>
+        <li>🩺 Non-Invasive Diagnosis & Therapeutic Devices</li>
+        <li>👁️ Computer Vision</li>
+        <li>⚙️ Embedded Systems & Microcontrollers</li>
+        <li>🌐 Telemedicine & Remote Patient Monitoring</li>
+        <li>⌚ Wearable Health Monitoring</li>
+      </ul>
+    </div>
+  </div>
 
+  <!-- EXPERIENCE Modal -->
+  <div class="modal" id="experience">
+    <div class="modal-box">
+      <span class="close" onclick="closeModal('experience')">×</span>
+      <h2 class="modal-title">💼 Experience</h2>
+      <div class="experience-block">
+        <h3>🎨 Designer – Electronics Club (Oct 2024 – Present)</h3>
+        <p>Designed event invites, posters, and contributed to visual branding.</p>
+
+        <h3>🎨 Designer – ECE Association (Oct 2024 – Present)</h3>
+        <p>Created digital designs and posters for conferences and outreach.</p>
+
+        <h3>🤝 Volunteer – Youth United Council of India (Feb 2025 – Mar 2025)</h3>
+        <p>Helped plan and execute Youth United Fest and other initiatives.</p>
+
+        <h3>🏥 Biomedical Intern – Kauvery Hospital, Trichy (Dec 2024)</h3>
+        <p>Worked on equipment maintenance, imaging calibration and patient monitoring.</p>
+
+        <h3>🔬 Summer Research Intern – NIT Trichy (Jun 2025 – Present)</h3>
+        <p>Developing YOLO-based medical image/video analysis system.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT Modal -->
+  <div class="modal" id="contact">
+    <div class="modal-box">
+      <span class="close" onclick="closeModal('contact')">×</span>
+      <h2 class="modal-title">📬 Contact</h2>
+      <p><strong>🔗 LinkedIn:</strong> <a href="https://www.linkedin.com/in/bava-prateeksha-k-52811a28a" target="_blank">linkedin.com/in/bava-prateeksha-k</a></p>
+      <p><strong>✉️ Email:</strong> bavaprateeksha123@gmail.com</p>
+    </div>
+  </div>
+
+  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>
