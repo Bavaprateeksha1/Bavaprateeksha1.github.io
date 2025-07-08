@@ -120,7 +120,7 @@ nav {
   font-size: 1rem;
   border: none;
   border-radius: 25px;
-  background-color: #4A102A;
+  background-color: #254D70;
   color: #d2b48c;
   cursor: pointer;
   transition: background 0.3s ease;
@@ -146,13 +146,13 @@ nav {
 .modal-box {
   width: 90%;
   max-width: 800px;
-   background: linear-gradient(45deg, #000449, #1F5084, #2D729E);
+   background: linear-gradient(45deg, #121771, #000449, #B4B4B5);
   border-radius: 15px;
   padding: 30px;
   position: relative;
   max-height: 90vh;
   overflow-y: auto;
-  color: #EEDEC5;
+  color: #c5ae81;
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
