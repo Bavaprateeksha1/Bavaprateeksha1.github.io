@@ -2,7 +2,7 @@
 // script.js
 // ========================
 
-// Open only the selected modal
+// Open one modal at a time
 function openOnly(id) {
   document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
   document.getElementById(id).style.display = 'flex';
@@ -36,15 +36,19 @@ function type() {
 
 startTyping();
 
-// Sparkling Stars (Increased Intensity)
-const canvas = document.getElementById('stars'),
-      ctx = canvas.getContext('2d');
+// ========================
+// Sparkling Stars Background
+// ========================
 
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let stars = [];
-for (let k = 0; k < 250; k++) {  // Increased star count
+
+// Increased from 120 → 250 for more intensity
+for (let i = 0; i < 250; i++) {
   stars.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
@@ -58,34 +62,31 @@ for (let k = 0; k < 250; k++) {  // Increased star count
 function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = 'white';
-  stars.forEach(s => {
-    ctx.globalAlpha = s.alpha;
+
+  stars.forEach(star => {
+    ctx.globalAlpha = star.alpha;
     ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, 2 * Math.PI);
+    ctx.arc(star.x, star.y, star.r, 0, 2 * Math.PI);
     ctx.fill();
-    s.x += s.dx;
-    s.y += s.dy;
-    if (s.x < 0 || s.x > canvas.width || s.y < 0 || s.y > canvas.height) {
-      s.x = Math.random() * canvas.width;
-      s.y = Math.random() * canvas.height;
+
+    // Move
+    star.x += star.dx;
+    star.y += star.dy;
+
+    // Reset when out of bounds
+    if (star.x < 0 || star.x > canvas.width || star.y < 0 || star.y > canvas.height) {
+      star.x = Math.random() * canvas.width;
+      star.y = Math.random() * canvas.height;
     }
   });
+
   requestAnimationFrame(drawStars);
 }
+
 drawStars();
 
-// Optional: Image click popup modal
-document.querySelectorAll('.card img').forEach(img => {
-  img.addEventListener('click', () => {
-    const popup = document.createElement('div');
-    popup.className = 'modal';
-    popup.style.display = 'flex';
-    popup.innerHTML = `
-      <div class="modal-box" style="max-width:600px;">
-        <span class="close" onclick="this.closest('.modal').remove()">&times;</span>
-        <img src="${img.src}" style="width:100%; border-radius:10px;" />
-      </div>
-    `;
-    document.body.appendChild(popup);
-  });
+// Resize canvas on window resize
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 });
