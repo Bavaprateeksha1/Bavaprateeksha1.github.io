@@ -41,7 +41,10 @@
       <p>
         Thinking in Circuits, Dreaming in Doodles 🎨🔌<br>
         Hi there! I'm Prateeksha 👩‍🔧 — thinker, tinkerer, and Biomedical Engineering enthusiast.<br>
-        I enjoy weaving together science, logic, and a little magic to make sense of the world around me.
+        I enjoy weaving together science, logic, and a little magic to make sense of the world around me.<br>
+        
+        Whether it’s sketching ideas on paper or thinking in code, I believe learning should always feel a little like an adventure.<br>
+        When I’m not diving into technical concepts, I’m probably doodling, playlist-making, or explaining complicated things in super-simple ways 🖍️🎧. Basically? I’m here to create and have fun doing it.
       </p>
     </div>
   </div>
@@ -52,10 +55,9 @@
       <span class="close" onclick="closeModal('skills')">&times;</span>
       <h2 class="modal-title">Skills</h2>
       <ul>
-        <li>Python, MATLAB</li>
-        <li>Embedded C, Arduino, Raspberry Pi</li>
-        <li>Image Processing, YOLOv5/8/12</li>
-        <li>Web Dev: HTML, CSS, JS, PHP, SQL</li>
+        <li>🔌 Dev Tools – Streamlit, Firebase, Blynk, Google Colab, GitHub</li>
+        <li>📐 Design – Canva</li>
+        <li>🧠 Hardware Design & Simulation – Cadence, Kicad, EasyEDA</li>
       </ul>
     </div>
   </div>
@@ -63,77 +65,69 @@
   <!-- Projects Modal -->
   <div class="modal" id="projects">
     <div class="modal-box">
-      <span class="close" onclick="closeModal('projects')">&times;</span>
-      <h2 class="modal-title">Projects</h2>
+      <span class="close" onclick="closeModal('projects')">×</span>
+      <h2 class="modal-title">💡 Projects</h2>
       <div class="grid">
-        <div class="card" onclick="expandImage('proj1.jpg')">
-          <h3>AI-Powered Pill Reminder</h3>
-          <p>Camera + TFLite + Firebase</p>
-          <img src="proj1.jpg" alt="Project 1">
-        </div>
-        <div class="card" onclick="expandImage('proj2.jpg')">
-          <h3>Smart Gait Analyzer</h3>
-          <p>Flex Sensors + IoT</p>
-          <img src="proj2.jpg" alt="Project 2">
-        </div>
-        <div class="card" onclick="expandImage('proj3.jpg')">
-          <h3>Tower of Hanoi (AI)</h3>
-          <p>No image — <a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank">View Project</a></p>
-        </div>
+        <div class="card"><img src="images/projects/lifi.jpg" alt="LiFi Project"><h3>🔊 Audio Transmission Using Li‑Fi</h3><p>Built a secure, energy‑efficient audio system using LED light modulation.</p></div>
+        <div class="card"><img src="images/projects/smps.jpg" alt="SMPS Project"><h3>⚡ 12V SMPS Circuit</h3><p>Designed and fabricated a Switch Mode Power Supply circuit for stable output.</p></div>
+        <div class="card"><img src="images/projects/temp.jpg" alt="Temperature Project"><h3>🌡️ Temperature Threshold System</h3><p>Sensor‑based circuit using LM35 for real‑time temperature monitoring.</p></div>
+        <div class="card"><img src="images/projects/cornea.jpg" alt="Cornea Project"><h3>👁️ Artificial Cornea Model</h3><p>Prototype built to mimic corneal implant functionality.</p></div>
+        <div class="card"><img src="images/projects/fracture.jpg" alt="Fracture Project"><h3>🦴 Fracture Repair Model</h3><p>Biomaterials‑based model demonstrating bone repair.</p></div>
+        <div class="card"><img src="images/projects/opamp.jpg" alt="Op-Amp Project"><h3>🔈 Non‑Inverting Amplifier</h3><p>Op‑amp based analog circuit to amplify signals non‑inversely.</p></div>
+        <div class="card"><img src="images/projects/gsr.jpg" alt="GSR Project"><h3>🧠 GSR Stress Monitor</h3><p>Detected stress using galvanic skin response sensors.</p></div>
+        <div class="card"><h3>🗼 AI‑Based Tower of Hanoi</h3><p>Smart puzzle solver using AI.<br><a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank">🔗 Live Project</a></p></div>
       </div>
     </div>
   </div>
 
-  <!-- Achievements Modal -->
+   <!-- Achievements Modal -->
   <div class="modal" id="achievements">
     <div class="modal-box">
-      <span class="close" onclick="closeModal('achievements')">&times;</span>
-      <h2 class="modal-title">Achievements</h2>
+      <span class="close" onclick="closeModal('achievements')">×</span>
+      <h2 class="modal-title">🏆 Achievements</h2>
       <div class="grid">
-        <div class="card" onclick="expandImage('achieve1.jpg')">
-          <h3>Smart India Hackathon Winner</h3>
-          <p>National level innovation challenge.</p>
-          <img src="achieve1.jpg" alt="Achievement 1">
-        </div>
-        <div class="card" onclick="expandImage('achieve2.jpg')">
-          <h3>Top Paper - ICBME 2024</h3>
-          <p>Paper on ECG-based STEMI detection.</p>
-          <img src="achieve2.jpg" alt="Achievement 2">
-        </div>
-        <div class="card" onclick="expandImage('achieve3.jpg')">
-          <h3>Designathon Finalist</h3>
-          <p>Product design in biomedical theme.</p>
-          <img src="achieve3.jpg" alt="Achievement 3">
-        </div>
+        <div class="card"><img src="images/achievements/logo.jpg" alt="Logo Achievement"><h3>🎨 Logo Design Winner</h3><p>Co‑designed the official logo of the Biomedical Engineering Dept.</p></div>
+        <div class="card"><img src="images/achievements/tekmedica.jpg" alt="Tekmedica"><h3>🥇 Tekmedica Bio Event</h3><p>Built neurotransmitter model; secured 1st place.</p></div>
+        <div class="card"><img src="images/achievements/scholarship.jpg" alt="Scholarship"><h3>🎓 Academic Scholarship</h3><p>Awarded for GPA 9.88 (1st year) & 10.0 (3rd sem).</p></div>
       </div>
     </div>
   </div>
 
   <!-- Interests Modal -->
-  <div class="modal" id="interests">
+  <div class="modal" id="interest">
     <div class="modal-box">
-      <span class="close" onclick="closeModal('interests')">&times;</span>
-      <h2 class="modal-title">Areas of Interest</h2>
+      <span class="close" onclick="closeModal('interest')">×</span>
+      <h2 class="modal-title">🧠 Areas of Interest</h2>
       <ul>
-        <li>Biomedical Instrumentation</li>
-        <li>Non-Invasive Diagnosis</li>
-        <li>Computer Vision</li>
-        <li>Embedded Systems</li>
-        <li>Telemedicine</li>
+        <li>🧪 Biomedical Instrumentation</li>
+        <li>🩺 Non‑Invasive Diagnosis & Therapeutic Devices</li>
+        <li>👁️ Computer Vision</li>
+        <li>⚙️ Embedded Systems & Microcontrollers</li>
+        <li>🌐 Telemedicine & Remote Patient Monitoring</li>
+        <li>⌚ Wearable Health Monitoring</li>
       </ul>
     </div>
   </div>
 
-  <!-- Experience Modal -->
+    <!-- Experience Modal -->
   <div class="modal" id="experience">
     <div class="modal-box">
-      <span class="close" onclick="closeModal('experience')">&times;</span>
-      <h2 class="modal-title">Experience</h2>
-      <ul>
-        <li>Electronics Club Designer – SRM (2024–Present)</li>
-        <li>Biomedical Intern – Kauvery Hospital</li>
-        <li>Summer Research Intern – NIT Trichy</li>
-      </ul>
+      <span class="close" onclick="closeModal('experience')">×</span>
+      <h2 class="modal-title">💼 Experience</h2>
+      <h3>🎨 Creatives & AIML Domain – Aakash Research Labs (Jul 2025 – Present)</h3>
+      <p>Work on AIML projects and design posters.</p>
+      
+      <h3>🔬 Summer Research Intern – NIT Trichy (Jun 2025 – Present)</h3>
+      <p>Developing YOLO-based medical image/video analysis system.</p>
+      
+      <h3>🎨 Designer – Electronics Club (Oct 2024 – Present)</h3>
+      <p>Designed event invites, posters, and contributed to visual branding.</p>
+      
+      <h3>🎨 Designer – ECE Association (Oct 2024 – Present)</h3>
+      <p>Created digital designs and posters for conferences and outreach.</p>
+      
+      <h3>🏥 Biomedical Intern – Kauvery Hospital, Trichy (Dec 2024)</h3>
+      <p>Worked on equipment maintenance, imaging calibration and patient monitoring.</p>
     </div>
   </div>
 
