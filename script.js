@@ -1,98 +1,69 @@
+// ========================
+// script.js
+// ========================
+
 function openOnly(id) {
   document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
-  document.getElementById('hero').style.display = 'none';
   document.getElementById(id).style.display = 'flex';
 }
 
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
-  if (![...document.querySelectorAll('.modal')].some(m => m.style.display === 'flex')) {
-    document.getElementById('hero').style.display = 'flex';
-  }
 }
 
-// Sparkling stars - 200 with larger size and faster pulses/movement
-const canvas = document.getElementById('stars'), ctx = canvas.getContext('2d');
-function resizeCanvas() {
-  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+// Typing Effect
+const typedText = "Hi, I’m Bava Prateeksha";
+let ti = 0;
+function startTyping() {
+  const el = document.getElementById('typed');
+  if (!el) return;
+  el.innerText = '';
+  ti = 0;
+  type();
 }
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
+function type() {
+  const el = document.getElementById('typed');
+  if (ti <= typedText.length) {
+    el.innerText = typedText.slice(0, ti) + (ti % 2 === 0 ? '|' : '');
+    ti++;
+    setTimeout(type, 130);
+  }
+}
+startTyping();
+
+// Sparkling Stars (Intensity Increased)
+const canvas = document.getElementById('stars'),
+      ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
 let stars = [];
-for (let i = 0; i < 200; i++) { // Increased to 200 stars
+for (let k = 0; k < 250; k++) {  // Increased from 120 to 250
   stars.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    r: Math.random() * 3 + 1.5, // Larger size
+    r: Math.random() * 2 + 1,
     alpha: Math.random(),
-    delta: (Math.random() * 0.04 + 0.02) * (Math.random() < 0.5 ? 1 : -1), // Faster pulse
-    dx: (Math.random() - 0.5) * 0.5, // Faster horizontal movement
-    dy: (Math.random() - 0.5) * 0.5 // Faster vertical movement
+    dx: (Math.random() - 0.5) * 0.5,
+    dy: (Math.random() - 0.5) * 0.5
   });
 }
+
 function drawStars() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'white';
   stars.forEach(s => {
-    // Update alpha for sparkling effect
-    s.alpha += s.delta;
-    if (s.alpha <= 0.1 || s.alpha >= 1) s.delta *= -1; // Ensure it fades but doesn't disappear completely
-
-    // Update position for movement
-    s.x += s.dx;
-    s.y += s.dy;
-
-    // Wrap stars around if they go off-screen
-    if (s.x < 0 || s.x > canvas.width || s.y < 0 || s.y > canvas.height) {
-        s.x = Math.random() * canvas.width;
-        s.y = Math.random() * canvas.height;
-        s.alpha = Math.random(); // Reset alpha when repositioned
-    }
-
     ctx.globalAlpha = s.alpha;
     ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, 2 * Math.PI);
-    ctx.fillStyle = 'white';
+    ctx.arc(s.x, s.y, s.r, 0, 2*Math.PI);
     ctx.fill();
+    s.x += s.dx;
+    s.y += s.dy;
+    if (s.x < 0 || s.x > canvas.width || s.y < 0 || s.y > canvas.height) {
+      s.x = Math.random() * canvas.width;
+      s.y = Math.random() * canvas.height;
+    }
   });
   requestAnimationFrame(drawStars);
 }
 drawStars();
-
-// Typing effect with emoji
-document.addEventListener('DOMContentLoaded', () => {
-  const text = "Hi, I'm Bava Prateeksha"; // Updated hero text
-  let i = 0;
-  const el = document.getElementById('typed');
-  el.innerText = '';
-  function type() {
-    if (i < text.length) {
-      el.innerText += text[i++];
-      setTimeout(type, 100);
-    }
-  }
-  type();
-});
-
-// Image popup
-document.addEventListener('click', e => {
-  const img = e.target.closest('.proj-card img');
-  if (img) {
-    const overlay = document.createElement('div');
-    overlay.style = `
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,0.8);
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      cursor:pointer;
-      z-index:30;
-    `;
-    const popup = document.createElement('img');
-    popup.src = img.src;
-    popup.style = 'max-width:90%; max-height:90%; border-radius:8px;';
-    overlay.appendChild(popup);
-    overlay.addEventListener('click', () => overlay.remove());
-    document.body.appendChild(overlay);
-  }
-});
