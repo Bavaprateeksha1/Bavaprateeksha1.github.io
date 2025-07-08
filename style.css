@@ -259,3 +259,61 @@ a:hover {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+/* ===== Mobile Optimization ===== */
+@media (max-width: 768px) {
+  .modal-box {
+    width: 95%;
+    padding: 20px;
+    max-height: 90vh;
+    font-size: 0.95rem;
+  }
+
+  .modal-title,
+  .modal-box h2,
+  .modal-box h3 {
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: 800;
+  }
+
+  .modal-box p,
+  .modal-box li {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.6;
+    text-align: justify;
+  }
+
+  .grid {
+    grid-template-columns: repeat(1, 1fr); /* Stack cards vertically */
+    gap: 15px;
+  }
+
+  .card img {
+    height: 180px;
+  }
+
+  .close {
+    top: 10px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    font-size: 1.5rem;
+  }
+
+  .hero-text button {
+    font-size: 0.9rem;
+    padding: 8px 20px;
+  }
+
+  #typed {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .nav-right {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+}
