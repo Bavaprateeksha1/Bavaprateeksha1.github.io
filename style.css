@@ -1,7 +1,3 @@
-/* ========================
-   style.css
-======================== */
-
 body, html {
   margin: 0;
   padding: 0;
@@ -21,7 +17,7 @@ body, html {
   height: 100vh;
   z-index: -10;
   animation: zoomMove 25s infinite linear;
-  filter: brightness(1.2) saturate(1.2);
+  filter: brightness(0.8) saturate(1.1);
 }
 
 @keyframes zoomMove {
@@ -67,7 +63,7 @@ nav {
 .nav-left {
   font-weight: 700;
   font-size: 1.5rem;
-  background: linear-gradient(45deg, #DCC5B2, #F0E4D3, #FAF7F3); /* ✅ beige-white gradient */
+  background: linear-gradient(45deg, #DCC5B2, #F0E4D3, #FAF7F3);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -75,7 +71,9 @@ nav {
 .nav-right {
   display: flex;
   gap: 18px;
-  margin-left: auto;
+  margin-left: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .nav-right li {
@@ -98,6 +96,7 @@ nav {
   align-items: center;
   text-align: center;
   padding: 0 20px;
+  flex-direction: column;
 }
 
 #typed {
@@ -111,25 +110,21 @@ nav {
   -webkit-text-fill-color: transparent;
 }
 
-.hero-text p {
-  margin-top: 10px;
-  font-size: 1.2rem;
-}
-
-.hero-text button {
+.cosmic-button {
+  font-family: 'Poppins', sans-serif;
   margin-top: 20px;
-  padding: 10px 25px;
+  padding: 12px 30px;
   font-size: 1rem;
   border: none;
   border-radius: 25px;
-  background-color: #00BFFF;
-  color: #fff;
+  background-color: rgba(0, 191, 255, 0.8); /* 80% transparent */
+  color: white;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
-.hero-text button:hover {
-  background-color: #009ACD;
+.cosmic-button:hover {
+  background-color: rgba(0, 154, 205, 0.8);
 }
 
 .modal {
@@ -138,7 +133,7 @@ nav {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0,0,0,0.88); /* 88% opaque */
   display: none;
   justify-content: center;
   align-items: center;
@@ -148,7 +143,7 @@ nav {
 .modal-box {
   width: 90%;
   max-width: 800px;
-  background: linear-gradient(to bottom right, #F0E4D3, #FAF7F3); /* ✅ FULLY GRADUATED background */
+  background: linear-gradient(to bottom right, #F0E4D3, #FAF7F3);
   border-radius: 15px;
   padding: 30px;
   position: relative;
@@ -159,10 +154,9 @@ nav {
 
 .modal-title {
   font-size: 1.5rem;
-  color: #090040;  /* ✅ Uniform heading color inside modals */
+  color: #090040;
   margin-bottom: 20px;
 }
-/* ☝️ This is the area you asked for – where modal heading color is set */
 
 .close {
   position: absolute;
@@ -182,7 +176,7 @@ nav {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
@@ -201,10 +195,15 @@ nav {
 
 .card img {
   width: 100%;
-  height: 140px;
+  height: 200px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.card img:hover {
+  transform: scale(1.05);
 }
 
 .card h3 {
@@ -229,7 +228,6 @@ a:hover {
   .nav-right {
     flex-wrap: wrap;
     justify-content: flex-end;
-    margin-top: 10px;
   }
   #typed {
     font-size: 2rem;
