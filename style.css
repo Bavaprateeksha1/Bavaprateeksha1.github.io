@@ -1,325 +1,273 @@
-/* --- Base Styles --- */
 body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif; /* Good choice! */
-    overflow: hidden; /* Prevents scrollbars from background effects */
-    height: 100%; /* Ensures body/html take full viewport height */
-    color: white; /* Default text color */
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  height: 100%;
+  color: white;
 }
 
-/* --- Background Image --- */
+/* Background */
 .background {
-    background: url('bg.png') no-repeat center center fixed;
-    background-size: cover; /* Ensures the image covers the entire viewport */
-    position: fixed; /* Stays in place during scroll (though overflow: hidden prevents scrolling) */
-    top: 0;
-    left: 0;
-    width: 100vw; /* Takes full viewport width */
-    height: 100vh; /* Takes full viewport height */
-    z-index: -10; /* Furthest back */
-    animation: zoomMove 25s infinite linear; /* Smooth, continuous animation */
+  background: url('bg.png') no-repeat center center fixed;
+  background-size: cover;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  animation: zoomMove 25s infinite linear;
 }
 
 @keyframes zoomMove {
-    0% { transform: scale(1) translate(0, 0); }
-    50% { transform: scale(1.1) translate(-10px, -10px); } /* Subtle zoom and slight shift */
-    100% { transform: scale(1) translate(0, 0); }
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.1) translate(-10px, -10px); }
+  100% { transform: scale(1) translate(0, 0); }
 }
 
-/* --- Canvas Stars (Background, subtle movement) --- */
+/* Star canvas */
 #stars {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -9; /* Just above the background image */
-    pointer-events: none; /* Allows clicks to pass through */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -9;
+  pointer-events: none;
 }
 
-/* --- Sparkle Stars (Twinkling effect) --- */
+/* Sparkle stars */
 .sparkle-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -8; /* Above canvas stars */
-    pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -8;
+  pointer-events: none;
 }
 
 .sparkle {
-    position: absolute; /* Positioned within .sparkle-container */
-    width: 2px;
-    height: 2px;
-    background: white; /* Solid white for a sharp sparkle */
-    border-radius: 50%;
-    animation: twinkle 2s infinite ease-in-out; /* Continuous twinkle */
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite ease-in-out;
 }
 
 @keyframes twinkle {
-    0%, 100% { opacity: 0.2; } /* Less visible at start/end */
-    50% { opacity: 1; } /* Fully visible in the middle */
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
 }
 
-/* --- Shooting Stars (Dynamic, moving streaks) --- */
+/* Shooting stars container (unchanged, but good for context) */
+/* --- Shooting Stars Container --- */
 .shooting-stars {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -7; /* Above sparkle stars */
-    pointer-events: none;
-    overflow: hidden; /* Crucial to contain stars within the viewport */
+    z-index: -7; /* Adjust if needed based on your other layers */
+    pointer-events: none; /* Allows clicks to pass through */
+    overflow: hidden; /* **Crucial:** Prevents scrollbars if stars start/end off-screen */
 }
 
+/* --- Shooting Star Styling --- */
 .shooting-star {
     position: absolute;
-    /* Gradient for the tail effect */
+    /* Use CSS variables for dynamic size and length, set by JavaScript */
+    width: var(--length, 100px); /* Default if JS isn't loaded */
+    height: var(--size, 2px);    /* Default if JS isn't loaded */
     background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
-    border-radius: 50%; /* Rounded ends for the light trail */
-    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.7); /* Stronger glow effect */
-    opacity: 0; /* Starts invisible, becomes visible during animation */
-    animation-timing-function: linear; /* Consistent speed throughout the animation */
-    animation-iteration-count: infinite; /* Loops forever */
-    /* CSS Variables for dynamic sizing, set by JavaScript */
-    height: var(--size, 2px); /* Default if JS isn't loaded or fails */
-    width: var(--length, 100px); /* Default if JS isn't loaded or fails */
-    transform-origin: center left; /* Ensures rotation is around its starting point */
+    border-radius: 50%; /* Makes the ends rounded for a light trail look */
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.7); /* Adds a strong glow */
+    opacity: 0; /* Initially hidden, will fade in during animation */
+    animation-timing-function: linear; /* Ensures constant speed */
+    animation-iteration-count: infinite; /* Makes the animation loop endlessly */
+    transform-origin: center left; /* Important for correct rotation around its starting point */
 }
 
+/* --- Keyframes for the Shooting Star Animation --- */
 @keyframes shoot {
     0% {
-        /* Start position and rotation defined by JS-set CSS variables */
-        transform: translate(var(--start-x, -200px), var(--start-y, -100px)) rotate(var(--rotation, 45deg));
-        opacity: 0;
+        /* Start position (X, Y) and rotation (angle) are controlled by JavaScript
+           via CSS custom properties (variables like --start-x, --rotation) */
+        transform: translate(var(--start-x), var(--start-y)) rotate(var(--rotation));
+        opacity: 0; /* Star is invisible at the very beginning of its path */
     }
     10% {
-        opacity: 1; /* Quick fade-in */
+        opacity: 1; /* Star quickly fades in as it starts its visible trail */
     }
     90% {
-        opacity: 1; /* Maintain full visibility */
+        opacity: 1; /* Star remains fully visible for the majority of its journey */
     }
     100% {
-        /* End position maintaining the same rotation */
-        transform: translate(var(--end-x, 120vw), var(--end-y, 120vh)) rotate(var(--rotation, 45deg));
-        opacity: 0; /* Fade out at the end */
+        /* End position (X, Y) is controlled by JavaScript, maintaining its rotation */
+        transform: translate(var(--end-x), var(--end-y)) rotate(var(--rotation));
+        opacity: 0; /* Star fades out as it completes its path */
     }
-}
 
-/* --- Navigation Bar --- */
+/* Navigation */
 nav {
-    position: fixed; /* Stays at the top */
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between; /* Pushes left and right items to edges */
-    align-items: center; /* Vertically centers items in the nav */
-    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
-    padding: 20px 40px;
-    z-index: 10; /* On top of most content */
-    box-sizing: border-box; /* Ensures padding doesn't add to total width */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px 40px;
+  z-index: 10;
 }
 
 .nav-left {
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: white;
 }
 
 .nav-right {
-    list-style: none; /* Removes bullet points */
-    display: flex;
-    gap: 25px; /* Increased gap for better spacing */
-    flex-wrap: wrap;
-    margin: 0; /* Remove default ul margin */
-    padding: 0; /* Remove default ul padding */
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .nav-right li {
-    cursor: pointer;
-    font-weight: 500;
-    background: linear-gradient(45deg, #00BFFF, #1E90FF, #00CED1); /* Blue-cyan gradient */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+  cursor: pointer;
+  font-weight: 500;
+  background: linear-gradient(45deg, #00BFFF, #1E90FF, #00CED1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.nav-right li:hover {
-    transform: scale(1.05); /* Slight grow on hover */
-}
-
-/* --- Hero Section --- */
+/* Hero section */
 #hero {
-    display: flex;
-    align-items: center; /* Centers content vertically */
-    justify-content: center; /* Centers content horizontally */
-    height: 100vh; /* Takes full viewport height */
-    text-align: center;
-    padding: 0 20px;
-    position: relative; /* For z-index context if needed */
-    z-index: 5; /* Above background elements, below modals */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 0 20px;
 }
 
 .hero-text h1 {
-    font-size: 3.5rem; /* Slightly larger for impact */
-    margin: 0;
-    line-height: 1.2; /* Better readability */
+  font-size: 3rem;
+  margin: 0;
 }
 
 .hero-text p {
-    margin-top: 15px; /* Slightly more space */
-    font-size: 1.3rem; /* Slightly larger for readability */
-    max-width: 700px; /* Limits line length */
-    margin-left: auto;
-    margin-right: auto;
+  margin-top: 10px;
+  font-size: 1.2rem;
 }
 
 .hero-text button {
-    margin-top: 30px; /* More space below text */
-    padding: 12px 30px; /* Larger button */
-    font-size: 1.1rem; /* Larger font */
-    border: none;
-    border-radius: 30px; /* More rounded */
-    background-color: #00BFFF; /* Solid color for button */
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
-}
-
-.hero-text button:hover {
-    background-color: #009acd; /* Slightly darker blue on hover */
-    transform: translateY(-2px); /* Slight lift on hover */
+  margin-top: 20px;
+  padding: 10px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  background-color: #00BFFF;
+  color: white;
+  cursor: pointer;
 }
 
 .gradient-text {
-    background: linear-gradient(45deg, #FF69B4, #87CEFA, #BA55D3); /* Consistent pink-blue-purple gradient */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background: linear-gradient(45deg, #FF69B4, #87CEFA, #BA55D3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* --- Modals (Pop-up windows) --- */
+/* Modals */
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
-    display: none; /* Hidden by default, shown by JS */
-    justify-content: center;
-    align-items: center;
-    z-index: 20; /* Highest z-index to cover everything */
-    backdrop-filter: blur(5px); /* Adds a subtle blur to the background behind the modal */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
 }
 
 .modal-box {
-    width: 85vw; /* Slightly wider */
-    max-width: 800px;
-    background: rgba(28, 28, 43, 0.98); /* Slightly more opaque background */
-    border-radius: 15px;
-    padding: 30px;
-    color: #fff;
-    position: relative;
-    max-height: 90vh;
-    overflow-y: auto; /* Allows scrolling within the modal if content is too long */
-    text-align: left;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* More prominent shadow */
-    animation: fadeInScale 0.3s ease-out forwards; /* Entry animation */
-}
-
-@keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+  width: 80vw;
+  max-width: 800px;
+  background: rgba(28, 28, 43, 0.95);
+  border-radius: 15px;
+  padding: 30px;
+  color: #fff;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: left;
 }
 
 .modal-box::-webkit-scrollbar {
-    width: 8px; /* Slightly wider scrollbar */
+  width: 6px;
 }
 .modal-box::-webkit-scrollbar-thumb {
-    background: #555; /* Darker scrollbar thumb */
-    border-radius: 10px;
-}
-.modal-box::-webkit-scrollbar-track {
-    background: #333; /* Darker scrollbar track */
-    border-radius: 10px;
+  background: #888;
+  border-radius: 10px;
 }
 
 /* Modal title */
 .modal-title {
-    font-size: 1.8rem; /* Larger title */
-    margin-bottom: 25px; /* More space below title */
-    padding-left: 0; /* Remove left padding if not needed for specific designs */
-    text-align: center; /* Center modal titles */
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  padding-left: 10px;
 }
 
-.blue-gradient { /* Used for modal titles, consistent with hero text */
-    background: linear-gradient(45deg, #FF69B4, #87CEFA, #BA55D3);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.blue-gradient {
+  background: linear-gradient(45deg, #FF69B4, #87CEFA, #BA55D3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 2.2rem; /* Larger close button */
-    cursor: pointer;
-    color: #ccc; /* Lighter color */
-    transition: color 0.2s ease; /* Smooth hover effect */
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff;
 }
 
-.close:hover {
-    color: #fff; /* White on hover */
-    transform: rotate(90deg); /* Little spin on hover */
-}
-
-/* --- Grid & Cards (for modal content like projects/experience) --- */
+/* Cards */
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Min card width slightly larger */
-    gap: 25px; /* Increased gap */
-    padding-top: 10px; /* Space above the grid in the modal */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
 
 .card {
-    background: #2a2a40;
-    padding: 20px; /* Increased padding inside cards */
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Softer, more pronounced shadow */
-    cursor: pointer; /* Implies clickability */
+  background: #2a2a40;
+  padding: 15px;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
 }
 
 .card:hover {
-    transform: translateY(-7px); /* More pronounced lift on hover */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.5); /* Stronger shadow on hover */
+  transform: translateY(-5px);
 }
 
 .card img {
-    width: 100%;
-    height: 160px; /* Slightly taller images */
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 15px; /* More space below image */
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
 .card h3 {
-    margin: 0 0 8px 0; /* Adjusted margin */
-    font-size: 1.25rem; /* Larger card title */
-    line-height: 1.3;
+  margin: 10px 0 5px 0;
+  font-size: 1.1rem;
 }
 
 .card p {
-    font-size: 0.95rem;
-    color: #bbb; /* Slightly lighter gray for body text */
-    line-height: 1.5;
-}
+  font-size: 0.95rem;
+  color: #ccc;
+} 
