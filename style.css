@@ -98,7 +98,7 @@ nav {
 #typed {
   font-size: 3rem;
   margin: 0;
-  background: linear-gradient(45deg, #F0E4D3, #7C4585, #F0E4D3);
+  background: linear-gradient(45deg, #F0E4D3, #433D8B, #F0E4D3);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -120,7 +120,7 @@ nav {
   font-size: 1rem;
   border: none;
   border-radius: 25px;
-  background-color: #7C4585;
+  background-color: #433D8B;
   color: white;
   cursor: pointer;
   transition: background 0.3s ease;
