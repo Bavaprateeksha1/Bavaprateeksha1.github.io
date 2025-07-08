@@ -152,13 +152,13 @@ nav {
   position: relative;
   max-height: 90vh;
   overflow-y: auto;
-  color: #000449;
+  color: #0B566F;
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
 .modal-title {
   font-size: 1.5rem;
-  color: #000449;
+  color: #0B566F;
   margin-bottom: 20px;
 }
 
@@ -222,7 +222,7 @@ nav {
 }
 
 a {
-  color: #000449;
+  color: #0B566F;
   text-decoration: none;
 }
 
