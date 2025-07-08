@@ -152,13 +152,13 @@ nav {
   position: relative;
   max-height: 90vh;
   overflow-y: auto;
-  color: #8d6838;
+  color: #D9BB9B;
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
 .modal-title {
   font-size: 1.5rem;
-  color: #8d6838;
+  color: #D9BB9B;
   margin-bottom: 20px;
 }
 
@@ -185,7 +185,7 @@ nav {
 }
 
 .card {
-  background: #000449;
+  background: #D9BB9B;
   padding: 15px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
