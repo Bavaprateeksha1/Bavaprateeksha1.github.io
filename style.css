@@ -7,6 +7,7 @@ body, html {
   color: white;
 }
 
+/* Background */
 .background {
   background: url('bg.png') no-repeat center center fixed;
   background-size: cover;
@@ -24,6 +25,7 @@ body, html {
   100% { transform: scale(1) translate(0, 0); }
 }
 
+/* Star canvas */
 #stars {
   position: fixed;
   top: 0; left: 0;
@@ -33,12 +35,17 @@ body, html {
   pointer-events: none;
 }
 
+/* Sparkle stars */
 .sparkle-container {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: -8;
+  pointer-events: none;
 }
+
 .sparkle {
   position: absolute;
   width: 2px;
@@ -47,19 +54,51 @@ body, html {
   border-radius: 50%;
   animation: twinkle 2s infinite ease-in-out;
 }
+
 @keyframes twinkle {
   0%, 100% { opacity: 0.2; }
   50% { opacity: 1; }
 }
 
+/* Shooting stars */
+.shooting-stars {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -7;
+  pointer-events: none;
+}
+
+.shooting-star {
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, white, transparent);
+  animation: shoot 4s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes shoot {
+  0% {
+    transform: translate(-200px, -100px) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(120vw, 120vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* Navigation */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 20px 40px;
-  background: transparent;
   z-index: 10;
 }
 
@@ -72,7 +111,8 @@ nav {
 .nav-right {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .nav-right li {
@@ -83,6 +123,7 @@ nav {
   -webkit-text-fill-color: transparent;
 }
 
+/* Hero section */
 #hero {
   display: flex;
   align-items: center;
@@ -111,11 +152,6 @@ nav {
   background-color: #00BFFF;
   color: white;
   cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.hero-text button:hover {
-  background-color: #009ACD;
 }
 
 .gradient-text {
@@ -124,6 +160,7 @@ nav {
   -webkit-text-fill-color: transparent;
 }
 
+/* Modals */
 .modal {
   position: fixed;
   top: 0;
@@ -140,18 +177,29 @@ nav {
 .modal-box {
   width: 80vw;
   max-width: 800px;
-  background: rgba(28,28,43, 0.95);
+  background: rgba(28, 28, 43, 0.95);
   border-radius: 15px;
   padding: 30px;
   color: #fff;
   position: relative;
   max-height: 90vh;
   overflow-y: auto;
+  text-align: left;
 }
 
+.modal-box::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-box::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Modal title */
 .modal-title {
   font-size: 1.5rem;
   margin-bottom: 20px;
+  padding-left: 10px;
 }
 
 .blue-gradient {
@@ -169,6 +217,7 @@ nav {
   color: #fff;
 }
 
+/* Cards */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -203,12 +252,4 @@ nav {
 .card p {
   font-size: 0.95rem;
   color: #ccc;
-}
-
-.modal-box::-webkit-scrollbar {
-  width: 6px;
-}
-.modal-box::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 10px;
 }
