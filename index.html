@@ -7,7 +7,12 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+
+<footer style="text-align:center; padding:15px; font-size: 0.95rem; color: #F0E4D3;">
+  © 2025 Bava Prateeksha. All rights reserved.
+</footer>
+  
+  <body>
   <div class="background"></div>
   <canvas id="stars"></canvas>
   <div class="nebula"></div>
@@ -54,11 +59,17 @@
     <div class="modal-box">
       <span class="close" onclick="closeModal('skills')">&times;</span>
       <h2 class="modal-title">Skills</h2>
-      <ul>
-        <li>🔌 Dev Tools – Streamlit, Firebase, Blynk, Google Colab, GitHub</li>
-        <li>📐 Design – Canva</li>
-        <li>🧠 Hardware Design & Simulation – Cadence, Kicad, EasyEDA</li>
-      </ul>
+      <div class="skills-icons">
+  <img src="icons/firebase.svg" alt="Firebase">
+  <img src="icons/github.svg" alt="GitHub">
+  <img src="icons/canva.svg" alt="Canva">
+  <img src="icons/streamlit.svg" alt="Streamlit">
+  <img src="icons/blynk.svg" alt="Blynk">
+  <img src="icons/colab.svg" alt="Google Colab">
+  <img src="icons/easyeda.svg" alt="EasyEDA">
+  <img src="icons/cadence.svg" alt="Cadence">
+  <img src="icons/kicad.svg" alt="KiCad">
+</div>
     </div>
   </div>
 
@@ -67,18 +78,20 @@
     <div class="modal-box">
       <span class="close" onclick="closeModal('projects')">×</span>
       <h2 class="modal-title">💡 Projects</h2>
-      <div class="grid">
-        <div class="card"><img src="images/projects/lifi.jpg" alt="LiFi Project"><h3>🔊 Audio Transmission Using Li‑Fi</h3><p>Built a secure, energy‑efficient audio system using LED light modulation.</p></div>
-        <div class="card"><img src="images/projects/smps.jpg" alt="SMPS Project"><h3>⚡ 12V SMPS Circuit</h3><p>Designed and fabricated a Switch Mode Power Supply circuit for stable output.</p></div>
-        <div class="card"><img src="images/projects/temp.jpg" alt="Temperature Project"><h3>🌡️ Temperature Threshold System</h3><p>Sensor‑based circuit using LM35 for real‑time temperature monitoring.</p></div>
-        <div class="card"><img src="images/projects/cornea.jpg" alt="Cornea Project"><h3>👁️ Artificial Cornea Model</h3><p>Prototype built to mimic corneal implant functionality.</p></div>
-        <div class="card"><img src="images/projects/fracture.jpg" alt="Fracture Project"><h3>🦴 Fracture Repair Model</h3><p>Biomaterials‑based model demonstrating bone repair.</p></div>
-        <div class="card"><img src="images/projects/opamp.jpg" alt="Op-Amp Project"><h3>🔈 Non‑Inverting Amplifier</h3><p>Op‑amp based analog circuit to amplify signals non‑inversely.</p></div>
-        <div class="card"><img src="images/projects/gsr.jpg" alt="GSR Project"><h3>🧠 GSR Stress Monitor</h3><p>Detected stress using galvanic skin response sensors.</p></div>
-        <div class="card"><h3>🗼 AI‑Based Tower of Hanoi</h3><p>Smart puzzle solver using AI.<br><a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank">🔗 Live Project</a></p></div>
-      </div>
+     <div class="carousel-container">
+  <div class="carousel-track">
+    <div class="grid">
+      <div class="card"><img src="images/projects/lifi.jpg" alt="LiFi Project"><h3>🔊 Audio Transmission Using Li‑Fi</h3><p>Built a secure, energy‑efficient audio system using LED light modulation.</p></div>
+      <div class="card"><img src="images/projects/smps.jpg" alt="SMPS Project"><h3>⚡ 12V SMPS Circuit</h3><p>Designed and fabricated a Switch Mode Power Supply circuit for stable output.</p></div>
+      <div class="card"><img src="images/projects/temp.jpg" alt="Temperature Project"><h3>🌡️ Temperature Threshold System</h3><p>Sensor‑based circuit using LM35 for real‑time temperature monitoring.</p></div>
+      <div class="card"><img src="images/projects/cornea.jpg" alt="Cornea Project"><h3>👁️ Artificial Cornea Model</h3><p>Prototype built to mimic corneal implant functionality.</p></div>
+      <div class="card"><img src="images/projects/fracture.jpg" alt="Fracture Project"><h3>🦴 Fracture Repair Model</h3><p>Biomaterials‑based model demonstrating bone repair.</p></div>
+      <div class="card"><img src="images/projects/opamp.jpg" alt="Op-Amp Project"><h3>🔈 Non‑Inverting Amplifier</h3><p>Op‑amp based analog circuit to amplify signals non‑inversely.</p></div>
+      <div class="card"><img src="images/projects/gsr.jpg" alt="GSR Project"><h3>🧠 GSR Stress Monitor</h3><p>Detected stress using galvanic skin response sensors.</p></div>
+      <div class="card"><h3>🗼 AI‑Based Tower of Hanoi</h3><p>Smart puzzle solver using AI.<br><a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank">🔗 Live Project</a></p></div>
     </div>
   </div>
+</div>
 
    <!-- Achievements Modal -->
   <div class="modal" id="achievements">
@@ -110,34 +123,66 @@
   </div>
 
     <!-- Experience Modal -->
-  <div class="modal" id="experience">
-    <div class="modal-box">
-      <span class="close" onclick="closeModal('experience')">×</span>
-      <h2 class="modal-title">💼 Experience</h2>
-      <h3>🎨 Creatives & AIML Domain – Aakash Research Labs (Jul 2025 – Present)</h3>
-      <p>Work on AIML projects and design posters.</p>
-      
-      <h3>🔬 Summer Research Intern – NIT Trichy (Jun 2025 – Present)</h3>
-      <p>Developing YOLO-based medical image/video analysis system.</p>
-      
-      <h3>🎨 Designer – Electronics Club (Oct 2024 – Present)</h3>
-      <p>Designed event invites, posters, and contributed to visual branding.</p>
-      
-      <h3>🎨 Designer – ECE Association (Oct 2024 – Present)</h3>
-      <p>Created digital designs and posters for conferences and outreach.</p>
-      
-      <h3>🏥 Biomedical Intern – Kauvery Hospital, Trichy (Dec 2024)</h3>
-      <p>Worked on equipment maintenance, imaging calibration and patient monitoring.</p>
-    </div>
+<div class="experience-grid">
+  <div class="exp-card">
+    <h3>💼 Internships</h3>
+
+    <p><strong>📊 Data Science & ML Intern – Infotact Solutions (Jul 2025 – Present)</strong></p>
+    <ul>
+      <li>Working on Data science and ML Based Projects.</li>
+    </ul>
+
+    <p><strong>🔬 Summer Research Intern – NIT Trichy (Jun 2025 – Present)</strong></p>
+    <ul>
+      <li>Developing YOLO-based medical image/video analysis system.</li>
+      <li>Preprocessing datasets and optimizing deep learning models.</li>
+    </ul>
+
+    <p><strong>🏥 Biomedical Intern – Kauvery Hospital (Dec 2024)</strong></p>
+    <ul>
+      <li>Assisted in equipment maintenance and calibration.</li>
+      <li>Monitored patient vitals and learned device handling protocols.</li>
+      <li>Gained exposure to ICU and radiology workflows.</li>
+    </ul>
   </div>
+
+  <div class="exp-card">
+    <h3>👥 Clubs</h3>
+
+    <p><strong>🎨 Designer – Electronics Club (Oct 2024 – Present)</strong></p>
+    <ul>
+      <li>Create event invites, branding materials, and posters.</li>
+      <li>Work on team design coordination for campus events.</li>
+    </ul>
+
+    <p><strong>🎨 Designer – ECE Association (Oct 2024 – Present)</strong></p>
+    <ul>
+      <li>Designed digital content for academic events and conferences.</li>
+      <li>Helped maintain cohesive visual identity for the association.</li>
+    </ul>
+
+    <p><strong>🎨 Creatives & AIML – Aakash Research Labs (Jul 2025 – Present)</strong></p>
+    <ul>
+      <li>Designs visual material for Club events</li>
+      <li>Work on Technical and AIML Projects.</li>
+    </ul>
+  </div>
+</div>
+
 
   <!-- Contact Modal -->
   <div class="modal" id="contact">
     <div class="modal-box">
       <span class="close" onclick="closeModal('contact')">&times;</span>
       <h2 class="modal-title">Contact</h2>
-      <p>Email: <a href="mailto:bavaprateeksha123@gmail.com">bavaprateeksha123@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/bava-prateeksha-k-52811a28a" target="_blank">Profile</a></p>
+      <p>
+  <a href="mailto:bavaprateeksha123@gmail.com" target="_blank">
+    <img src="icons/gmail.svg" alt="Gmail" style="height: 30px; margin-right: 10px;">
+  </a>
+  <a href="https://www.linkedin.com/in/bava-prateeksha-k-52811a28a" target="_blank">
+    <img src="icons/linkedin.svg" alt="LinkedIn" style="height: 30px;">
+  </a>
+</p>
     </div>
   </div>
 
