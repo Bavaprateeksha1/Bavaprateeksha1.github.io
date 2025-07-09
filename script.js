@@ -35,7 +35,7 @@ function closeCardDetailModal() {
 }
 
 // Typing effect
-const text = "Hi, I’m Prateeksha";
+const text = "Hi, I’m Bava Prateeksha";
 let i = 0;
 const el = document.getElementById('typed');
 function type() {
