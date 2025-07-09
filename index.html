@@ -8,9 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
-  <div class="background"></div>
   <canvas id="stars"></canvas>
-  <div class="nebula"></div>
 
   <nav>
     <ul class="nav-right">
@@ -32,9 +30,8 @@
     </div>
   </section>
 
-  <!-- About Modal -->
   <div class="modal" id="about">
-    <div class="modal-box bg-modal-gradient">
+    <div class="modal-box">
       <span class="close" onclick="closeModal('about')">&times;</span>
       <h2 class="modal-title">About</h2>
       <p class="modal-body-text">
@@ -48,9 +45,8 @@
     </div>
   </div>
 
-  <!-- Skills Modal -->
   <div class="modal" id="skills">
-    <div class="modal-box bg-modal-gradient">
+    <div class="modal-box">
       <span class="close" onclick="closeModal('skills')">&times;</span>
       <h2 class="modal-title">Skills</h2>
       <div class="skills-icons">
@@ -67,14 +63,12 @@
     </div>
   </div>
 
-  <!-- Projects Modal -->
   <div class="modal" id="projects">
-    <div class="modal-box bg-modal-gradient">
+    <div class="modal-box">
       <span class="close" onclick="closeModal('projects')">&times;</span>
       <h2 class="modal-title">💡 Projects</h2>
       <div class="carousel-wrapper">
         <div class="carousel-track" id="projects-track">
-          <!-- Project Cards (initial set) -->
           <div class="card project-card" data-card-type="project" data-image="images/projects/lifi.jpg">
             <img src="images/projects/lifi.jpg" alt="Audio Transmission Using Li-Fi">
             <div class="card-content">
@@ -131,15 +125,13 @@
               <p>Smart puzzle solver using AI.<br><a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank">🔗 Live Project</a></p>
             </div>
           </div>
-          <!-- More cards will be duplicated by JS for seamless loop -->
-        </div>
+          </div>
       </div>
     </div>
   </div>
 
-  <!-- Achievements Modal -->
   <div class="modal" id="achievements">
-    <div class="modal-box bg-modal-gradient">
+    <div class="modal-box">
       <span class="close" onclick="closeModal('achievements')">&times;</span>
       <h2 class="modal-title">🏆 Achievements</h2>
       <div class="carousel-wrapper">
@@ -165,15 +157,13 @@
               <p>Awarded for GPA 9.88 (1st year) & 10.0 (3rd sem).</p>
             </div>
           </div>
-           <!-- More cards will be duplicated by JS for seamless loop -->
-        </div>
+           </div>
       </div>
     </div>
   </div>
 
-  <!-- Interests Modal -->
   <div class="modal" id="interests">
-    <div class="modal-box bg-modal-gradient">
+    <div class="modal-box">
       <span class="close" onclick="closeModal('interests')">&times;</span>
       <h2 class="modal-title">🧠 Areas of Interest</h2>
       <ul class="modal-body-text">
@@ -187,9 +177,8 @@
     </div>
   </div>
 
-  <!-- Experience Modal -->
   <div class="modal" id="experience">
-    <div class="modal-box bg-modal-gradient">
+    <div class="modal-box">
       <span class="close" onclick="closeModal('experience')">&times;</span>
       <h2 class="modal-title">💼 Experience</h2>
       <div class="experience-grid">
@@ -231,9 +220,8 @@
     </div>
   </div>
 
-  <!-- Contact Modal -->
   <div class="modal" id="contact">
-    <div class="modal-box bg-modal-gradient">
+    <div class="modal-box">
       <span class="close" onclick="closeModal('contact')">&times;</span>
       <h2 class="modal-title">Contact</h2>
       <p class="contact-text-align-left modal-body-text">
@@ -243,27 +231,23 @@
     </div>
   </div>
 
-  <!-- Generic Card Detail Pop-up Modal (New) -->
   <div class="modal" id="card-detail-modal" data-parent-modal="">
-    <div class="modal-box card-detail-popup-box bg-modal-gradient">
+    <div class="modal-box card-detail-popup-box">
       <span class="close" onclick="closeCardDetailModal()">&times;</span>
       <div id="card-detail-content">
-        <!-- Cloned card content will be inserted here -->
-      </div>
+        </div>
     </div>
   </div>
 
-  <!-- Image Pop-up Modal (Existing, but now only for images) -->
   <div class="modal" id="image-popup-modal">
-    <div class="modal-box image-popup-box bg-modal-gradient">
+    <div class="modal-box image-popup-box">
       <span class="close" onclick="closeModal('image-popup-modal')">&times;</span>
       <img id="popup-image" src="" alt="Full Image View" class="rounded-image-popup">
     </div>
   </div>
 
-  <!-- Footer -->
   <footer>
-    <p>©️ 2025 Bava Prateeksha. All rights reserved.</p>
+    <p>© 2025 Bava Prateeksha. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
