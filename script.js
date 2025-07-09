@@ -12,9 +12,9 @@ function openOnly(id) {
   const modal = document.getElementById(id);
   if (modal) {
     modal.style.display = 'flex';
-    // If opening projects or achievements, attach click handlers
+    // If opening projects or achievements, setup carousel and attach click handlers
     if (id === 'projects' || id === 'achievements') {
-      attachCardClickHandlers(id);
+      setupCarousel(id); // Setup carousel for the specific modal
     }
   }
 }
@@ -35,7 +35,7 @@ function closeCardDetailModal() {
 }
 
 window.addEventListener('click', event => {
-  // This event listener was removed in the previous turn to prevent issues with layered popups.
+  // This event listener was removed to prevent issues with layered popups.
   // We rely solely on the close buttons.
 });
 
@@ -68,12 +68,12 @@ window.addEventListener('resize', resizeCanvas);
 resizeCanvas(); // Initial call to set canvas size
 
 const stars = [];
-for (let i = 0; i < 300; i++) { // Increased number of stars
+for (let i = 0; i < 400; i++) { // Increased number of stars for more intensity
   stars.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    radius: Math.random() * 2 + 1, // Increased radius for larger stars
-    speed: Math.random() * 0.8 + 0.3, // Increased speed for more intensity
+    radius: Math.random() * 2.5 + 1.5, // Increased radius for larger stars
+    speed: Math.random() * 1.2 + 0.5, // Increased speed for more intensity
     alpha: Math.random() * 0.8 + 0.2
   });
 }
@@ -85,16 +85,16 @@ function createShootingStar() {
     shootingStars.push({
         x: startX,
         y: startY,
-        length: Math.random() * 70 + 40, // Increased length of the tail
-        speedX: Math.random() * 15 + 8, // Faster horizontal speed
-        speedY: Math.random() * 15 + 8, // Faster vertical speed
+        length: Math.random() * 90 + 50, // Increased length of the tail
+        speedX: Math.random() * 20 + 10, // Faster horizontal speed
+        speedY: Math.random() * 20 + 10, // Faster vertical speed
         alpha: 1,
         life: 1 // For fading out
     });
 }
 
 // Add shooting stars periodically (more frequently)
-setInterval(createShootingStar, Math.random() * 3000 + 1500); // Every 1.5-4.5 seconds
+setInterval(createShootingStar, Math.random() * 2000 + 1000); // Every 1-3 seconds
 
 function animateStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
@@ -146,15 +146,47 @@ function animateStars() {
 animateStars();
 
 
-// Function to attach click handlers for projects/achievements cards
-function attachCardClickHandlers(modalId) {
-    const cardsContainer = document.querySelector(`#${modalId} .cards-grid`);
-    if (!cardsContainer) return;
+// Projects and Achievements Carousel Setup and Animation
+function setupCarousel(modalId) {
+    const carouselTrack = document.querySelector(`#${modalId}-track`); // Use specific ID for track
+    if (!carouselTrack) return;
 
-    // Ensure no duplicate handlers if modal is opened multiple times
-    cardsContainer.querySelectorAll('.card').forEach(card => {
-        // Remove existing click handler if any
-        card.onclick = null;
+    // Clear any previously cloned cards
+    const originalCards = Array.from(carouselTrack.querySelectorAll('.card:not(.cloned)'));
+    carouselTrack.innerHTML = ''; // Clear track to re-populate
+
+    // Re-append original cards
+    originalCards.forEach(card => {
+        carouselTrack.appendChild(card.cloneNode(true));
+    });
+
+    const cardWidthWithMargin = 280 + 30; // Card width + margin-right
+    const numOriginalCards = originalCards.length;
+
+    // Clone enough cards to create a seamless loop
+    const numberOfClonesNeeded = numOriginalCards * 2; // Duplicate the set twice
+
+    for (let i = 0; i < numberOfClonesNeeded; i++) {
+        const clone = originalCards[i % numOriginalCards].cloneNode(true);
+        clone.classList.add('cloned');
+        carouselTrack.appendChild(clone);
+    }
+
+    const scrollDistance = numOriginalCards * cardWidthWithMargin;
+
+    carouselTrack.style.setProperty('--scroll-distance', `-${scrollDistance}px`);
+
+    // Only apply animation if it's the projects/achievements modal
+    if (modalId === 'projects' || modalId === 'achievements') {
+        carouselTrack.style.animation = 'none'; // Temporarily remove animation
+        void carouselTrack.offsetWidth; // Trigger reflow
+        carouselTrack.style.animation = `scrollProjects ${numOriginalCards * 5}s linear infinite`; // Apply animation
+    } else {
+        carouselTrack.style.animation = 'none'; // Ensure no animation for other tracks
+    }
+
+    // Add click listeners to cards for the pop-up
+    carouselTrack.querySelectorAll('.card').forEach(card => {
         card.onclick = function() {
             // Set the parent modal ID before opening the card detail
             parentModalId = modalId;
@@ -162,6 +194,7 @@ function attachCardClickHandlers(modalId) {
         };
     });
 }
+
 
 // Function to open the generic card detail pop-up
 function openCardDetailPopup(originalCardElement) {
@@ -202,6 +235,7 @@ function openImagePopup(imageUrl) {
 // This ensures that even if projects/achievements are not the first modals opened,
 // their cards are clickable.
 document.addEventListener('DOMContentLoaded', () => {
-    attachCardClickHandlers('projects');
-    attachCardClickHandlers('achievements');
+    // These will be called when their respective modals are opened now
+    // setupCarousel('projects'); // Removed initial call, now called on openOnly
+    // setupCarousel('achievements'); // Removed initial call, now called on openOnly
 });
