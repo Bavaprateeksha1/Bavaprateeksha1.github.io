@@ -1,52 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Prateeksha's Cosmic Portfolio</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prateeksha Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="background"></div>
-  <canvas id="stars"></canvas>
-  <div class="nebula"></div>
 
+  <!-- Background & Stars -->
+  <div class="background"></div>
+  <div class="nebula"></div>
+  <canvas id="stars"></canvas>
+
+  <!-- Navbar -->
   <nav>
     <ul class="nav-right">
-      <li onclick="openOnly('about')">About</li>
-      <li onclick="openOnly('skills')">Skills</li>
-      <li onclick="openOnly('projects')">Projects</li>
-      <li onclick="openOnly('achievements')">Achievements</li>
-      <li onclick="openOnly('interests')">Interests</li>
-      <li onclick="openOnly('experience')">Experience</li>
-      <li onclick="openOnly('contact')">Contact</li>
+      <li onclick="openOnly('about')">About 🌌</li>
+      <li onclick="openOnly('skills')">Skills 🛠️</li>
+      <li onclick="openOnly('projects')">Projects 🚀</li>
+      <li onclick="openOnly('achievements')">Achievements 🏆</li>
+      <li onclick="openOnly('experience')">Experience 💼</li>
+      <li onclick="openOnly('contact')">Contact 📬</li>
     </ul>
   </nav>
 
+  <!-- Hero Section -->
   <section id="hero">
     <div class="hero-text">
-      <h1 class="gradient-text" id="typed"></h1>
-      <p class="gradient-text">Crafting Biomedical ideas with stardust and circuitry</p>
-      <button onclick="openOnly('about')">WELCOME TO MY COSMIC WEB 🪐</button>
+      <h1 id="typed"></h1>
+      <p>Crafting Biomedical ideas with a dash of creativity 👩‍🔬✨</p>
+      <button>WELCOME TO MY COSMIC WEB 🪐</button>
     </div>
   </section>
 
+  <!-- About Modal -->
   <div class="modal" id="about">
     <div class="modal-box bg-purple">
       <span class="close" onclick="closeModal('about')">&times;</span>
-      <h2 class="modal-title">About</h2>
+      <h2>About Me</h2>
       <p>
         Thinking in Circuits, Dreaming in Doodles 🎨🔌<br>
         Hey there! I'm Prateeksha 👩‍🔧 — a Biomedical Engineering enthusiast.<br>
         I enjoy weaving together science, logic, and a little magic to make sense of the world around me.<br>
         Whether I'm sketching out a wild idea or getting lost in lines of code, I truly believe that learning should always feel like an epic adventure!<br>
         When my brain isn't buzzing with technical concepts, you can find me doodling up a storm or curating the perfect playlist 🖍️🎧.<br>
-        Basically? I’m here to create and have fun doing it.
+        Basically? I’m here to create and have fun doing it!
       </p>
     </div>
   </div>
 
+  <!-- Skills Modal -->
   <div class="modal" id="skills">
     <div class="modal-box bg-purple">
       <span class="close" onclick="closeModal('skills')">&times;</span>
@@ -65,8 +69,8 @@
     </div>
   </div>
 
-   <!-- Projects Modal -->
-  <div class="modal" id="projects">
+
+ <div class="modal" id="projects">
     <div class="modal-box bg-purple">
       <span class="close" onclick="closeModal('projects')">&times;</span>
       <h2 class="modal-title">💡 Projects</h2>
@@ -95,6 +99,7 @@
       </div>
     </div>
   </div>
+  
   <!-- Interests Modal -->
   <div class="modal" id="interests">
     <div class="modal-box bg-purple">
