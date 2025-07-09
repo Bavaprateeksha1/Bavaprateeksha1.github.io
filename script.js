@@ -1,3 +1,16 @@
+// Typing animation
+const text = "Hi, I’m Prateeksha";
+let i = 0;
+const el = document.getElementById('typed');
+function type() {
+  if (i <= text.length) {
+    el.innerText = text.slice(0, i) + (i % 2 ? '|' : '');
+    i++;
+    setTimeout(type, 120);
+  }
+}
+type();
+
 // Show only selected modal
 function openOnly(id) {
   document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
@@ -11,47 +24,33 @@ function closeModal(id) {
   if (modal) modal.style.display = 'none';
 }
 
-// Close modal on background click
-window.addEventListener('click', event => {
-  if (event.target.classList.contains('modal')) {
-    event.target.style.display = 'none';
+// Click outside to close modal
+window.addEventListener('click', e => {
+  if (e.target.classList.contains('modal')) {
+    e.target.style.display = 'none';
   }
 });
 
-// Typing animation on hero text
-const text = "Hi, I’m Prateeksha";
-let i = 0;
-const el = document.getElementById('typed');
-function type() {
-  if (i <= text.length) {
-    el.innerText = text.slice(0, i) + (i % 2 ? '|' : '');
-    i++;
-    setTimeout(type, 120);
-  }
-}
-type();
+// Clicking a project card opens it in full image modal
+document.querySelectorAll('#projects .card').forEach(card => {
+  card.addEventListener('click', () => {
+    const img = card.querySelector('img');
+    if (!img) return;
 
-// Clone project card and show as modal with full image
-document.querySelectorAll('#projects .card img').forEach(img => {
-  img.addEventListener('click', () => {
     const overlay = document.createElement('div');
     overlay.className = 'modal';
     overlay.style.display = 'flex';
 
     const box = document.createElement('div');
-    box.className = 'modal-box bg-purple';
-    box.style.maxWidth = '80vw';
-    box.style.maxHeight = '80vh';
-    box.style.overflow = 'hidden';
-    box.style.display = 'flex';
-    box.style.justifyContent = 'center';
-    box.style.alignItems = 'center';
+    box.className = 'modal-box';
+    box.style.background = 'linear-gradient(135deg, #433D8B, #2C318C)';
+    box.style.maxHeight = 'none';
+    box.style.overflow = 'visible';
 
-    const fullImg = document.createElement('img');
-    fullImg.src = img.src;
-    fullImg.style.maxWidth = '100%';
-    fullImg.style.maxHeight = '100%';
-    fullImg.style.borderRadius = '12px';
+    const fullImage = document.createElement('img');
+    fullImage.src = img.src;
+    fullImage.style.width = '100%';
+    fullImage.style.borderRadius = '12px';
 
     const closeEl = document.createElement('span');
     closeEl.className = 'close';
@@ -59,23 +58,24 @@ document.querySelectorAll('#projects .card img').forEach(img => {
     closeEl.onclick = () => document.body.removeChild(overlay);
 
     box.appendChild(closeEl);
-    box.appendChild(fullImg);
+    box.appendChild(fullImage);
     overlay.appendChild(box);
     document.body.appendChild(overlay);
   });
 });
 
-// Sparkling Stars Background
+// Sparkling Stars
 const canvas = document.getElementById('stars'),
       ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+
 const stars = [];
-for (let s = 0; s < 150; s++) {
+for (let s = 0; s < 200; s++) {
   stars.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    r: Math.random() * 2 + 1.5,
+    r: Math.random() * 2.5 + 1.5,
     d: Math.random() * 1 + 0.5
   });
 }
