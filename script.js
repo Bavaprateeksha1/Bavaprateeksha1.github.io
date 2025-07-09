@@ -2,7 +2,7 @@
 let parentModalId = '';
 
 function openOnly(id) {
-  // Close all modals *except* the card detail or image popup if they are currently open
+  // Close all modals except the one being opened, unless it's a layered popup
   document.querySelectorAll('.modal').forEach(m => {
     if (m.id !== id && m.id !== 'card-detail-modal' && m.id !== 'image-popup-modal') {
       m.style.display = 'none';
@@ -41,7 +41,7 @@ window.addEventListener('click', event => {
 
 
 // Typing effect
-const text = "Hi, I’m Bava Prateeksha";
+const text = "Hi, I’m Prateeksha";
 let i = 0;
 const el = document.getElementById('typed');
 function type() {
@@ -151,7 +151,10 @@ function attachCardClickHandlers(modalId) {
     const cardsContainer = document.querySelector(`#${modalId} .cards-grid`);
     if (!cardsContainer) return;
 
+    // Ensure no duplicate handlers if modal is opened multiple times
     cardsContainer.querySelectorAll('.card').forEach(card => {
+        // Remove existing click handler if any
+        card.onclick = null;
         card.onclick = function() {
             // Set the parent modal ID before opening the card detail
             parentModalId = modalId;
