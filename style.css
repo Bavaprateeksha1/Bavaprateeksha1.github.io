@@ -46,10 +46,14 @@ body, html {
   height: 100vh;
   z-index: -8;
   /* Updated Nebula with new gradient colors and more shimmer */
-  background: radial-gradient(circle at 10% 15%, rgba(81,29,67,0.8), transparent 50%), /* Dark purple */
-              radial-gradient(circle at 90% 85%, rgba(11,29,81,0.7), transparent 50%), /* Dark blue */
-              radial-gradient(circle at 50% 50%, rgba(81,29,67,0.6), transparent 60%), /* Central dark purple */
-              radial-gradient(circle at 20% 70%, rgba(11,29,81,0.5), transparent 60%); /* Another dark blue spot */
+  background:
+    radial-gradient(circle at 10% 15%, rgba(81,29,67,0.8), transparent 50%), /* Dark purple top-left */
+    radial-gradient(circle at 90% 85%, rgba(11,29,81,0.7), transparent 50%), /* Dark blue bottom-right */
+    radial-gradient(circle at 50% 50%, rgba(81,29,67,0.6), transparent 60%), /* Central dark purple */
+    radial-gradient(circle at 20% 70%, rgba(11,29,81,0.5), transparent 60%), /* Another dark blue spot */
+    radial-gradient(circle at 85% 90%, rgba(81,29,67,0.7), transparent 50%), /* Purple bottom-right (from last update) */
+    /* NEW: Purple glow added to the top-right corner */
+    radial-gradient(circle at 90% 10%, rgba(81,29,67,0.8), transparent 50%); /* Purple top-right */
   animation: subtleGlow 30s infinite alternate;
   pointer-events: none; /* Allow clicks to pass through */
 }
@@ -110,8 +114,8 @@ nav {
 
 #typed {
   font-size: 3rem;
-  /* Same gradient as navbar */
-  background: linear-gradient(45deg, #410445, #BB9796, #410445);
+  /* NEW: Updated gradient as requested */
+  background: linear-gradient(45deg, #211C84, #BB9796, #410445);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: 'Poppins', sans-serif; /* Explicitly ensure Poppins */
@@ -124,8 +128,8 @@ nav {
   border-radius: 30px;
   backdrop-filter: blur(6px);
   margin-top: 15px;
-  /* Explicitly set to black as requested */
-  color: black;
+  /* Remains white as requested in last update */
+  color: white;
 }
 
 .hero-text button.hero-button { /* Added specific class for button */
@@ -314,16 +318,16 @@ nav {
   border-radius: 15px;
   width: 360px;
   color: #F0E4D3; /* Default text color for exp-card details */
-  font-size: 0.95rem; /* Base font for exp-card details */
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
 }
 
-/* Ensure all text inside exp-card is black */
+/* Ensured all text inside exp-card is black as requested */
 .exp-card h3,
 .exp-card p,
 .exp-card ul,
 .exp-card ul li {
   color: black;
+  font-size: 0.95rem; /* Base font for exp-card details */
 }
 .exp-card h3 {
   font-size: 1.2rem;
