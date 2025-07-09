@@ -1,64 +1,56 @@
-// Function to show only the selected modal
+// Show only selected modal
 function openOnly(id) {
-  // Close all other modals
-  const modals = document.querySelectorAll('.modal');
-  modals.forEach(modal => {
-    modal.style.display = 'none';
-  });
-
-  // Open the selected modal
-  const modalToOpen = document.getElementById(id);
-  if (modalToOpen) {
-    modalToOpen.style.display = 'flex';
-  }
+  document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+  const modal = document.getElementById(id);
+  if (modal) modal.style.display = 'flex';
 }
 
-// Function to close a specific modal
+// Close selected modal
 function closeModal(id) {
   const modal = document.getElementById(id);
-  if (modal) {
-    modal.style.display = 'none';
-  }
+  if (modal) modal.style.display = 'none';
 }
 
-// Click outside modal-box to close modal (optional UX improvement)
-window.addEventListener('click', function (event) {
-  const modals = document.querySelectorAll('.modal');
-  modals.forEach(modal => {
-    if (event.target === modal) {
-      modal.style.display = 'none';
-    }
-  });
+// Click outside to close modals
+window.addEventListener('click', event => {
+  if (event.target.classList.contains('modal')) {
+    event.target.style.display = 'none';
+  }
 });
 
-// Add click-to-open behavior for each project card (modal within modal)
-document.querySelectorAll('.card').forEach(card => {
+// Clicking any project card opens it as a new modal
+document.querySelectorAll('#projects .card').forEach(card => {
   card.addEventListener('click', () => {
-    const parentModal = card.closest('.modal');
-    // Prevent nested modals (don’t open if already inside another modal)
-    if (parentModal && parentModal.id !== 'projects') return;
+    const clone = card.cloneNode(true);
 
-    // Clone the card to show in a new standalone modal
-    const cardClone = card.cloneNode(true);
+    const overlay = document.createElement('div');
+    overlay.className = 'modal';
+    overlay.style.display = 'flex';
 
-    // Create overlay modal
-    const newModal = document.createElement('div');
-    newModal.className = 'modal';
-    newModal.style.display = 'flex';
+    const box = document.createElement('div');
+    box.className = 'modal-box bg-gradient';
+    box.innerHTML = clone.innerHTML;
 
-    // Create modal content container
-    const contentBox = document.createElement('div');
-    contentBox.className = 'modal-box';
-    contentBox.innerHTML = cardClone.innerHTML;
+    const closeEl = document.createElement('span');
+    closeEl.className = 'close';
+    closeEl.innerHTML = '&times;';
+    closeEl.onclick = () => document.body.removeChild(overlay);
 
-    // Add close button
-    const close = document.createElement('span');
-    close.className = 'close';
-    close.innerHTML = '&times;';
-    close.onclick = () => document.body.removeChild(newModal);
-
-    contentBox.prepend(close);
-    newModal.appendChild(contentBox);
-    document.body.appendChild(newModal);
+    box.prepend(closeEl);
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
   });
 });
+
+// Typing animation on hero text
+const text = "Hi, I’m Prateeksha";
+let i = 0;
+const el = document.getElementById('typed');
+function type() {
+  if (i <= text.length) {
+    el.innerText = text.slice(0, i) + (i % 2 ? '|' : '');
+    i++;
+    setTimeout(type, 120);
+  }
+}
+type();
