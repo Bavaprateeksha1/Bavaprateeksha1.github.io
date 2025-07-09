@@ -1,33 +1,23 @@
 /* ===== GLOBALS ===== */
-body, html {
-  margin: 0; /* Ensures no default margin */
-  padding: 0; /* Ensures no default padding */
+html, body {
+  margin: 0;
+  padding: 0;
   font-family: 'Poppins', sans-serif;
-  height: 100%;
-  overflow: hidden; /* Control global overflow */
+  height: 100%; /* Default height for desktop */
+  min-height: 100vh; /* Ensure it covers viewport even with less content */
+  overflow-y: auto; /* Allow vertical scrolling by default */
+  overflow-x: hidden; /* Prevent horizontal scrolling unless specifically allowed */
   color: #fff;
+  /* Outer part background gradient */
+  background: linear-gradient(to right, #511D43, #0B1D51, #511D43);
 }
 
+/* Specific overflow for smaller screens */
 @media (max-width: 768px) {
-  body, html { overflow: auto; } /* Allow scrolling on smaller screens if needed */
-}
-
-/* ===== BACKGROUND ===== */
-.background {
-  background: url('bg.png') no-repeat center center fixed;
-  background-size: cover;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  z-index: -10;
-  animation: zoomMove 45s infinite linear;
-  filter: brightness(1.1) saturate(1.2);
-}
-
-@keyframes zoomMove {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1) translate(-10px, -10px); }
-  100% { transform: scale(1); }
+  html, body {
+    overflow-y: auto; /* Always allow scrolling on mobile */
+    overflow-x: hidden; /* Prevent horizontal scrolling by default */
+  }
 }
 
 #stars {
@@ -37,25 +27,6 @@ body, html {
   height: 100%;
   z-index: -9;
   pointer-events: none;
-}
-
-.nebula {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -8;
-  /* Updated Nebula with new gradient colors and more shimmer */
-  background: radial-gradient(circle at 10% 15%, rgba(81,29,67,0.8), transparent 50%), /* Dark purple */
-              radial-gradient(circle at 90% 85%, rgba(11,29,81,0.7), transparent 50%), /* Dark blue */
-              radial-gradient(circle at 50% 50%, rgba(81,29,67,0.6), transparent 60%), /* Central dark purple */
-              radial-gradient(circle at 20% 70%, rgba(11,29,81,0.5), transparent 60%); /* Another dark blue spot */
-  animation: subtleGlow 30s infinite alternate;
-}
-
-@keyframes subtleGlow {
-    0% { opacity: 0.9; }
-    100% { opacity: 1; }
 }
 
 /* ===== NAVBAR ===== */
@@ -79,16 +50,15 @@ nav {
 }
 
 .nav-right li {
-  padding: 8px 18px; /* Maintain consistent padding for a "pill" shape */
+  padding: 8px 18px;
   border-radius: 20px;
-  /* Navbar Item Gradient */
-  background: linear-gradient(45deg, #410445, #BB9796, #410445); /* Specified gradient */
-  color: #fff; /* White text for better contrast */
+  background: linear-gradient(45deg, #410445, #BB9796, #410445);
+  color: #fff;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
   transition: transform .2s ease;
-  min-width: 120px; /* Increased min-width for equal length/size */
+  min-width: 120px;
   text-align: center;
   box-sizing: border-box;
 }
@@ -98,7 +68,7 @@ nav {
 
 /* ===== HERO SECTION ===== */
 #hero {
-  height: 100vh;
+  min-height: 100vh; /* Use min-height to ensure it takes at least full viewport height */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -109,14 +79,13 @@ nav {
 
 #typed {
   font-size: 3rem;
-  /* "Hi, I'm Prateeksha" specific gradient */
   background: linear-gradient(45deg, #551D59, #BB9796, #551D59);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: 'Poppins', sans-serif; /* Explicitly ensure Poppins */
+  font-family: 'Poppins', sans-serif;
 }
 
-.hero-text p.hero-subtitle { /* Added specific class for subtitle */
+.hero-text p.hero-subtitle {
   font-size: 1.3rem;
   padding: 10px 20px;
   background: rgba(0,0,0,0.3);
@@ -125,21 +94,20 @@ nav {
   margin-top: 15px;
 }
 
-.hero-text button.hero-button { /* Added specific class for button */
+.hero-text button.hero-button {
   margin-top: 20px;
   padding: 15px 30px;
   font-size: 1.2rem;
-  /* Same gradient as navbar */
   background: linear-gradient(45deg, #410445, #BB9796, #410445);
   color: #fff;
   border: none;
   border-radius: 25px;
   cursor: pointer;
   transition: background .3s ease, transform 0.2s ease;
-  font-family: 'Poppins', sans-serif; /* Explicitly ensure Poppins */
+  font-family: 'Poppins', sans-serif;
 }
 .hero-text button.hero-button:hover {
-  transform: scale(1.05); /* Slight hover effect */
+  transform: scale(1.05);
   opacity: 0.9;
 }
 
@@ -153,19 +121,21 @@ nav {
   justify-content: center;
   align-items: center;
   z-index: 20;
+  /* Allow scrolling within modal for smaller screens */
+  overflow-y: auto;
 }
 
 .modal-box {
   padding: 40px;
   border-radius: 20px;
   width: 90%;
-  max-width: 900px; /* General max-width for about, skills, interests, contact */
+  max-width: 900px;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
   box-sizing: border-box;
-  /* Common Modal Background Gradient */
-  background: linear-gradient(45deg, #4F1653, #0E0941, #4F1653); /* Specified gradient */
+  /* Common Modal Background Color (Solid Blueish) */
+  background-color: #0E0941;
   color: #F0E4D3;
 }
 
@@ -175,15 +145,15 @@ nav {
   margin-bottom: 20px;
 }
 
-.modal-body-text { /* New class for increased font size for modal body text */
-  font-size: 1.1rem; /* Increased font size */
+.modal-body-text {
+  font-size: 1.1rem;
   line-height: 1.6;
 }
-.modal-body-text strong { /* Keep strong text clear */
+.modal-body-text strong {
   color: #D9BB9B;
 }
-.modal-body-text-small { /* For smaller text in experience section */
-  font-size: 0.95rem; /* Reduced font size */
+.modal-body-text-small {
+  font-size: 0.95rem;
   line-height: 1.5;
 }
 .modal-body-text-small strong {
@@ -193,36 +163,33 @@ nav {
 /* ===== PROJECTS & ACHIEVEMENTS (Carousel Layout) ===== */
 #projects .modal-box,
 #achievements .modal-box {
-  max-width: 1050px; /* Adjusted to fit 3 cards comfortably (280*3 + 30*2 = 900px, leaves padding) */
+  max-width: 1050px;
   padding: 30px;
-  overflow-x: hidden; /* Ensure no horizontal scrollbar */
+  overflow-x: hidden;
 }
 
-.carousel-wrapper { /* Re-enabled for projects and achievements */
+.carousel-wrapper {
   overflow: hidden;
   position: relative;
   width: 100%;
 }
 
-.carousel-track { /* Re-enabled for projects and achievements */
+.carousel-track {
   display: flex;
-  width: max-content; /* Allows content to exceed viewport */
+  width: max-content;
   padding: 10px 0;
-  /* Animation will be applied by JS */
 }
 
 /* Common Card Styling for Projects and Achievements */
 .card {
   flex-shrink: 0;
-  width: 280px; /* Fixed width for each card */
-  height: 380px; /* Portrait height */
-  margin-right: 30px; /* Gap between cards */
+  width: 280px;
+  height: 380px;
+  margin-right: 30px;
   position: relative;
   overflow: hidden;
   border-radius: 15px;
-  /* Common Card Background Gradient */
   background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
-  color: #F0E4D3;
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -235,13 +202,13 @@ nav {
 
 .card img {
   width: 100%;
-  height: 50%; /* Reduced image height */
+  height: 50%;
   object-fit: cover;
   border-radius: 10px;
-  padding: 0; /* REMOVED white frame border */
-  background: none; /* REMOVED white frame background */
+  padding: 0;
+  background: none;
   box-sizing: border-box;
-  box-shadow: none; /* REMOVED white frame shadow */
+  box-shadow: none;
 }
 
 .card .card-content {
@@ -253,19 +220,21 @@ nav {
   justify-content: center;
 }
 
-.card h3 {
-  font-size: 1.2rem;
+.card h3, .card p { /* Set card content to black */
+  color: black;
   margin-top: 0;
   margin-bottom: 10px;
 }
-
+.card h3 {
+  font-size: 1.2rem;
+}
 .card p {
   font-size: 0.9rem;
   margin-bottom: 0;
 }
 
 
-/* Keyframes for Projects/Achievements Carousel (will be applied by JS) */
+/* Keyframes for Projects Carousel (will be applied by JS) */
 @keyframes scrollProjects {
   0% { transform: translateX(0); }
   100% { transform: translateX(var(--scroll-distance)); }
@@ -274,14 +243,14 @@ nav {
 
 /* ===== EXPERIENCE ===== */
 #experience .modal-box {
-  max-width: 1000px; /* Increased max-width again for more space */
+  max-width: 1000px;
   overflow-y: auto;
 }
 .experience-grid {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap; /* Default: no wrap for larger screens */
   justify-content: center;
-  gap: 50px; /* Increased gap between cards */
+  gap: 50px;
   margin-top: 30px;
   overflow-x: hidden;
   padding-bottom: 0;
@@ -293,29 +262,35 @@ nav {
   padding: 20px;
   border-radius: 15px;
   width: 360px;
-  color: #F0E4D3;
+  color: #F0E4D3; /* Keep general experience card text light for better contrast on experience cards */
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
 }
 
 .exp-card h3 {
   font-size: 1.2rem;
+  color: black; /* Specific change for experience card titles */
 }
 .exp-card ul {
   margin-left: 20px;
+  color: black; /* Specific change for experience card list items */
 }
 .exp-card ul li {
   margin-bottom: 5px;
 }
+.exp-card p {
+  color: black; /* Specific change for experience card paragraphs */
+}
+
 
 /* ===== SKILLS ===== */
 #skills .modal-box {
-  max-width: 900px; /* Matches About modal-box max-width */
+  max-width: 900px;
 }
 .skills-icons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 40px; /* Space between icons */
+  gap: 40px;
   margin-top: 20px;
 }
 .skill-item {
@@ -325,15 +300,15 @@ nav {
   gap: 5px;
 }
 .skills-icons img {
-  width: 70px; /* Increased icon size */
-  height: 70px; /* Increased icon size */
+  width: 70px;
+  height: 70px;
   transition: transform 0.2s ease;
 }
 .skills-icons img:hover {
   transform: scale(1.1);
 }
 .skill-item span {
-  font-size: 0.9rem; /* Slightly increased text size for skills */
+  font-size: 0.9rem;
   color: #F0E4D3;
   text-align: center;
 }
@@ -356,14 +331,11 @@ nav {
 .modal#contact a:hover {
   color: #D9BB9B;
 }
-.contact-icon {
-  display: none;
-}
 
 /* ===== GENERIC CARD DETAIL POP-UP MODAL ===== */
 .card-detail-popup-box {
-  max-width: 400px; /* Adjust size for popped-up card */
-  max-height: 90vh; /* Allow height to adjust to content */
+  max-width: 400px;
+  max-height: 90vh;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -372,14 +344,14 @@ nav {
   overflow-y: auto;
 }
 .card-detail-popup-box .card {
-  width: 100%; /* Make the cloned card fill the popup box width */
-  height: auto; /* Allow height to adjust */
-  margin: 0; /* Remove margin from cloned card */
-  box-shadow: none; /* Remove duplicate shadow */
-  cursor: default; /* Not clickable as a whole */
+  width: 100%;
+  height: auto;
+  margin: 0;
+  box-shadow: none;
+  cursor: default;
 }
 .card-detail-popup-box .card:hover {
-  transform: none; /* No hover effect on the popped-up card */
+  transform: none;
 }
 
 
@@ -399,9 +371,9 @@ nav {
   max-height: 100%;
   object-fit: contain;
   border-radius: 15px;
-  padding: 0; /* No padding/white border on full image popup */
-  background: none; /* No background on full image popup */
-  box-shadow: none; /* No shadow on full image popup */
+  padding: 0;
+  background: none;
+  box-shadow: none;
 }
 
 /* ===== CLOSE BUTTON ===== */
@@ -419,15 +391,130 @@ nav {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 30; /* Ensure close button is on top */
+  z-index: 30;
 }
 
 /* ===== FOOTER ===== */
 footer {
   text-align: center;
   padding: 15px;
-  background: transparent;
+  background: transparent; /* Keep it transparent to show body gradient */
   color: #F0E4D3;
-  position: relative;
-  z-index: 10;
+  position: relative; /* Relative positioning within document flow */
+  z-index: 10; /* Ensure it's above background elements */
+  margin-top: 30px; /* Add some space above it */
+}
+
+
+/* ===== MOBILE RESPONSIVENESS ===== */
+@media (max-width: 768px) {
+  /* Navbar adjustments */
+  nav {
+    padding: 10px 0;
+  }
+  .nav-right {
+    flex-wrap: wrap; /* Allow items to wrap to next line */
+    gap: 10px;
+    padding: 0 10px; /* Add horizontal padding to prevent items touching edges */
+    justify-content: center; /* Center items when wrapped */
+  }
+  .nav-right li {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    min-width: unset; /* Remove fixed min-width for mobile */
+  }
+
+  /* Hero Section adjustments */
+  #hero {
+    min-height: calc(100vh - 80px); /* Adjust hero height considering wrapped navbar */
+    padding-top: 80px; /* Push content down below fixed navbar */
+  }
+  #typed {
+    font-size: 2rem;
+  }
+  .hero-text p.hero-subtitle {
+    font-size: 1rem;
+    padding: 8px 15px;
+  }
+  .hero-text button.hero-button {
+    font-size: 1rem;
+    padding: 12px 25px;
+  }
+
+  /* Modal adjustments */
+  .modal-box {
+    padding: 20px;
+    max-width: 95vw;
+    max-height: 95vh;
+  }
+  .modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  .modal-body-text, .modal-body-text-small {
+    font-size: 0.9rem;
+  }
+
+  /* Skills adjustments */
+  .skills-icons {
+    gap: 20px;
+  }
+  .skills-icons img {
+    width: 50px;
+    height: 50px;
+  }
+  .skill-item span {
+    font-size: 0.8rem;
+  }
+
+  /* Projects & Achievements Card adjustments for small screens */
+  #projects .modal-box,
+  #achievements .modal-box {
+    padding: 15px;
+    max-width: 95vw; /* Adjust for mobile viewport */
+  }
+  .carousel-wrapper {
+    /* overflow-x: scroll; /* Allow manual horizontal scrolling if needed */
+    /* -webkit-overflow-scrolling: touch; */
+  }
+  .card {
+    width: 250px; /* Slightly smaller card for mobile */
+    height: 350px;
+    margin-right: 20px;
+  }
+  .card h3 {
+    font-size: 1.1rem;
+  }
+  .card p {
+    font-size: 0.85rem;
+  }
+
+  /* Experience adjustments (stacking vertically) */
+  .experience-grid {
+    flex-wrap: wrap; /* Allow cards to wrap and stack */
+    flex-direction: column; /* Stack them vertically */
+    gap: 30px; /* Reduce gap when stacked */
+    align-items: center; /* Center stacked cards */
+  }
+  .exp-card {
+    width: 90%; /* Take more width on mobile */
+    max-width: 360px; /* Retain max width to prevent stretching too wide */
+    margin: 0 auto; /* Center the card */
+  }
+}
+
+/* Ensure footer is always visible at the bottom of the content */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+body > *:not(canvas) {
+  flex-shrink: 0; /* Prevent children from shrinking */
+}
+
+/* The hero section will naturally push the footer down if its height is sufficient,
+   otherwise, content will flow, and footer will be at the bottom */
+#hero {
+  flex-grow: 1; /* Allow hero section to take up available space */
 }
