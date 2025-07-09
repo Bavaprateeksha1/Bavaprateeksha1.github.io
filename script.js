@@ -15,6 +15,7 @@ function closeModal(id) {
 }
 
 window.addEventListener('click', event => {
+  // Close any modal if clicked outside its content box
   if (event.target.classList.contains('modal')) {
     event.target.style.display = 'none';
   }
@@ -35,38 +36,46 @@ function type() {
 }
 type();
 
-// Sparkling Stars
+// Sparkling Stars / Galaxy Effect
 const canvas = document.getElementById('stars');
 const ctx = canvas.getContext('2d');
 
-// Function to resize canvas and redraw stars
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  // Re-initialize stars if needed, or update their positions
-  // For simplicity, stars remain fixed relative to initial generation for now
 }
 
-window.addEventListener('resize', resizeCanvas); // Adjust canvas size on window resize
+window.addEventListener('resize', resizeCanvas);
 resizeCanvas(); // Initial call to set canvas size
 
 const stars = [];
-// Generate stars only once
-for (let i = 0; i < 120; i++) {
+for (let i = 0; i < 150; i++) { // Increased number of stars for better effect
   stars.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    radius: Math.random() * 2 + 1,
-    alpha: Math.random(),
-    delta: Math.random() * 0.02 // Slower twinkling
+    radius: Math.random() * 1.5 + 0.5, // Smaller stars
+    speed: Math.random() * 0.5 + 0.2, // Speed of falling (slower)
+    alpha: Math.random() * 0.8 + 0.2 // Initial alpha for twinkling
   });
 }
 
 function animateStars() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+
   stars.forEach(s => {
-    s.alpha += s.delta;
-    if (s.alpha <= 0 || s.alpha >= 1) s.delta = -s.delta;
+    // Update Y position to make stars fall down
+    s.y += s.speed;
+    // If star goes off screen, reset to top
+    if (s.y > canvas.height) {
+      s.y = 0;
+      s.x = Math.random() * canvas.width; // Random X for new star
+    }
+
+    // Twinkling effect (alpha change)
+    s.alpha += (Math.random() - 0.5) * 0.05; // Small random change
+    if (s.alpha > 1) s.alpha = 1;
+    if (s.alpha < 0) s.alpha = 0;
+
     ctx.beginPath();
     ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
     ctx.fillStyle = `rgba(255, 255, 255, ${s.alpha})`;
@@ -82,7 +91,7 @@ function setupProjectsCarousel() {
     const carouselTrack = document.querySelector('#projects .carousel-track');
     if (!carouselTrack) return;
 
-    // Remove any previously cloned cards
+    // Clear any previously cloned cards
     const originalCards = Array.from(carouselTrack.querySelectorAll('.card:not(.cloned)'));
     carouselTrack.innerHTML = ''; // Clear track to re-populate
 
@@ -95,9 +104,8 @@ function setupProjectsCarousel() {
     const numOriginalCards = originalCards.length;
 
     // Clone enough cards to create a seamless loop
-    // We need at least enough clones to fill the visible area + one full set of original cards
-    // A common practice for seamless loops is to duplicate the entire set once or twice.
-    const numberOfClonesNeeded = numOriginalCards * 2; // Duplicate the set twice
+    // Duplicate the set at least twice to ensure continuous flow
+    const numberOfClonesNeeded = numOriginalCards * 2;
 
     for (let i = 0; i < numberOfClonesNeeded; i++) {
         const clone = originalCards[i % numOriginalCards].cloneNode(true);
@@ -115,7 +123,22 @@ function setupProjectsCarousel() {
     carouselTrack.style.animation = 'none'; // Remove animation temporarily
     void carouselTrack.offsetWidth; // Trigger reflow to apply 'none'
     carouselTrack.style.animation = `scrollProjects ${numOriginalCards * 5}s linear infinite`; // Adjust speed (e.g., 5s per card set)
+
+    // Add click listeners to project cards for the pop-up
+    carouselTrack.querySelectorAll('.card').forEach(card => {
+        card.onclick = function() {
+            const imageUrl = this.getAttribute('data-image');
+            if (imageUrl) {
+                const popupImage = document.getElementById('popup-image');
+                popupImage.src = imageUrl;
+                openOnly('image-popup-modal');
+            }
+        };
+    });
 }
 
-// Ensure setupProjectsCarousel runs when the projects modal is opened
-// This is already handled by the openOnly function: `if (id === 'projects') { setupProjectsCarousel(); }`
+// Call setupProjectsCarousel when the DOM is fully loaded for initial setup
+document.addEventListener('DOMContentLoaded', () => {
+    // Initial setup of the carousel if it's visible by default, or call it when the modal opens.
+    // For now, it's called when 'projects' modal is opened.
+});
