@@ -27,8 +27,8 @@
   <section id="hero">
     <div class="hero-text">
       <h1 class="gradient-text" id="typed"></h1>
-      <p class="gradient-text">Crafting Biomedical ideas with stardust and circuitry</p>
-      <button onclick="openOnly('about')">WELCOME TO MY COSMIC WEB 🪐</button>
+      <p class="gradient-text hero-subtitle">Crafting Biomedical ideas with stardust and circuitry</p>
+      <button onclick="openOnly('about')" class="hero-button">WELCOME TO MY COSMIC WEB 🪐</button>
     </div>
   </section>
 
@@ -36,7 +36,7 @@
     <div class="modal-box bg-modal-gradient">
       <span class="close" onclick="closeModal('about')">&times;</span>
       <h2 class="modal-title">About</h2>
-      <p>
+      <p class="modal-body-text">
         Thinking in Circuits, Dreaming in Doodles 🎨🔌<br>
         Hey there! I'm Prateeksha 👩‍🔧 — a Biomedical Engineering enthusiast.<br>
         I enjoy weaving together science, logic, and a little magic to make sense of the world around me.<br>
@@ -69,8 +69,7 @@
     <div class="modal-box bg-modal-gradient">
       <span class="close" onclick="closeModal('projects')">&times;</span>
       <h2 class="modal-title">💡 Projects</h2>
-      <div class="carousel-wrapper">
-        <div class="carousel-track">
+      <div class="cards-grid" id="projects-grid">
           <div class="card project-card" data-card-type="project" data-image="images/projects/lifi.jpg">
             <img src="images/projects/lifi.jpg" alt="Audio Transmission Using Li-Fi">
             <div class="card-content">
@@ -127,7 +126,6 @@
               <p>Smart puzzle solver using AI.<br><a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank">🔗 Live Project</a></p>
             </div>
           </div>
-          </div>
       </div>
     </div>
   </div>
@@ -136,8 +134,7 @@
     <div class="modal-box bg-modal-gradient">
       <span class="close" onclick="closeModal('achievements')">&times;</span>
       <h2 class="modal-title">🏆 Achievements</h2>
-      <div class="achievements-carousel-wrapper">
-        <div class="achievements-track">
+      <div class="cards-grid" id="achievements-grid">
           <div class="card achievement-card" data-card-type="achievement" data-image="images/achievements/logo.jpg">
             <img src="images/achievements/logo.jpg" alt="Logo Design Winner">
             <div class="card-content">
@@ -159,7 +156,6 @@
               <p>Awarded for GPA 9.88 (1st year) & 10.0 (3rd sem).</p>
             </div>
           </div>
-        </div>
       </div>
     </div>
   </div>
@@ -168,7 +164,7 @@
     <div class="modal-box bg-modal-gradient">
       <span class="close" onclick="closeModal('interests')">&times;</span>
       <h2 class="modal-title">🧠 Areas of Interest</h2>
-      <ul>
+      <ul class="modal-body-text">
         <li>🧪 Biomedical Instrumentation</li>
         <li>🩺 Non‑Invasive Diagnosis & Therapeutic Devices</li>
         <li>👁️ Computer Vision</li>
@@ -186,15 +182,15 @@
       <div class="experience-grid">
         <div class="exp-card">
           <h3>💼 Internships</h3>
-          <p><strong>📊 Data Science & ML Intern – Infotact Solutions (Jul 2025 – Present)</strong></p>
-          <ul><li>Working on Data science and ML Based Projects.</li></ul>
-          <p><strong>🔬 Summer Research Intern – NIT Trichy (Jun 2025 – Present)</strong></p>
-          <ul>
+          <p class="modal-body-text"><strong>📊 Data Science & ML Intern – Infotact Solutions (Jul 2025 – Present)</strong></p>
+          <ul class="modal-body-text"><li>Working on Data science and ML Based Projects.</li></ul>
+          <p class="modal-body-text"><strong>🔬 Summer Research Intern – NIT Trichy (Jun 2025 – Present)</strong></p>
+          <ul class="modal-body-text">
             <li>Developing YOLO-based medical image/video analysis system.</li>
             <li>Preprocessing datasets and optimizing deep learning models.</li>
           </ul>
-          <p><strong>🏥 Biomedical Intern – Kauvery Hospital (Dec 2024)</strong></p>
-          <ul>
+          <p class="modal-body-text"><strong>🏥 Biomedical Intern – Kauvery Hospital (Dec 2024)</strong></p>
+          <ul class="modal-body-text">
             <li>Assisted in equipment maintenance and calibration.</li>
             <li>Monitored patient vitals and learned device handling protocols.</li>
             <li>Gained exposure to ICU and radiology workflows.</li>
@@ -202,18 +198,18 @@
         </div>
         <div class="exp-card">
           <h3>👥 Clubs</h3>
-          <p><strong>🎨 Designer – Electronics Club (Oct 2024 – Present)</strong></p>
-          <ul>
+          <p class="modal-body-text"><strong>🎨 Designer – Electronics Club (Oct 2024 – Present)</strong></p>
+          <ul class="modal-body-text">
             <li>Create event invites, branding materials, and posters.</li>
             <li>Work on team design coordination for campus events.</li>
           </ul>
-          <p><strong>🎨 Designer – ECE Association (Oct 2024 – Present)</strong></p>
-          <ul>
+          <p class="modal-body-text"><strong>🎨 Designer – ECE Association (Oct 2024 – Present)</strong></p>
+          <ul class="modal-body-text">
             <li>Designed digital content for academic events and conferences.</li>
             <li>Helped maintain cohesive visual identity for the association.</li>
           </ul>
-          <p><strong>🎨 Creatives & AIML – Aakash Research Labs (Jul 2025 – Present)</strong></p>
-          <ul>
+          <p class="modal-body-text"><strong>🎨 Creatives & AIML – Aakash Research Labs (Jul 2025 – Present)</strong></p>
+          <ul class="modal-body-text">
             <li>Designs visual material for Club events</li>
             <li>Work on Technical and AIML Projects.</li>
           </ul>
@@ -226,16 +222,16 @@
     <div class="modal-box bg-modal-gradient">
       <span class="close" onclick="closeModal('contact')">&times;</span>
       <h2 class="modal-title">Contact</h2>
-      <p class="contact-text-align-left">
+      <p class="contact-text-align-left modal-body-text">
         Email: <a href="mailto:bavaprateeksha123@gmail.com">bavaprateeksha123@gmail.com</a><br>
         LinkedIn: <a href="https://www.linkedin.com/in/bava-prateeksha-k-52811a28a" target="_blank">LINK</a>
       </p>
     </div>
   </div>
 
-  <div class="modal" id="card-detail-modal">
+  <div class="modal" id="card-detail-modal" data-parent-modal="">
     <div class="modal-box card-detail-popup-box bg-modal-gradient">
-      <span class="close" onclick="closeModal('card-detail-modal')">&times;</span>
+      <span class="close" onclick="closeCardDetailModal()">&times;</span>
       <div id="card-detail-content">
         </div>
     </div>
