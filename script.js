@@ -1,28 +1,37 @@
+// Variable to store the ID of the modal that opened the card detail modal
+let parentModalId = '';
+
 function openOnly(id) {
-  // Close all modals except the one being opened, unless it's a layered popup
+  // Close all modals *except* the card detail or image popup if they are currently open
   document.querySelectorAll('.modal').forEach(m => {
-    if (m.id !== id) { // Don't close the current modal
+    if (m.id !== id && m.id !== 'card-detail-modal' && m.id !== 'image-popup-modal') {
       m.style.display = 'none';
     }
   });
 
   const modal = document.getElementById(id);
-  if (modal) modal.style.display = 'flex';
-
-  // Specific logic for projects/achievements when opened
-  if (id === 'projects') {
-    setupCarousel('projects');
-  } else if (id === 'achievements') {
-    // Achievements carousel doesn't loop, but we need to attach click handlers
-    // If you want it looping like projects, the setupCarousel function would handle it.
-    // For now, it will just ensure click handlers are attached.
-    attachCardClickHandlers('achievements');
+  if (modal) {
+    modal.style.display = 'flex';
+    // If opening projects or achievements, attach click handlers
+    if (id === 'projects' || id === 'achievements') {
+      attachCardClickHandlers(id);
+    }
   }
 }
 
 function closeModal(id) {
   const modal = document.getElementById(id);
   if (modal) modal.style.display = 'none';
+}
+
+// Custom close function for the card detail modal
+function closeCardDetailModal() {
+  const cardDetailModal = document.getElementById('card-detail-modal');
+  cardDetailModal.style.display = 'none';
+  // Re-open the parent modal (projects or achievements)
+  if (parentModalId) {
+    document.getElementById(parentModalId).style.display = 'flex';
+  }
 }
 
 window.addEventListener('click', event => {
@@ -59,12 +68,12 @@ window.addEventListener('resize', resizeCanvas);
 resizeCanvas(); // Initial call to set canvas size
 
 const stars = [];
-for (let i = 0; i < 200; i++) { // Increased number of stars
+for (let i = 0; i < 300; i++) { // Increased number of stars
   stars.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    radius: Math.random() * 1.5 + 0.5,
-    speed: Math.random() * 0.5 + 0.2,
+    radius: Math.random() * 2 + 1, // Increased radius for larger stars
+    speed: Math.random() * 0.8 + 0.3, // Increased speed for more intensity
     alpha: Math.random() * 0.8 + 0.2
   });
 }
@@ -76,16 +85,16 @@ function createShootingStar() {
     shootingStars.push({
         x: startX,
         y: startY,
-        length: Math.random() * 50 + 30, // Length of the tail
-        speedX: Math.random() * 10 + 5, // Faster horizontal speed
-        speedY: Math.random() * 10 + 5, // Faster vertical speed
+        length: Math.random() * 70 + 40, // Increased length of the tail
+        speedX: Math.random() * 15 + 8, // Faster horizontal speed
+        speedY: Math.random() * 15 + 8, // Faster vertical speed
         alpha: 1,
         life: 1 // For fading out
     });
 }
 
-// Add shooting stars periodically
-setInterval(createShootingStar, Math.random() * 5000 + 3000); // Every 3-8 seconds
+// Add shooting stars periodically (more frequently)
+setInterval(createShootingStar, Math.random() * 3000 + 1500); // Every 1.5-4.5 seconds
 
 function animateStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
@@ -137,42 +146,15 @@ function animateStars() {
 animateStars();
 
 
-// Projects and Achievements Carousel Setup and Animation
-function setupCarousel(modalId) {
-    const carouselTrack = document.querySelector(`#${modalId} .carousel-track`);
-    if (!carouselTrack) return;
+// Function to attach click handlers for projects/achievements cards
+function attachCardClickHandlers(modalId) {
+    const cardsContainer = document.querySelector(`#${modalId} .cards-grid`);
+    if (!cardsContainer) return;
 
-    // Clear any previously cloned cards
-    const originalCards = Array.from(carouselTrack.querySelectorAll('.card:not(.cloned)'));
-    carouselTrack.innerHTML = ''; // Clear track to re-populate
-
-    // Re-append original cards
-    originalCards.forEach(card => {
-        carouselTrack.appendChild(card.cloneNode(true));
-    });
-
-    const cardWidthWithMargin = 280 + 30; // Card width + margin-right
-    const numOriginalCards = originalCards.length;
-
-    const numberOfClonesNeeded = numOriginalCards * 2;
-
-    for (let i = 0; i < numberOfClonesNeeded; i++) {
-        const clone = originalCards[i % numOriginalCards].cloneNode(true);
-        clone.classList.add('cloned');
-        carouselTrack.appendChild(clone);
-    }
-
-    const scrollDistance = numOriginalCards * cardWidthWithMargin;
-
-    carouselTrack.style.setProperty('--scroll-distance', `-${scrollDistance}px`);
-
-    carouselTrack.style.animation = 'none';
-    void carouselTrack.offsetWidth;
-    carouselTrack.style.animation = `scrollProjects ${numOriginalCards * 5}s linear infinite`;
-
-    // Add click listeners to project/achievement cards for the pop-up
-    carouselTrack.querySelectorAll('.card').forEach(card => {
+    cardsContainer.querySelectorAll('.card').forEach(card => {
         card.onclick = function() {
+            // Set the parent modal ID before opening the card detail
+            parentModalId = modalId;
             openCardDetailPopup(this);
         };
     });
@@ -183,17 +165,17 @@ function openCardDetailPopup(originalCardElement) {
     const cardDetailModal = document.getElementById('card-detail-modal');
     const cardDetailContent = document.getElementById('card-detail-content');
 
-    // Clone the original card's content, not the whole card element itself
+    // Clone the original card, excluding event listeners
     const clonedCard = originalCardElement.cloneNode(true);
 
-    // Remove any click listeners from the cloned card to avoid infinite loops
+    // Remove any click listeners from the cloned card to avoid unintended behavior
     clonedCard.onclick = null;
-    clonedCard.style.cursor = 'default'; // No cursor change on hover
+    clonedCard.style.cursor = 'default';
 
     // Add a specific click listener to the IMAGE within the cloned card
     const clonedImage = clonedCard.querySelector('img');
     if (clonedImage) {
-        clonedImage.style.cursor = 'pointer'; // Indicate image is clickable
+        clonedImage.style.cursor = 'pointer';
         clonedImage.onclick = function(event) {
             event.stopPropagation(); // Prevent card-level click if img is clicked
             openImagePopup(this.src);
@@ -201,7 +183,7 @@ function openCardDetailPopup(originalCardElement) {
     }
 
     // Replace content and open the card detail modal
-    cardDetailContent.innerHTML = ''; // Clear previous content
+    cardDetailContent.innerHTML = '';
     cardDetailContent.appendChild(clonedCard);
     openOnly('card-detail-modal');
 }
@@ -213,14 +195,10 @@ function openImagePopup(imageUrl) {
     openOnly('image-popup-modal');
 }
 
-// Function to attach click handlers specifically for non-looping carousels like achievements
-function attachCardClickHandlers(modalId) {
-    const achievementsTrack = document.querySelector(`#${modalId} .achievements-track`); // Note: different track class
-    if (!achievementsTrack) return;
-
-    achievementsTrack.querySelectorAll('.card').forEach(card => {
-        card.onclick = function() {
-            openCardDetailPopup(this);
-        };
-    });
-}
+// Initial attachment of card click handlers when the page loads
+// This ensures that even if projects/achievements are not the first modals opened,
+// their cards are clickable.
+document.addEventListener('DOMContentLoaded', () => {
+    attachCardClickHandlers('projects');
+    attachCardClickHandlers('achievements');
+});
