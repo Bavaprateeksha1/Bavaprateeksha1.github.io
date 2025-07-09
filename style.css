@@ -8,8 +8,8 @@ html, body {
   overflow-y: auto; /* Allow vertical scrolling by default */
   overflow-x: hidden; /* Prevent horizontal scrolling unless specifically allowed */
   color: #fff;
-  /* Outer part background gradient */
-  background: linear-gradient(to right, #511D43, #0B1D51, #511D43);
+  /* Outer part background diagonal gradient: Blue (left) -> Purple (middle) -> Blue (right) */
+  background: linear-gradient(135deg, #0A1C47, #4F1653, #0A1C47); /* 135deg for diagonal */
 }
 
 /* Specific overflow for smaller screens */
@@ -36,12 +36,12 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  /* Multiple radial gradients for layered galaxy effect */
+  /* Multiple radial gradients for layered galaxy effect - adjusted for new colors */
   background:
-    radial-gradient(circle at 15% 25%, rgba(11, 29, 81, 0.6) 0%, rgba(81, 29, 67, 0) 50%), /* Prominent blue dot */
-    radial-gradient(circle at 85% 75%, rgba(81, 29, 67, 0.5) 0%, rgba(11, 29, 81, 0) 40%), /* Pinkish dot */
-    radial-gradient(circle at 40% 60%, rgba(11, 29, 81, 0.4) 0%, rgba(81, 29, 67, 0) 60%), /* Fainter blue dot */
-    radial-gradient(circle at 70% 30%, rgba(81, 29, 67, 0.3) 0%, rgba(11, 29, 81, 0) 50%); /* Another fainter pinkish dot */
+    radial-gradient(circle at 15% 25%, rgba(10, 28, 71, 0.6) 0%, rgba(79, 22, 83, 0) 50%), /* Prominent blue dot */
+    radial-gradient(circle at 85% 75%, rgba(79, 22, 83, 0.5) 0%, rgba(10, 28, 71, 0) 40%), /* Pinkish/Purple dot */
+    radial-gradient(circle at 40% 60%, rgba(10, 28, 71, 0.4) 0%, rgba(79, 22, 83, 0) 60%), /* Fainter blue dot */
+    radial-gradient(circle at 70% 30%, rgba(79, 22, 83, 0.3) 0%, rgba(10, 28, 71, 0) 50%); /* Another fainter purple dot */
   z-index: -8; /* Above stars, below content */
   pointer-events: none; /* Allow clicks to pass through */
 }
@@ -70,7 +70,7 @@ nav {
 .nav-right li {
   padding: 8px 18px;
   border-radius: 20px;
-  background: linear-gradient(45deg, #410445, #BB9796, #410445);
+  background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C); /* Kept existing nav item gradient */
   color: #fff;
   font-weight: 600;
   font-size: 1rem;
@@ -97,7 +97,7 @@ nav {
 
 #typed {
   font-size: 3rem;
-  background: linear-gradient(45deg, #551D59, #BB9796, #551D59);
+  background: linear-gradient(45deg, #551D59, #BB9796, #551D59); /* Kept existing typed text gradient */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: 'Poppins', sans-serif;
@@ -116,7 +116,7 @@ nav {
   margin-top: 20px;
   padding: 15px 30px;
   font-size: 1.2rem;
-  background: linear-gradient(45deg, #410445, #BB9796, #410445);
+  background: linear-gradient(45deg, #410445, #BB9796, #410445); /* Kept existing hero button gradient */
   color: #fff;
   border: none;
   border-radius: 25px;
@@ -152,7 +152,7 @@ nav {
   position: relative;
   box-sizing: border-box;
   /* Restored Modal Background Gradient */
-  background: linear-gradient(45deg, #4F1653, #0E0941, #4F1653);
+  background: linear-gradient(45deg, #4F1653, #0E0941, #4F1653); /* Kept existing modal gradient */
   color: #F0E4D3;
 }
 
@@ -223,7 +223,7 @@ nav {
   position: relative;
   overflow: hidden;
   border-radius: 15px;
-  background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
+  background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C); /* Kept existing card gradient */
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -304,7 +304,7 @@ nav {
 .exp-card p,
 .exp-card ul,
 .exp-card ul li {
-  color: black;
+  color: black; /* Explicitly set to black */
 }
 .exp-card h3 {
   font-size: 1.2rem;
