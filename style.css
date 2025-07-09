@@ -71,8 +71,9 @@ nav {
 .nav-right li {
   padding: 8px 18px;
   border-radius: 20px;
-  background: linear-gradient(45deg, #F0E4D3, #433D8B, #F0E4D3);
-  color: #000;
+  /* Updated Navbar Item Gradient */
+  background: linear-gradient(45deg, #575098, #A3A1BC, #575098);
+  color: #000; /* Keeping text color black for contrast as per previous */
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
@@ -95,7 +96,8 @@ nav {
 
 #typed {
   font-size: 3rem;
-  background: linear-gradient(45deg, #F0E4D3, #433D8B, #F0E4D3);
+  /* Updated "Hi, I'm Prateeksha" Gradient */
+  background: linear-gradient(45deg, #575098, #A3A1BC, #575098);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -129,7 +131,7 @@ nav {
   position: fixed;
   top: 0; left: 0;
   width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.6); /* Slightly darker overlay for pop-ups */
   display: none;
   justify-content: center;
   align-items: center;
@@ -145,19 +147,8 @@ nav {
   overflow-y: auto;
   position: relative;
   box-sizing: border-box;
-}
-
-/* Specific modal backgrounds */
-.bg-gradient {
-  background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
-  color: #F0E4D3;
-}
-.bg-gradient-wide {
-  background: linear-gradient(135deg, #433D8B, #2C318C);
-  color: #F0E4D3;
-}
-.bg-purple { /* Specifically for skills modal */
-  background: linear-gradient(45deg, #433D8B, #6A5ACD); /* A clear purple gradient */
+  /* Common Modal Background Gradient (remains the same as per previous request) */
+  background: linear-gradient(45deg, #433D8B, #060048, #433D8B);
   color: #F0E4D3;
 }
 
@@ -169,34 +160,33 @@ nav {
 
 /* ===== PROJECTS ===== */
 #projects .modal-box {
-  width: 90%;
-  max-width: 1000px; /* Adjusted to tightly fit 3 cards + gaps */
+  max-width: 1100px; /* Increased max-width for projects */
   padding: 30px;
-  overflow-x: hidden; /* Hide horizontal scrollbar within modal-box itself */
+  overflow-x: hidden;
 }
 
 .carousel-wrapper {
-  overflow: hidden; /* This hides the overflowing cards */
+  overflow: hidden;
   position: relative;
   width: 100%;
 }
 
 .carousel-track {
   display: flex;
-  width: max-content; /* Allows content to exceed viewport */
+  width: max-content;
   padding: 10px 0;
-  /* Animation defined in JS to ensure dynamic calculation */
 }
 
 /* Common Card Styling for Projects and Achievements */
 .card {
-  flex-shrink: 0; /* Prevent cards from shrinking */
+  flex-shrink: 0;
   width: 280px; /* Fixed width for each card */
   height: 380px; /* Portrait height */
   margin-right: 30px; /* Gap between cards */
   position: relative;
   overflow: hidden;
   border-radius: 15px;
+  /* Common Card Background Gradient (remains the same) */
   background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
   color: #F0E4D3;
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
@@ -213,14 +203,15 @@ nav {
   width: 100%;
   height: 60%; /* Image takes up top portion */
   object-fit: cover;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-radius: 15px; /* Apply border-radius to image for curved edges */
+  padding: 5px; /* Small padding to show card background around image */
+  box-sizing: border-box; /* Include padding in width/height */
 }
 
 .card .card-content {
   padding: 15px;
   text-align: center;
-  flex-grow: 1; /* Allows content to take remaining space */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -241,42 +232,41 @@ nav {
 /* Keyframes for Projects Carousel (will be applied by JS) */
 @keyframes scrollProjects {
   0% { transform: translateX(0); }
-  /* The value below will be dynamically calculated and set by JS for seamless looping */
   100% { transform: translateX(var(--scroll-distance)); }
 }
 
 
 /* ===== ACHIEVEMENTS ===== */
 #achievements .modal-box {
-  width: 90%;
-  max-width: 1000px; /* Same as projects to fit 3 cards + gaps */
+  max-width: 1000px; /* Consistent with projects for 3 cards */
   padding: 30px;
 }
 
 .achievements-carousel-wrapper {
-  overflow: hidden; /* Hide any overflow if content somehow exceeds */
+  overflow: hidden;
   position: relative;
   width: 100%;
 }
 
 .achievements-track {
   display: flex;
-  justify-content: center; /* Center cards */
-  gap: 30px; /* Equal gap between cards */
+  justify-content: center;
+  gap: 30px;
   padding: 20px 0;
 }
 
 .achievements-track .card {
-  width: 280px; /* Fixed width for consistency with projects */
-  height: 380px; /* Fixed height for consistency */
-  margin-right: 0; /* Gap handles spacing */
+  width: 280px;
+  height: 380px;
+  margin-right: 0;
 }
+/* Image styling for achievement cards is covered by the common .card img rule */
 
 
 /* ===== EXPERIENCE ===== */
 #experience .modal-box {
-  width: 90%;
-  max-width: 800px;
+  max-width: 900px; /* Increased max-width to fit both cards comfortably */
+  overflow-y: auto; /* Keep vertical scroll for content */
 }
 .experience-grid {
   display: flex;
@@ -284,12 +274,13 @@ nav {
   justify-content: center;
   gap: 30px;
   margin-top: 30px;
-  overflow-x: auto; /* Allow horizontal scrolling if content exceeds modal width */
-  padding-bottom: 15px; /* For scrollbar visibility */
+  overflow-x: hidden; /* Hide horizontal scrollbar if modal width is sufficient */
+  padding-bottom: 0; /* No need for padding if no scrollbar */
 }
 
 .exp-card {
   flex-shrink: 0;
+  /* Common Card Background Gradient */
   background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
   padding: 20px;
   border-radius: 15px;
@@ -312,7 +303,7 @@ nav {
 /* ===== SKILLS ===== */
 .skills-icons {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping for skills icons to fit smaller screens */
+  flex-wrap: wrap;
   justify-content: center;
   gap: 25px;
   margin-top: 20px;
@@ -339,11 +330,10 @@ nav {
 
 /* ===== CONTACT ===== */
 #contact .modal-box {
-  width: 90%;
   max-width: 600px;
 }
-.modal#contact p {
-  text-align: center;
+.modal#contact p.contact-text-align-left { /* New class for specific alignment */
+  text-align: left; /* Left align text */
   font-size: 1.1rem;
   line-height: 1.8;
 }
@@ -356,11 +346,27 @@ nav {
 .modal#contact a:hover {
   color: #D9BB9B;
 }
-/* Ensure no icon styling exists or is overridden */
-.contact-icon { /* This class is now unused in HTML but kept for safety */
-  display: none;
+.contact-icon {
+  display: none; /* Ensure no icons are displayed */
 }
 
+/* ===== IMAGE POP-UP MODAL ===== */
+.image-popup-box {
+  padding: 20px; /* Smaller padding for image modal */
+  max-width: 90vw; /* Max width relative to viewport */
+  max-height: 90vh; /* Max height relative to viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Hide scrollbars */
+}
+
+.image-popup-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Ensure full image is visible, scale down if needed */
+  border-radius: 15px; /* Rounded corners for the pop-up image */
+}
 
 /* ===== CLOSE BUTTON ===== */
 .close {
