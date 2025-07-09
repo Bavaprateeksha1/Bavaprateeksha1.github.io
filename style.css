@@ -3,8 +3,8 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  height: 100%; /* Default height for desktop */
-  min-height: 100vh; /* Ensure it covers viewport even with less content */
+  height: 100%;
+  min-height: 100vh;
   overflow-y: auto; /* Allow vertical scrolling by default */
   overflow-x: hidden; /* Prevent horizontal scrolling unless specifically allowed */
   color: #fff;
@@ -28,6 +28,24 @@ html, body {
   z-index: -9;
   pointer-events: none;
 }
+
+/* New Nebula Layer for the "blue dots zoomed" galaxy effect */
+.nebula-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Multiple radial gradients for layered galaxy effect */
+  background:
+    radial-gradient(circle at 15% 25%, rgba(11, 29, 81, 0.6) 0%, rgba(81, 29, 67, 0) 50%), /* Prominent blue dot */
+    radial-gradient(circle at 85% 75%, rgba(81, 29, 67, 0.5) 0%, rgba(11, 29, 81, 0) 40%), /* Pinkish dot */
+    radial-gradient(circle at 40% 60%, rgba(11, 29, 81, 0.4) 0%, rgba(81, 29, 67, 0) 60%), /* Fainter blue dot */
+    radial-gradient(circle at 70% 30%, rgba(81, 29, 67, 0.3) 0%, rgba(11, 29, 81, 0) 50%); /* Another fainter pinkish dot */
+  z-index: -8; /* Above stars, below content */
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
 
 /* ===== NAVBAR ===== */
 nav {
@@ -68,7 +86,7 @@ nav {
 
 /* ===== HERO SECTION ===== */
 #hero {
-  min-height: 100vh; /* Use min-height to ensure it takes at least full viewport height */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -121,7 +139,6 @@ nav {
   justify-content: center;
   align-items: center;
   z-index: 20;
-  /* Allow scrolling within modal for smaller screens */
   overflow-y: auto;
 }
 
@@ -134,8 +151,8 @@ nav {
   overflow-y: auto;
   position: relative;
   box-sizing: border-box;
-  /* Common Modal Background Color (Solid Blueish) */
-  background-color: #0E0941;
+  /* Restored Modal Background Gradient */
+  background: linear-gradient(45deg, #4F1653, #0E0941, #4F1653);
   color: #F0E4D3;
 }
 
@@ -176,16 +193,33 @@ nav {
 
 .carousel-track {
   display: flex;
-  width: max-content;
   padding: 10px 0;
 }
+
+/* Projects specific styling */
+#projects .carousel-track {
+    width: max-content; /* Allows animation by defining a large width */
+}
+
+/* Achievements specific styling: centered, no motion */
+#achievements .carousel-track {
+    width: 100%; /* Take full width to allow centering */
+    flex-wrap: wrap; /* Allow cards to wrap */
+    justify-content: center; /* Center the cards */
+    animation: none !important; /* Explicitly disable animation */
+}
+/* Adjust card margin for achievements to allow equal spacing when wrapped */
+#achievements .card {
+    margin: 15px; /* Equal margin on all sides for centering */
+}
+
 
 /* Common Card Styling for Projects and Achievements */
 .card {
   flex-shrink: 0;
   width: 280px;
   height: 380px;
-  margin-right: 30px;
+  margin-right: 30px; /* Default margin for projects carousel */
   position: relative;
   overflow: hidden;
   border-radius: 15px;
@@ -262,23 +296,24 @@ nav {
   padding: 20px;
   border-radius: 15px;
   width: 360px;
-  color: #F0E4D3; /* Keep general experience card text light for better contrast on experience cards */
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
 }
 
+/* Ensure all text inside exp-card is black */
+.exp-card h3,
+.exp-card p,
+.exp-card ul,
+.exp-card ul li {
+  color: black;
+}
 .exp-card h3 {
   font-size: 1.2rem;
-  color: black; /* Specific change for experience card titles */
 }
 .exp-card ul {
   margin-left: 20px;
-  color: black; /* Specific change for experience card list items */
 }
 .exp-card ul li {
   margin-bottom: 5px;
-}
-.exp-card p {
-  color: black; /* Specific change for experience card paragraphs */
 }
 
 
@@ -398,11 +433,11 @@ nav {
 footer {
   text-align: center;
   padding: 15px;
-  background: transparent; /* Keep it transparent to show body gradient */
+  background: transparent;
   color: #F0E4D3;
-  position: relative; /* Relative positioning within document flow */
-  z-index: 10; /* Ensure it's above background elements */
-  margin-top: 30px; /* Add some space above it */
+  position: relative;
+  z-index: 10;
+  margin-top: 30px;
 }
 
 
@@ -413,21 +448,21 @@ footer {
     padding: 10px 0;
   }
   .nav-right {
-    flex-wrap: wrap; /* Allow items to wrap to next line */
+    flex-wrap: wrap;
     gap: 10px;
-    padding: 0 10px; /* Add horizontal padding to prevent items touching edges */
-    justify-content: center; /* Center items when wrapped */
+    padding: 0 10px;
+    justify-content: center;
   }
   .nav-right li {
     font-size: 0.8rem;
     padding: 6px 12px;
-    min-width: unset; /* Remove fixed min-width for mobile */
+    min-width: unset;
   }
 
   /* Hero Section adjustments */
   #hero {
-    min-height: calc(100vh - 80px); /* Adjust hero height considering wrapped navbar */
-    padding-top: 80px; /* Push content down below fixed navbar */
+    min-height: calc(100vh - 80px);
+    padding-top: 80px;
   }
   #typed {
     font-size: 2rem;
@@ -471,16 +506,16 @@ footer {
   #projects .modal-box,
   #achievements .modal-box {
     padding: 15px;
-    max-width: 95vw; /* Adjust for mobile viewport */
-  }
-  .carousel-wrapper {
-    /* overflow-x: scroll; /* Allow manual horizontal scrolling if needed */
-    /* -webkit-overflow-scrolling: touch; */
+    max-width: 95vw;
   }
   .card {
-    width: 250px; /* Slightly smaller card for mobile */
+    width: 250px;
     height: 350px;
-    margin-right: 20px;
+    margin-right: 20px; /* Default margin for projects */
+  }
+  /* Specific margin for achievements cards on mobile */
+  #achievements .card {
+    margin: 10px; /* Slightly reduced margin for mobile centering */
   }
   .card h3 {
     font-size: 1.1rem;
@@ -491,30 +526,27 @@ footer {
 
   /* Experience adjustments (stacking vertically) */
   .experience-grid {
-    flex-wrap: wrap; /* Allow cards to wrap and stack */
-    flex-direction: column; /* Stack them vertically */
-    gap: 30px; /* Reduce gap when stacked */
-    align-items: center; /* Center stacked cards */
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
   }
   .exp-card {
-    width: 90%; /* Take more width on mobile */
-    max-width: 360px; /* Retain max width to prevent stretching too wide */
-    margin: 0 auto; /* Center the card */
+    width: 90%;
+    max-width: 360px;
+    margin: 0 auto;
   }
 }
 
-/* Ensure footer is always visible at the bottom of the content */
 body {
   display: flex;
   flex-direction: column;
 }
 
-body > *:not(canvas) {
-  flex-shrink: 0; /* Prevent children from shrinking */
+body > *:not(canvas):not(.nebula-layer) {
+  flex-shrink: 0;
 }
 
-/* The hero section will naturally push the footer down if its height is sufficient,
-   otherwise, content will flow, and footer will be at the bottom */
 #hero {
-  flex-grow: 1; /* Allow hero section to take up available space */
+  flex-grow: 1;
 }
