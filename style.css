@@ -45,11 +45,11 @@ body, html {
   width: 100vw;
   height: 100vh;
   z-index: -8;
-  /* More purple shimmer/galaxy effect */
-  background: radial-gradient(circle at 10% 15%, rgba(100, 0, 150, 0.6), transparent 50%),
-              radial-gradient(circle at 90% 85%, rgba(50, 0, 100, 0.5), transparent 50%),
-              radial-gradient(circle at 50% 50%, rgba(150, 0, 200, 0.4), transparent 60%), /* Central brighter purple */
-              radial-gradient(circle at 20% 70%, rgba(200, 50, 255, 0.3), transparent 60%); /* Another purple spot */
+  /* Updated Nebula with new gradient colors and more shimmer */
+  background: radial-gradient(circle at 10% 15%, rgba(81,29,67,0.8), transparent 50%), /* Dark purple */
+              radial-gradient(circle at 90% 85%, rgba(11,29,81,0.7), transparent 50%), /* Dark blue */
+              radial-gradient(circle at 50% 50%, rgba(81,29,67,0.6), transparent 60%), /* Central dark purple */
+              radial-gradient(circle at 20% 70%, rgba(11,29,81,0.5), transparent 60%); /* Another dark blue spot */
   animation: subtleGlow 30s infinite alternate;
 }
 
@@ -62,12 +62,11 @@ body, html {
 nav {
   position: fixed;
   top: 0;
-  /* Removed height property, relying on padding of ul/li */
   width: 100%;
   padding: 15px 0;
   background: rgba(0,0,0,0.25);
   z-index: 10;
-  box-sizing: border-box; /* Ensures padding is included in width */
+  box-sizing: border-box;
 }
 
 .nav-right {
@@ -80,11 +79,11 @@ nav {
 }
 
 .nav-right li {
-  padding: 8px 18px;
+  padding: 8px 18px; /* Maintain consistent padding for a "pill" shape */
   border-radius: 20px;
-  /* New purple/background based gradient */
-  background: linear-gradient(45deg, #7A00FF, #BE29EC, #7A00FF); /* Deep purple to lighter purple */
-  color: #fff; /* White text for better contrast on purple */
+  /* Updated Navbar Item Gradient */
+  background: linear-gradient(45deg, #410445, #BB9796, #410445); /* New contrasting gradient */
+  color: #fff; /* White text for better contrast */
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
@@ -111,7 +110,7 @@ nav {
 #typed {
   font-size: 3rem;
   /* Same gradient as navbar */
-  background: linear-gradient(45deg, #7A00FF, #BE29EC, #7A00FF);
+  background: linear-gradient(45deg, #410445, #BB9796, #410445);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: 'Poppins', sans-serif; /* Explicitly ensure Poppins */
@@ -131,7 +130,7 @@ nav {
   padding: 15px 30px;
   font-size: 1.2rem;
   /* Same gradient as navbar and #typed */
-  background: linear-gradient(45deg, #7A00FF, #BE29EC, #7A00FF);
+  background: linear-gradient(45deg, #410445, #BB9796, #410445);
   color: #fff;
   border: none;
   border-radius: 25px;
@@ -165,6 +164,7 @@ nav {
   overflow-y: auto;
   position: relative;
   box-sizing: border-box;
+  /* Common Modal Background Gradient */
   background: linear-gradient(45deg, #433D8B, #060048, #433D8B);
   color: #F0E4D3;
 }
@@ -193,7 +193,7 @@ nav {
 
 .cards-grid { /* Replaced carousel-wrapper/track with a grid */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Auto-fit 2-3 columns */
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); /* Auto-fit columns, min 380px to fit cards */
   gap: 30px; /* Space between cards */
   justify-items: center; /* Center cards in their grid cells */
   padding: 10px 0;
@@ -206,6 +206,7 @@ nav {
   position: relative;
   overflow: hidden;
   border-radius: 15px;
+  /* Common Card Background Gradient */
   background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
   color: #F0E4D3;
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
