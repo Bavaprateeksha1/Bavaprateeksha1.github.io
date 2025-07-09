@@ -71,7 +71,8 @@ nav {
 
 .nav-right {
   display: flex;
-  gap: 18px;
+  justify-content: center; /* Center align */
+  gap: 20px;
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -79,13 +80,19 @@ nav {
 }
 
 .nav-right li {
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: rgba(240, 228, 211, 0.15);
+  backdrop-filter: blur(6px);
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  font-weight: 800;
-  background: linear-gradient(45deg, #F0E4D3, #DECFAC, #F0E4D3);
+  transition: transform 0.2s ease;
+  background: linear-gradient(45deg, #DCC5B2, #F0E4D3, #FAF7F3);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  transition: transform 0.2s ease;
 }
+
 
 .nav-right li:hover {
   transform: scale(1.1);
@@ -149,16 +156,23 @@ nav {
   z-index: 20;
 }
 
-.modal-box {
-  width: 90%;
-  max-width: 800px;
-  background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
+.experience-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.exp-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
   border-radius: 15px;
-  padding: 30px;
-  position: relative;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  flex: 1 1 300px;
+  max-width: 400px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  color: #0B0F5E;
+  font-size: 0.95rem;
 }
 
 /* ✅ Extra bold modal heading */
@@ -197,10 +211,22 @@ nav {
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  animation: scroll-x 20s linear infinite alternate;
 }
+
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 
 .card {
   background: #D6C8B9;
@@ -312,3 +338,21 @@ a:hover {
     height: 180px;
   }
 }
+.skills-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.skills-icons img {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
+.skills-icons img:hover {
+  transform: scale(1.1);
+}
+
