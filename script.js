@@ -34,12 +34,6 @@ function closeCardDetailModal() {
   }
 }
 
-window.addEventListener('click', event => {
-  // This event listener was removed to prevent issues with layered popups.
-  // We rely solely on the close buttons.
-});
-
-
 // Typing effect
 const text = "Hi, I’m Prateeksha";
 let i = 0;
@@ -163,26 +157,29 @@ function setupCarousel(modalId) {
     const cardWidthWithMargin = 280 + 30; // Card width + margin-right
     const numOriginalCards = originalCards.length;
 
-    // Clone enough cards to create a seamless loop
-    const numberOfClonesNeeded = numOriginalCards * 2; // Duplicate the set twice
-
-    for (let i = 0; i < numberOfClonesNeeded; i++) {
-        const clone = originalCards[i % numOriginalCards].cloneNode(true);
-        clone.classList.add('cloned');
-        carouselTrack.appendChild(clone);
+    // Clone enough cards to create a seamless loop FOR PROJECTS
+    // Achievements will not have continuous animation, so cloning is minimal
+    if (modalId === 'projects') {
+        const numberOfClonesNeeded = numOriginalCards * 2; // Duplicate the set twice for seamless loop
+        for (let i = 0; i < numberOfClonesNeeded; i++) {
+            const clone = originalCards[i % numOriginalCards].cloneNode(true);
+            clone.classList.add('cloned');
+            carouselTrack.appendChild(clone);
+        }
     }
+
 
     const scrollDistance = numOriginalCards * cardWidthWithMargin;
 
     carouselTrack.style.setProperty('--scroll-distance', `-${scrollDistance}px`);
 
-    // Only apply animation if it's the projects/achievements modal
-    if (modalId === 'projects' || modalId === 'achievements') {
+    // Only apply animation if it's the projects modal
+    if (modalId === 'projects') {
         carouselTrack.style.animation = 'none'; // Temporarily remove animation
         void carouselTrack.offsetWidth; // Trigger reflow
         carouselTrack.style.animation = `scrollProjects ${numOriginalCards * 5}s linear infinite`; // Apply animation
     } else {
-        carouselTrack.style.animation = 'none'; // Ensure no animation for other tracks
+        carouselTrack.style.animation = 'none'; // Ensure no animation for other tracks (achievements)
     }
 
     // Add click listeners to cards for the pop-up
@@ -230,12 +227,3 @@ function openImagePopup(imageUrl) {
     popupImage.src = imageUrl;
     openOnly('image-popup-modal');
 }
-
-// Initial attachment of card click handlers when the page loads
-// This ensures that even if projects/achievements are not the first modals opened,
-// their cards are clickable.
-document.addEventListener('DOMContentLoaded', () => {
-    // These will be called when their respective modals are opened now
-    // setupCarousel('projects'); // Removed initial call, now called on openOnly
-    // setupCarousel('achievements'); // Removed initial call, now called on openOnly
-});
