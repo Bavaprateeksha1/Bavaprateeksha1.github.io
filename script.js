@@ -1,104 +1,64 @@
-// ========================
-// script.js
-// ========================
-
-// Modal control
+// Function to show only the selected modal
 function openOnly(id) {
-  document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
-  const modal = document.getElementById(id);
-  if (modal) modal.style.display = 'flex';
-}
+  // Close all other modals
+  const modals = document.querySelectorAll('.modal');
+  modals.forEach(modal => {
+    modal.style.display = 'none';
+  });
 
-function closeModal(id) {
-  const modal = document.getElementById(id);
-  if (modal) modal.style.display = 'none';
-}
-
-// Typing effect for hero heading
-const typedText = "Hi, I’m Bava Prateeksha";
-let ti = 0;
-function startTyping() {
-  const el = document.getElementById('typed');
-  if (!el) return;
-  el.innerText = '';
-  ti = 0;
-  type();
-}
-function type() {
-  const el = document.getElementById('typed');
-  if (ti <= typedText.length) {
-    el.innerText = typedText.slice(0, ti) + (ti % 2 === 0 ? '|' : '');
-    ti++;
-    setTimeout(type, 130);
+  // Open the selected modal
+  const modalToOpen = document.getElementById(id);
+  if (modalToOpen) {
+    modalToOpen.style.display = 'flex';
   }
 }
-startTyping();
 
-// Sparkling stars background
-const canvas = document.getElementById('stars'),
-      ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let stars = [];
-for (let k = 0; k < 250; k++) {
-  stars.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 2 + 1,
-    alpha: Math.random(),
-    dx: (Math.random() - 0.5) * 0.5,
-    dy: (Math.random() - 0.5) * 0.5
-  });
+// Function to close a specific modal
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = 'none';
+  }
 }
 
-function drawStars() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'white';
-  stars.forEach(s => {
-    ctx.globalAlpha = s.alpha;
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, 2 * Math.PI);
-    ctx.fill();
-    s.x += s.dx;
-    s.y += s.dy;
-    if (s.x < 0 || s.x > canvas.width || s.y < 0 || s.y > canvas.height) {
-      s.x = Math.random() * canvas.width;
-      s.y = Math.random() * canvas.height;
+// Click outside modal-box to close modal (optional UX improvement)
+window.addEventListener('click', function (event) {
+  const modals = document.querySelectorAll('.modal');
+  modals.forEach(modal => {
+    if (event.target === modal) {
+      modal.style.display = 'none';
     }
   });
-  requestAnimationFrame(drawStars);
-}
-drawStars();
+});
 
-// Optional: Expand image on click (if you want popup)
-document.querySelectorAll('.card img').forEach(img => {
-  img.addEventListener('click', () => {
-    const src = img.getAttribute('src');
-    const popup = document.createElement('div');
-    popup.style.position = 'fixed';
-    popup.style.top = 0;
-    popup.style.left = 0;
-    popup.style.width = '100vw';
-    popup.style.height = '100vh';
-    popup.style.background = 'rgba(0,0,0,0.8)';
-    popup.style.zIndex = 999;
-    popup.style.display = 'flex';
-    popup.style.alignItems = 'center';
-    popup.style.justifyContent = 'center';
+// Add click-to-open behavior for each project card (modal within modal)
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('click', () => {
+    const parentModal = card.closest('.modal');
+    // Prevent nested modals (don’t open if already inside another modal)
+    if (parentModal && parentModal.id !== 'projects') return;
 
-    const bigImage = document.createElement('img');
-    bigImage.src = src;
-    bigImage.style.maxWidth = '90%';
-    bigImage.style.maxHeight = '90%';
-    bigImage.style.borderRadius = '12px';
-    bigImage.style.boxShadow = '0 0 20px rgba(255,255,255,0.3)';
+    // Clone the card to show in a new standalone modal
+    const cardClone = card.cloneNode(true);
 
-    popup.appendChild(bigImage);
-    document.body.appendChild(popup);
+    // Create overlay modal
+    const newModal = document.createElement('div');
+    newModal.className = 'modal';
+    newModal.style.display = 'flex';
 
-    popup.addEventListener('click', () => {
-      popup.remove();
-    });
+    // Create modal content container
+    const contentBox = document.createElement('div');
+    contentBox.className = 'modal-box';
+    contentBox.innerHTML = cardClone.innerHTML;
+
+    // Add close button
+    const close = document.createElement('span');
+    close.className = 'close';
+    close.innerHTML = '&times;';
+    close.onclick = () => document.body.removeChild(newModal);
+
+    contentBox.prepend(close);
+    newModal.appendChild(contentBox);
+    document.body.appendChild(newModal);
   });
 });
