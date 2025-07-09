@@ -321,14 +321,45 @@ nav {
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
 }
 
-/* Ensured all text inside exp-card is black as requested */
+/* ===== EXPERIENCE ===== */
+#experience .modal-box {
+  max-width: 1000px; /* Increased max-width again for more space */
+  overflow-y: auto;
+}
+.experience-grid {
+  display: flex;
+  flex-wrap: nowrap; /* Default: no wrap for larger screens */
+  justify-content: center;
+  gap: 50px; /* Increased gap between cards */
+  margin-top: 30px;
+  overflow-x: hidden;
+  padding-bottom: 0;
+}
+
+.exp-card {
+  flex-shrink: 0;
+  background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
+  padding: 20px;
+  border-radius: 15px;
+  width: 360px;
+  /* Removed the color: #F0E4D3; from .exp-card itself */
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+/* Ensured all text inside exp-card is black as requested, with higher specificity */
 .exp-card h3,
 .exp-card p,
-.exp-card ul,
-.exp-card ul li {
-  color: black;
+.exp-card ul li { /* Targets direct p and li elements */
+  color: black !important; /* Use !important to force override if necessary */
   font-size: 0.95rem; /* Base font for exp-card details */
 }
+
+/* Specific for strong tags within exp-card for job titles */
+.exp-card p strong {
+    color: black !important;
+}
+
+/* Removed exp-card ul rule as list items are covered */
 .exp-card h3 {
   font-size: 1.2rem;
 }
