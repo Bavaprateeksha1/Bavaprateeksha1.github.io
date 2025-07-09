@@ -1,3 +1,4 @@
+/* ===== GLOBAL STYLES ===== */
 body, html {
   margin: 0;
   padding: 0;
@@ -6,10 +7,12 @@ body, html {
   overflow: hidden;
   color: #fff;
 }
+
 @media (max-width: 768px) {
   body, html { overflow: auto; }
 }
 
+/* ===== BACKGROUND ===== */
 .background {
   background: url('bg.png') no-repeat center center fixed;
   background-size: cover;
@@ -17,7 +20,7 @@ body, html {
   top: 0; left: 0;
   width: 100vw; height: 100vh;
   z-index: -10;
-  animation: zoomMove 20s infinite linear;
+  animation: zoomMove 25s infinite linear;
   filter: brightness(1.1) saturate(1.2);
 }
 
@@ -29,14 +32,23 @@ body, html {
 
 #stars {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
   z-index: -9;
   pointer-events: none;
 }
 
+/* ===== FALLING STARS ===== */
+canvas#stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -9;
+  pointer-events: none;
+}
+
+/* ===== NEBULA OVERLAY ===== */
 .nebula {
   position: fixed;
   top: 0; left: 0;
@@ -56,6 +68,7 @@ nav {
   background: rgba(0,0,0,0.25);
   z-index: 10;
 }
+
 .nav-right {
   display: flex;
   justify-content: center;
@@ -64,6 +77,7 @@ nav {
   padding: 0;
   margin: 0;
 }
+
 .nav-right li {
   padding: 8px 18px;
   border-radius: 10px;
@@ -119,128 +133,39 @@ nav {
 
 /* ===== MODALS ===== */
 .modal {
+  display: none;
   position: fixed;
   top: 0; left: 0;
-  width: 100vw; height: 100vh;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0,0,0,0.4);
-  display: none;
   justify-content: center;
   align-items: center;
   z-index: 20;
+  overflow: hidden;
 }
 .modal-box {
-  padding: 35px;
-  border-radius: 20px;
   width: 90%;
-  max-width: 1200px;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
+  height: 90%;
+  border-radius: 20px;
+  padding: 30px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
-.bg-gradient,
-.bg-gradient-wide {
+
+.bg-gradient, .bg-gradient-wide {
   background: linear-gradient(45deg, #433D8B, #060048, #433D8B);
-  color: #fff;
+  color: white;
 }
+
 .modal-title {
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 20px;
-}
-
-/* ===== PROJECTS CARDS & AUTO SCROLL ===== */
-.carousel-container {
-  overflow: hidden;
-  position: relative;
-}
-.carousel-track {
-  display: flex;
-  width: max-content;
-  animation: scrollProjects 20s linear infinite alternate;
-  gap: 25px;
-}
-@keyframes scrollProjects {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-30%); }
-}
-.card {
-  min-width: 300px;
-  height: 350px;
-  background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
-  color: #fff;
-  border-radius: 15px;
-  padding: 15px;
-  text-align: center;
-  box-shadow: 0 0 15px rgba(0,0,0,0.4);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-/* ===== EXPERIENCE ===== */
-.experience-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-.exp-card {
-  background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
-  padding: 20px;
-  border-radius: 15px;
-  width: 420px;
-  color: #fff;
-  font-size: 0.95rem;
-  box-shadow: 0 0 15px rgba(0,0,0,0.4);
-}
-.exp-card h3 {
-  font-size: 1.2rem;
-}
-.exp-card ul {
-  margin-left: 20px;
-}
-.exp-card ul li {
-  margin-bottom: 5px;
-}
-
-/* ===== SKILLS ===== */
-.skills-icons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-.skills-icons .skill-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #fff;
-}
-.skills-icons img {
-  width: 50px;
-  height: 50px;
-  transition: transform 0.2s ease;
-}
-.skills-icons img:hover {
-  transform: scale(1.1);
-}
-.skills-icons span {
-  margin-top: 8px;
-  font-size: 0.9rem;
-}
-
-/* ===== CONTACT ===== */
-#contact a {
-  color: white;
-  font-size: 1.2rem;
-  display: block;
-  margin-bottom: 15px;
 }
 
 /* ===== CLOSE BUTTON ===== */
@@ -260,12 +185,97 @@ nav {
   cursor: pointer;
 }
 
-/* ===== FOOTER ===== */
-footer {
-  text-align: center;
-  padding: 15px;
-  background: transparent;
-  color: #F0E4D3;
+/* ===== SKILLS ===== */
+.skills-icons {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  flex-wrap: nowrap;
+}
+.skill-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-size: 0.9rem;
+}
+.skill-icon img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 5px;
+  transition: transform 0.2s ease;
+}
+.skill-icon img:hover {
+  transform: scale(1.1);
+}
+
+/* ===== PROJECTS ===== */
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
   position: relative;
-  z-index: 10;
+}
+.carousel-track {
+  display: flex;
+  gap: 25px;
+  animation: scrollLoop 40s linear infinite alternate;
+}
+@keyframes scrollLoop {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.card {
+  min-width: 280px;
+  height: 350px;
+  background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
+  color: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+/* ===== EXPERIENCE ===== */
+.experience-grid {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+.exp-card {
+  background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
+  color: #fff;
+  padding: 25px;
+  border-radius: 20px;
+  width: 420px;
+  font-size: 0.95rem;
+}
+.exp-card ul {
+  margin-left: 20px;
+}
+.exp-card ul li {
+  margin-bottom: 5px;
+}
+
+/* ===== ACHIEVEMENTS ===== */
+.grid {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+/* ===== CONTACT ===== */
+.contact-text a {
+  color: white;
+  text-decoration: underline;
+  margin-right: 10px;
 }
