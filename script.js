@@ -2,6 +2,11 @@ function openOnly(id) {
   document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
   const modal = document.getElementById(id);
   if (modal) modal.style.display = 'flex';
+
+  // Specific logic for projects when opened
+  if (id === 'projects') {
+    setupProjectsCarousel();
+  }
 }
 
 function closeModal(id) {
@@ -15,12 +20,8 @@ window.addEventListener('click', event => {
   }
 });
 
-// Removed the old project card click listener as the new design might not require a separate overlay for each click.
-// If you want a detailed modal for each project, you'll need to re-implement that logic carefully
-// to fit the new card structure and ensure content is passed correctly.
-
 // Typing effect
-const text = "Hi, I’m Bava Prateeksha";
+const text = "Hi, I’m Prateeksha";
 let i = 0;
 const el = document.getElementById('typed');
 function type() {
@@ -29,7 +30,7 @@ function type() {
     i++;
     setTimeout(type, 120);
   } else {
-    el.innerText = text; // Ensure the cursor disappears after typing
+    el.innerText = text;
   }
 }
 type();
@@ -37,17 +38,27 @@ type();
 // Sparkling Stars
 const canvas = document.getElementById('stars');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+
+// Function to resize canvas and redraw stars
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  // Re-initialize stars if needed, or update their positions
+  // For simplicity, stars remain fixed relative to initial generation for now
+}
+
+window.addEventListener('resize', resizeCanvas); // Adjust canvas size on window resize
+resizeCanvas(); // Initial call to set canvas size
 
 const stars = [];
+// Generate stars only once
 for (let i = 0; i < 120; i++) {
   stars.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
     radius: Math.random() * 2 + 1,
     alpha: Math.random(),
-    delta: Math.random() * 0.02
+    delta: Math.random() * 0.02 // Slower twinkling
   });
 }
 
@@ -65,17 +76,46 @@ function animateStars() {
 }
 animateStars();
 
-// Duplicate project cards for a seamless loop effect in the carousel
-// This should be done after the DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
+
+// Projects Carousel Setup and Animation
+function setupProjectsCarousel() {
     const carouselTrack = document.querySelector('#projects .carousel-track');
-    if (carouselTrack) {
-        const cards = Array.from(carouselTrack.children);
-        // Duplicate cards to create a seamless loop.
-        // You might need to adjust the number of clones based on how many cards are visible at once.
-        cards.forEach(card => {
-            const clone = card.cloneNode(true);
-            carouselTrack.appendChild(clone);
-        });
+    if (!carouselTrack) return;
+
+    // Remove any previously cloned cards
+    const originalCards = Array.from(carouselTrack.querySelectorAll('.card:not(.cloned)'));
+    carouselTrack.innerHTML = ''; // Clear track to re-populate
+
+    // Re-append original cards and then clone them enough times
+    originalCards.forEach(card => {
+        carouselTrack.appendChild(card.cloneNode(true));
+    });
+
+    const cardWidthWithMargin = 280 + 30; // Card width + margin-right
+    const numOriginalCards = originalCards.length;
+
+    // Clone enough cards to create a seamless loop
+    // We need at least enough clones to fill the visible area + one full set of original cards
+    // A common practice for seamless loops is to duplicate the entire set once or twice.
+    const numberOfClonesNeeded = numOriginalCards * 2; // Duplicate the set twice
+
+    for (let i = 0; i < numberOfClonesNeeded; i++) {
+        const clone = originalCards[i % numOriginalCards].cloneNode(true);
+        clone.classList.add('cloned');
+        carouselTrack.appendChild(clone);
     }
-});
+
+    // Calculate the total width of one full set of original cards (what needs to scroll)
+    const scrollDistance = numOriginalCards * cardWidthWithMargin;
+
+    // Apply the CSS variable for the animation
+    carouselTrack.style.setProperty('--scroll-distance', `-${scrollDistance}px`);
+
+    // Reset and apply animation
+    carouselTrack.style.animation = 'none'; // Remove animation temporarily
+    void carouselTrack.offsetWidth; // Trigger reflow to apply 'none'
+    carouselTrack.style.animation = `scrollProjects ${numOriginalCards * 5}s linear infinite`; // Adjust speed (e.g., 5s per card set)
+}
+
+// Ensure setupProjectsCarousel runs when the projects modal is opened
+// This is already handled by the openOnly function: `if (id === 'projects') { setupProjectsCarousel(); }`
