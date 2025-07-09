@@ -16,7 +16,7 @@ window.addEventListener('click', e => {
 });
 
 // Typing effect
-const text = "Hi, I’m Bava Prateeksha";
+const text = "Hi, I’m Prateeksha";
 let i = 0;
 const el = document.getElementById('typed');
 function type() {
@@ -28,38 +28,31 @@ function type() {
 }
 type();
 
-// Starfield sparkle
-const canvas = document.getElementById('stars'),
-      ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-const stars = [];
-for (let s = 0; s < 250; s++) {
-  stars.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 3 + 2,
-    d: Math.random() * 1 + 0.2
-  });
+// Sparkling stars
+const canvas = document.getElementById('stars'), ctx = canvas.getContext('2d');
+canvas.width = innerWidth; canvas.height = innerHeight;
+let stars = [];
+for (let s = 0; s < 200; s++) {
+  stars.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, r:Math.random()*3+2, d:Math.random()*1+0.2 });
 }
 function drawStars() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0,0,canvas.width,canvas.height);
   ctx.fillStyle = '#ffffffcc';
   stars.forEach(s => {
     ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.arc(s.x, s.y, s.r, 0, 2*Math.PI);
     ctx.fill();
     s.y += s.d;
     if (s.y > canvas.height) {
       s.y = 0;
-      s.x = Math.random() * canvas.width;
+      s.x = Math.random()*canvas.width;
     }
   });
   requestAnimationFrame(drawStars);
 }
 drawStars();
 
-// Clicking project image pops full image
+// Project image popup
 document.querySelectorAll('#projects .card img').forEach(img => {
   img.addEventListener('click', () => {
     const overlay = document.createElement('div');
@@ -69,8 +62,8 @@ document.querySelectorAll('#projects .card img').forEach(img => {
     box.className = 'modal-box';
     const full = document.createElement('img');
     full.src = img.src;
-    full.style.maxWidth = '90vw';
-    full.style.maxHeight = '90vh';
+    full.style.maxWidth = '80vw';
+    full.style.maxHeight = '80vh';
     full.style.borderRadius = '12px';
     const close = document.createElement('span');
     close.className = 'close';
