@@ -9,10 +9,33 @@ function closeModal(id) {
   if (modal) modal.style.display = 'none';
 }
 
-window.addEventListener('click', e => {
-  if (e.target.classList.contains('modal')) {
-    e.target.style.display = 'none';
+window.addEventListener('click', event => {
+  if (event.target.classList.contains('modal')) {
+    event.target.style.display = 'none';
   }
+});
+
+// Project card modal popup
+document.querySelectorAll('#projects .card').forEach(card => {
+  card.addEventListener('click', () => {
+    const clone = card.cloneNode(true);
+    const overlay = document.createElement('div');
+    overlay.className = 'modal';
+    overlay.style.display = 'flex';
+
+    const box = document.createElement('div');
+    box.className = 'modal-box bg-gradient';
+    box.innerHTML = clone.innerHTML;
+
+    const closeEl = document.createElement('span');
+    closeEl.className = 'close';
+    closeEl.innerHTML = '&times;';
+    closeEl.onclick = () => document.body.removeChild(overlay);
+
+    box.prepend(closeEl);
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+  });
 });
 
 // Typing effect
@@ -28,49 +51,32 @@ function type() {
 }
 type();
 
-// Sparkling stars
-const canvas = document.getElementById('stars'), ctx = canvas.getContext('2d');
-canvas.width = innerWidth; canvas.height = innerHeight;
-let stars = [];
-for (let s = 0; s < 200; s++) {
-  stars.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, r:Math.random()*3+2, d:Math.random()*1+0.2 });
-}
-function drawStars() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle = '#ffffffcc';
-  stars.forEach(s => {
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, 2*Math.PI);
-    ctx.fill();
-    s.y += s.d;
-    if (s.y > canvas.height) {
-      s.y = 0;
-      s.x = Math.random()*canvas.width;
-    }
-  });
-  requestAnimationFrame(drawStars);
-}
-drawStars();
+// Sparkling stars animation
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-// Project image popup
-document.querySelectorAll('#projects .card img').forEach(img => {
-  img.addEventListener('click', () => {
-    const overlay = document.createElement('div');
-    overlay.className = 'modal';
-    overlay.style.display = 'flex';
-    const box = document.createElement('div');
-    box.className = 'modal-box';
-    const full = document.createElement('img');
-    full.src = img.src;
-    full.style.maxWidth = '80vw';
-    full.style.maxHeight = '80vh';
-    full.style.borderRadius = '12px';
-    const close = document.createElement('span');
-    close.className = 'close';
-    close.innerText = '×';
-    close.onclick = () => overlay.remove();
-    box.append(close, full);
-    overlay.appendChild(box);
-    document.body.appendChild(overlay);
+const stars = [];
+for (let i = 0; i < 120; i++) {
+  stars.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 2 + 1,
+    alpha: Math.random(),
+    delta: Math.random() * 0.02
   });
-});
+}
+function animateStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  stars.forEach(s => {
+    s.alpha += s.delta;
+    if (s.alpha <= 0 || s.alpha >= 1) s.delta = -s.delta;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
+    ctx.fillStyle = `rgba(255, 255, 255, ${s.alpha})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(animateStars);
+}
+animateStars();
