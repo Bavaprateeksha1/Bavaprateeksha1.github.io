@@ -1,237 +1,253 @@
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Poppins', sans-serif;
-  overflow-x: hidden;
-  animation: zoomEffect 20s infinite;
-  background-color: black;
-  color: white;
+  overflow-x: hidden; /* no horizontal scroll */
+  overflow-y: hidden; /* freeze scroll on desktop */
+  background: url('images/bg.png') no-repeat center center fixed;
+  background-size: cover;
+  animation: zoomEffect 60s infinite alternate;
   position: relative;
 }
 
 @keyframes zoomEffect {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.08);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 .background, .nebula {
-  background-image: url('images/bg.png');
-  background-size: cover;
-  background-position: center;
   position: fixed;
-  width: 100vw;
-  height: 100vh;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
   z-index: -3;
 }
 
 canvas#stars {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   z-index: -2;
 }
 
 nav {
   display: flex;
   justify-content: center;
-  padding: 20px;
+  padding: 20px 0;
+  z-index: 10;
 }
 
 .nav-right {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 16px;
   padding: 0;
   margin: 0;
 }
 
 .nav-right li {
-  padding: 10px 20px;
-  border-radius: 18px;
-  background: linear-gradient(45deg, #D9BB9B, #2C318C);
-  color: white;
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #2C318C, #D9BB9B);
+  color: #fff;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 .nav-right li:hover {
-  background: linear-gradient(45deg, #2C318C, #D9BB9B);
+  background: linear-gradient(45deg, #D9BB9B, #2C318C);
 }
 
 #hero {
   height: 100vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
 .hero-text h1 {
-  font-size: 2.7rem;
+  font-size: 3rem;
+  background: linear-gradient(45deg, #2C318C, #D9BB9B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
 }
 
 .hero-text p {
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: 1.2rem;
+  color: #fff;
 }
 
 .hero-text button {
   margin-top: 20px;
-  padding: 10px 25px;
+  padding: 12px 30px;
   font-size: 1rem;
   border: none;
   border-radius: 8px;
-  background: linear-gradient(to right, #D9BB9B, #2C318C);
-  color: white;
+  background: linear-gradient(45deg, #2C318C, #D9BB9B);
+  color: #fff;
   cursor: pointer;
+  transition: opacity 0.3s ease;
 }
 
+.hero-text button:hover {
+  opacity: 0.9;
+}
+
+/* Modal */
 .modal {
   display: none;
   position: fixed;
-  z-index: 999;
-  left: 0; top: 0;
+  top: 0; left: 0;
   width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.6);
+  z-index: 20;
 }
 
 .modal-box {
+  background: linear-gradient(135deg, #2C318C, #D9BB9B, #2C318C);
+  color: #fff;
+  padding: 2rem;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 1000px;
   max-height: 90vh;
   overflow-y: auto;
-  padding: 30px;
-  background: linear-gradient(to bottom right, #2C318C, #D9BB9B, #2C318C);
-  border-radius: 16px;
-  width: 90%;
-  max-width: 1200px;
-  color: white;
-}
-
-.bg-purple {
-  background: linear-gradient(to right, #3a0ca3, #7209b7, #3a0ca3);
-}
-
-.bg-gradient {
-  background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
-}
-
-.bg-gradient-wide {
-  background: linear-gradient(to right, #2C318C, #D9BB9B, #2C318C);
 }
 
 .modal-title {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
+  margin-top: 0;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .close {
-  font-size: 28px;
-  color: white;
-  float: right;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 24px;
+  color: #fff;
   cursor: pointer;
 }
 
+/* Skills icons + names horizontally */
 .skills-icons {
   display: flex;
-  flex-wrap: nowrap;
+  gap: 40px;
   overflow-x: auto;
-  justify-content: space-around;
-  flex-direction: row;
-  gap: 50px;
+  justify-content: center;
+  padding: 20px 0;
   align-items: center;
-  padding: 20px 10px;
 }
 
-.skills-icons img {
+.skill-item {
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+.skill-item img {
+  width: 50px;
   height: 50px;
 }
 
+.skill-item span {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+/* Projects carousel */
 .carousel-container {
   overflow: hidden;
+  margin-top: 20px;
 }
 
 .carousel-track {
   display: flex;
-  width: fit-content;
+  gap: 24px;
   animation: scrollLoop 30s linear infinite;
-  gap: 20px;
 }
 
 @keyframes scrollLoop {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.grid {
-  display: flex;
-  gap: 30px;
-  flex-wrap: nowrap;
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-300px * 4)); }
 }
 
 .card {
   background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
-  border-radius: 12px;
-  padding: 20px;
   width: 300px;
-  height: 420px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  border-radius: 12px;
+  overflow: hidden;
+  color: #fff;
   cursor: pointer;
 }
 
 .card img {
   width: 100%;
-  height: 230px;
+  height: 240px;
   object-fit: cover;
-  border-radius: 10px;
 }
 
 .card h3 {
-  margin-top: 10px;
+  margin: 12px;
   font-size: 1.1rem;
 }
 
 .card p {
+  margin: 0 12px 12px;
   font-size: 0.95rem;
-  margin-top: 8px;
 }
 
+/* Achievements: 3 in row */
+#achievements .grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+#achievements .card {
+  width: 300px;
+  background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
+}
+
+/* Experience cards horizontal inside modal */
 .experience-grid {
   display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
+  gap: 20px;
+  flex-wrap: nowrap;
+  margin-top: 20px;
 }
 
 .exp-card {
   background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
-  padding: 25px;
-  border-radius: 10px;
-  flex: 1;
-  min-width: 48%;
+  padding: 20px;
+  border-radius: 12px;
+  flex: 0 0 45%;
+  color: #fff;
+}
+
+.exp-card h3 {
+  margin-top: 0;
 }
 
 .exp-card ul {
   padding-left: 20px;
 }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  color: white;
-  background: transparent;
-  font-size: 14px;
+#contact p {
+  color: #fff !important;
+  font-size: 1rem;
 }
 
-.contact-icon {
-  height: 40px;
-  margin-right: 20px;
+/* Footer */
+footer {
+  color: #fff;
+  text-align: center;
+  padding: 16px 0;
 }
