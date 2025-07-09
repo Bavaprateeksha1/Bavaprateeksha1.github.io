@@ -12,6 +12,7 @@
   <canvas id="stars"></canvas>
   <div class="nebula"></div>
 
+  <!-- NAVIGATION -->
   <nav>
     <ul class="nav-right">
       <li onclick="openOnly('about')">About</li>
@@ -24,6 +25,7 @@
     </ul>
   </nav>
 
+  <!-- HERO SECTION -->
   <section id="hero">
     <div class="hero-text">
       <h1 class="gradient-text" id="typed"></h1>
@@ -32,9 +34,9 @@
     </div>
   </section>
 
-  <!-- About Modal -->
+  <!-- ABOUT MODAL -->
   <div class="modal" id="about">
-    <div class="modal-box bg-gradient">
+    <div class="modal-box bg-purple">
       <span class="close" onclick="closeModal('about')">&times;</span>
       <h2 class="modal-title">About</h2>
       <p>
@@ -48,9 +50,9 @@
     </div>
   </div>
 
-  <!-- Skills Modal -->
+  <!-- SKILLS MODAL -->
   <div class="modal" id="skills">
-    <div class="modal-box bg-gradient">
+    <div class="modal-box bg-purple">
       <span class="close" onclick="closeModal('skills')">&times;</span>
       <h2 class="modal-title">Skills</h2>
       <div class="skills-icons">
@@ -67,114 +69,99 @@
     </div>
   </div>
 
-  <!-- Projects Modal -->
+  <!-- PROJECTS MODAL -->
   <div class="modal" id="projects">
-    <div class="modal-box bg-gradient-wide">
+    <div class="modal-box bg-purple">
       <span class="close" onclick="closeModal('projects')">&times;</span>
       <h2 class="modal-title">💡 Projects</h2>
       <div class="carousel-container">
         <div class="carousel-track">
-          <div class="grid">
-            <div class="card"><img src="images/projects/lifi.jpg"><h3>🔊 Audio Transmission Using Li‑Fi</h3><p>Built a secure, energy‑efficient audio system using LED light modulation.</p></div>
-            <div class="card"><img src="images/projects/smps.jpg"><h3>⚡ 12V SMPS Circuit</h3><p>Designed and fabricated a Switch Mode Power Supply circuit for stable output.</p></div>
-            <div class="card"><img src="images/projects/temp.jpg"><h3>🌡️ Temperature Threshold System</h3><p>Sensor‑based circuit using LM35 for real‑time temperature monitoring.</p></div>
-            <div class="card"><img src="images/projects/cornea.jpg"><h3>👁️ Artificial Cornea Model</h3><p>Prototype built to mimic corneal implant functionality.</p></div>
-            <div class="card"><img src="images/projects/fracture.jpg"><h3>🦴 Fracture Repair Model</h3><p>Biomaterials‑based model demonstrating bone repair.</p></div>
-            <div class="card"><img src="images/projects/opamp.jpg"><h3>🔈 Non‑Inverting Amplifier</h3><p>Op‑amp based analog circuit to amplify signals non‑inversely.</p></div>
-            <div class="card"><img src="images/projects/gsr.jpg"><h3>🧠 GSR Stress Monitor</h3><p>Detected stress using galvanic skin response sensors.</p></div>
-            <div class="card"><h3>🗼 AI‑Based Tower of Hanoi</h3><p>Smart puzzle solver using AI.<br><a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank">🔗 Live Project</a></p></div>
-          </div>
+          <div class="card"><img src="images/projects/lifi.jpg"><h3>🔊 Li‑Fi Audio Transmission</h3><p>Secure, efficient audio via LED modulation.</p></div>
+          <div class="card"><img src="images/projects/smps.jpg"><h3>⚡ 12V SMPS Circuit</h3><p>Custom-built SMPS for steady voltage.</p></div>
+          <div class="card"><img src="images/projects/temp.jpg"><h3>🌡️ Temp Threshold System</h3><p>LM35-based temp alert circuit.</p></div>
+          <div class="card"><img src="images/projects/cornea.jpg"><h3>👁️ Artificial Cornea</h3><p>Implant prototype simulation.</p></div>
+          <div class="card"><img src="images/projects/fracture.jpg"><h3>🦴 Fracture Repair</h3><p>Bone healing biomaterials model.</p></div>
+          <div class="card"><img src="images/projects/opamp.jpg"><h3>🔈 Op-Amp Amplifier</h3><p>Non‑inverting signal amplifier.</p></div>
+          <div class="card"><img src="images/projects/gsr.jpg"><h3>🧠 GSR Stress Monitor</h3><p>Detects stress via skin conductivity.</p></div>
+          <div class="card"><h3>🗼 AI Tower of Hanoi</h3><p>Smart puzzle solver.<br><a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank">🔗 Live</a></p></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Achievements Modal -->
+  <!-- ACHIEVEMENTS MODAL -->
   <div class="modal" id="achievements">
-    <div class="modal-box bg-gradient">
+    <div class="modal-box bg-purple">
       <span class="close" onclick="closeModal('achievements')">&times;</span>
       <h2 class="modal-title">🏆 Achievements</h2>
       <div class="grid">
-        <div class="card"><img src="images/achievements/logo.jpg"><h3>🎨 Logo Design Winner</h3><p>Co‑designed the official logo of the Biomedical Engineering Dept.</p></div>
-        <div class="card"><img src="images/achievements/tekmedica.jpg"><h3>🥇 Tekmedica Bio Event</h3><p>Built neurotransmitter model; secured 1st place.</p></div>
-        <div class="card"><img src="images/achievements/scholarship.jpg"><h3>🎓 Academic Scholarship</h3><p>Awarded for GPA 9.88 (1st year) & 10.0 (3rd sem).</p></div>
+        <div class="card"><img src="images/achievements/logo.jpg"><h3>🎨 Logo Winner</h3><p>Biomedical Dept. logo designer.</p></div>
+        <div class="card"><img src="images/achievements/tekmedica.jpg"><h3>🥇 Tekmedica Bio</h3><p>1st place - Neurotransmitter model.</p></div>
+        <div class="card"><img src="images/achievements/scholarship.jpg"><h3>🎓 Scholarship</h3><p>GPA 9.88 & 10.0 awarded.</p></div>
       </div>
     </div>
   </div>
 
-  <!-- Interests Modal -->
+  <!-- INTERESTS MODAL -->
   <div class="modal" id="interests">
-    <div class="modal-box bg-gradient">
+    <div class="modal-box bg-purple">
       <span class="close" onclick="closeModal('interests')">&times;</span>
       <h2 class="modal-title">🧠 Areas of Interest</h2>
       <ul>
         <li>🧪 Biomedical Instrumentation</li>
-        <li>🩺 Non‑Invasive Diagnosis & Therapeutic Devices</li>
+        <li>🩺 Non-Invasive Diagnosis</li>
         <li>👁️ Computer Vision</li>
-        <li>⚙️ Embedded Systems & Microcontrollers</li>
-        <li>🌐 Telemedicine & Remote Patient Monitoring</li>
-        <li>⌚ Wearable Health Monitoring</li>
+        <li>⚙️ Embedded Systems</li>
+        <li>🌐 Telemedicine</li>
+        <li>⌚ Wearable Health Devices</li>
       </ul>
     </div>
   </div>
 
-  <!-- Experience Modal -->
+  <!-- EXPERIENCE MODAL -->
   <div class="modal" id="experience">
-    <div class="modal-box bg-gradient-wide">
+    <div class="modal-box bg-purple">
       <span class="close" onclick="closeModal('experience')">&times;</span>
       <h2 class="modal-title">💼 Experience</h2>
       <div class="experience-grid">
         <div class="exp-card">
           <h3>💼 Internships</h3>
-          <p><strong>📊 Data Science & ML Intern – Infotact Solutions (Jul 2025 – Present)</strong></p>
-          <ul><li>Working on Data science and ML Based Projects.</li></ul>
-          <p><strong>🔬 Summer Research Intern – NIT Trichy (Jun 2025 – Present)</strong></p>
+          <p><strong>📊 Data Science Intern – Infotact (Jul 2025 – Present)</strong></p>
+          <ul><li>Built data & ML models.</li></ul>
+          <p><strong>🔬 Research Intern – NIT Trichy (Jun 2025)</strong></p>
           <ul>
-            <li>Developing YOLO-based medical image/video analysis system.</li>
-            <li>Preprocessing datasets and optimizing deep learning models.</li>
+            <li>YOLO for medical images.</li>
+            <li>Dataset preprocessing, model tuning.</li>
           </ul>
-          <p><strong>🏥 Biomedical Intern – Kauvery Hospital (Dec 2024)</strong></p>
+          <p><strong>🏥 Biomedical Intern – Kauvery Hospital</strong></p>
           <ul>
-            <li>Assisted in equipment maintenance and calibration.</li>
-            <li>Monitored patient vitals and learned device handling protocols.</li>
-            <li>Gained exposure to ICU and radiology workflows.</li>
+            <li>ICU equipment handling & calibration.</li>
           </ul>
         </div>
         <div class="exp-card">
           <h3>👥 Clubs</h3>
-          <p><strong>🎨 Designer – Electronics Club (Oct 2024 – Present)</strong></p>
-          <ul>
-            <li>Create event invites, branding materials, and posters.</li>
-            <li>Work on team design coordination for campus events.</li>
-          </ul>
-          <p><strong>🎨 Designer – ECE Association (Oct 2024 – Present)</strong></p>
-          <ul>
-            <li>Designed digital content for academic events and conferences.</li>
-            <li>Helped maintain cohesive visual identity for the association.</li>
-          </ul>
-          <p><strong>🎨 Creatives & AIML – Aakash Research Labs (Jul 2025 – Present)</strong></p>
-          <ul>
-            <li>Designs visual material for Club events</li>
-            <li>Work on Technical and AIML Projects.</li>
-          </ul>
+          <p><strong>🎨 Designer – Electronics Club</strong></p>
+          <ul><li>Event branding, poster creation.</li></ul>
+          <p><strong>🎨 Designer – ECE Assoc.</strong></p>
+          <ul><li>Designed content for events.</li></ul>
+          <p><strong>🎨 Creatives & AIML – Aakash Labs</strong></p>
+          <ul><li>Visual design, AIML Projects.</li></ul>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Contact Modal -->
+  <!-- CONTACT MODAL -->
   <div class="modal" id="contact">
-    <div class="modal-box bg-gradient">
+    <div class="modal-box bg-purple">
       <span class="close" onclick="closeModal('contact')">&times;</span>
-      <h2 class="modal-title">Contact</h2>
-      <p>
-        <a href="mailto:bavaprateeksha123@gmail.com"><img src="icons/gmail.svg" alt="Gmail Icon" class="contact-icon"></a>
-        <a href="https://www.linkedin.com/in/bava-prateeksha-k-52811a28a" target="_blank"><img src="icons/linkedin.svg" alt="LinkedIn Icon" class="contact-icon"></a>
-      </p>
+      <h2 class="modal-title">📬 Contact</h2>
+      <p>Email: <a href="mailto:bavaprateeksha123@gmail.com">bavaprateeksha123@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/bava-prateeksha-k-52811a28a" target="_blank">linkedin.com/in/bava-prateeksha-k</a></p>
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
     <p>©️ 2025 Bava Prateeksha. All rights reserved.</p>
   </footer>
