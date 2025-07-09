@@ -20,8 +20,7 @@ body, html {
   top: 0; left: 0;
   width: 100vw; height: 100vh;
   z-index: -10;
-  /* Increased duration for slower movement */
-  animation: zoomMove 45s infinite linear; /* Changed from 25s to 45s */
+  animation: zoomMove 45s infinite linear;
   filter: brightness(1.1) saturate(1.2);
 }
 
@@ -112,8 +111,8 @@ nav {
 
 .hero-text button {
   margin-top: 20px;
-  padding: 15px 30px; /* Increased padding */
-  font-size: 1.2rem; /* Increased font size */
+  padding: 15px 30px;
+  font-size: 1.2rem;
   background: rgba(67, 61, 139, 0.8);
   color: #fff;
   border: none;
@@ -138,21 +137,27 @@ nav {
 }
 
 .modal-box {
-  padding: 40px; /* Increased padding for thicker appearance */
+  padding: 40px;
   border-radius: 20px;
-  width: 90%; /* Increased width */
-  max-width: 1000px;
+  width: 90%; /* General width */
+  max-width: 1200px; /* General max-width */
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
+  box-sizing: border-box;
 }
 
+/* Specific modal backgrounds */
 .bg-gradient {
-  background: linear-gradient(45deg, #433D8B, #0B0743, #433D8B);
+  background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
   color: #F0E4D3;
 }
 .bg-gradient-wide {
-  background: linear-gradient(45deg, #433D8B, #0B0743, #433D8B);
+  background: linear-gradient(135deg, #433D8B, #2C318C);
+  color: #F0E4D3;
+}
+.bg-purple { /* Specifically for skills modal */
+  background: linear-gradient(45deg, #433D8B, #6A5ACD); /* A clear purple gradient */
   color: #F0E4D3;
 }
 
@@ -163,8 +168,15 @@ nav {
 }
 
 /* ===== PROJECTS ===== */
+#projects .modal-box {
+  width: 90%;
+  max-width: 1000px; /* Adjusted to tightly fit 3 cards + gaps */
+  padding: 30px;
+  overflow-x: hidden; /* Hide horizontal scrollbar within modal-box itself */
+}
+
 .carousel-wrapper {
-  overflow: hidden;
+  overflow: hidden; /* This hides the overflowing cards */
   position: relative;
   width: 100%;
 }
@@ -172,13 +184,14 @@ nav {
 .carousel-track {
   display: flex;
   width: max-content; /* Allows content to exceed viewport */
-  animation: scrollProjects 30s linear infinite; /* Animation for continuous scroll */
   padding: 10px 0;
+  /* Animation defined in JS to ensure dynamic calculation */
 }
 
-.carousel-track .card {
-  flex: 0 0 auto; /* Prevent cards from shrinking */
-  width: 280px; /* Adjust card width */
+/* Common Card Styling for Projects and Achievements */
+.card {
+  flex-shrink: 0; /* Prevent cards from shrinking */
+  width: 280px; /* Fixed width for each card */
   height: 380px; /* Portrait height */
   margin-right: 30px; /* Gap between cards */
   position: relative;
@@ -192,11 +205,11 @@ nav {
   display: flex;
   flex-direction: column;
 }
-.carousel-track .card:hover {
+.card:hover {
   transform: scale(1.03);
 }
 
-.carousel-track .card img {
+.card img {
   width: 100%;
   height: 60%; /* Image takes up top portion */
   object-fit: cover;
@@ -204,7 +217,7 @@ nav {
   border-top-right-radius: 15px;
 }
 
-.carousel-track .card .card-content {
+.card .card-content {
   padding: 15px;
   text-align: center;
   flex-grow: 1; /* Allows content to take remaining space */
@@ -213,91 +226,70 @@ nav {
   justify-content: center;
 }
 
-.carousel-track .card h3 {
+.card h3 {
   font-size: 1.2rem;
   margin-top: 0;
   margin-bottom: 10px;
 }
 
-.carousel-track .card p {
+.card p {
   font-size: 0.9rem;
   margin-bottom: 0;
 }
 
+
+/* Keyframes for Projects Carousel (will be applied by JS) */
 @keyframes scrollProjects {
   0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-280px * 8 - 30px * 8)); } /* Adjust based on number of cards and margin */
+  /* The value below will be dynamically calculated and set by JS for seamless looping */
+  100% { transform: translateX(var(--scroll-distance)); }
 }
-
-/* To ensure seamless loop, duplicate carousel items in JS if needed */
 
 
 /* ===== ACHIEVEMENTS ===== */
-.achievements-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* Center the cards */
-  gap: 30px; /* Equal gap between cards */
-  padding: 20px;
+#achievements .modal-box {
+  width: 90%;
+  max-width: 1000px; /* Same as projects to fit 3 cards + gaps */
+  padding: 30px;
 }
 
-.achievements-grid .card {
-  width: 300px; /* Fixed width for better alignment */
-  height: 350px; /* Fixed height for portrait */
-  border-radius: 15px;
-  background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
-  color: #F0E4D3;
-  box-shadow: 0 0 15px rgba(0,0,0,0.4);
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden; /* Ensure content stays within card */
-}
-
-.achievements-grid .card:hover {
-  transform: scale(1.05);
-}
-
-.achievements-grid .card img {
+.achievements-carousel-wrapper {
+  overflow: hidden; /* Hide any overflow if content somehow exceeds */
+  position: relative;
   width: 100%;
-  height: 65%; /* Image takes up top portion */
-  object-fit: cover;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
 }
 
-.achievements-grid .card .card-content {
-  padding: 15px;
-  text-align: center;
-  flex-grow: 1; /* Allows content to take remaining space */
+.achievements-track {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: center; /* Center cards */
+  gap: 30px; /* Equal gap between cards */
+  padding: 20px 0;
 }
 
-.achievements-grid .card h3 {
-  font-size: 1.1rem;
-  margin-top: 0;
-  margin-bottom: 8px;
-}
-
-.achievements-grid .card p {
-  font-size: 0.85rem;
-  margin-bottom: 0;
+.achievements-track .card {
+  width: 280px; /* Fixed width for consistency with projects */
+  height: 380px; /* Fixed height for consistency */
+  margin-right: 0; /* Gap handles spacing */
 }
 
 
 /* ===== EXPERIENCE ===== */
+#experience .modal-box {
+  width: 90%;
+  max-width: 800px;
+}
 .experience-grid {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* Strictly horizontal, no wrapping */
   justify-content: center;
   gap: 30px;
   margin-top: 30px;
+  overflow-x: auto; /* Allow horizontal scrolling if content exceeds modal width */
+  padding-bottom: 15px; /* For scrollbar visibility */
 }
 
 .exp-card {
+  flex-shrink: 0;
   background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
   padding: 20px;
   border-radius: 15px;
@@ -320,7 +312,7 @@ nav {
 /* ===== SKILLS ===== */
 .skills-icons {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allow wrapping for skills icons to fit smaller screens */
   justify-content: center;
   gap: 25px;
   margin-top: 20px;
@@ -342,13 +334,13 @@ nav {
 .skill-item span {
   font-size: 0.8rem;
   color: #F0E4D3;
+  text-align: center;
 }
 
 /* ===== CONTACT ===== */
-.contact-icon {
-  width: 30px;
-  height: 30px;
-  margin-right: 12px;
+#contact .modal-box {
+  width: 90%;
+  max-width: 600px;
 }
 .modal#contact p {
   text-align: center;
@@ -364,6 +356,11 @@ nav {
 .modal#contact a:hover {
   color: #D9BB9B;
 }
+/* Ensure no icon styling exists or is overridden */
+.contact-icon { /* This class is now unused in HTML but kept for safety */
+  display: none;
+}
+
 
 /* ===== CLOSE BUTTON ===== */
 .close {
