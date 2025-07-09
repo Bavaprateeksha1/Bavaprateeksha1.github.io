@@ -81,8 +81,8 @@ nav {
 .nav-right li {
   padding: 8px 18px; /* Maintain consistent padding for a "pill" shape */
   border-radius: 20px;
-  /* Updated Navbar Item Gradient */
-  background: linear-gradient(45deg, #410445, #BB9796, #410445); /* New contrasting gradient */
+  /* Navbar Item Gradient */
+  background: linear-gradient(45deg, #410445, #BB9796, #410445); /* Specified gradient */
   color: #fff; /* White text for better contrast */
   font-weight: 600;
   font-size: 1rem;
@@ -109,8 +109,8 @@ nav {
 
 #typed {
   font-size: 3rem;
-  /* Same gradient as navbar */
-  background: linear-gradient(45deg, #410445, #BB9796, #410445);
+  /* "Hi, I'm Prateeksha" specific gradient */
+  background: linear-gradient(45deg, #551D59, #BB9796, #551D59);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: 'Poppins', sans-serif; /* Explicitly ensure Poppins */
@@ -129,7 +129,7 @@ nav {
   margin-top: 20px;
   padding: 15px 30px;
   font-size: 1.2rem;
-  /* Same gradient as navbar and #typed */
+  /* Same gradient as navbar */
   background: linear-gradient(45deg, #410445, #BB9796, #410445);
   color: #fff;
   border: none;
@@ -165,7 +165,7 @@ nav {
   position: relative;
   box-sizing: border-box;
   /* Common Modal Background Gradient */
-  background: linear-gradient(45deg, #433D8B, #060048, #433D8B);
+  background: linear-gradient(45deg, #4F1653, #0E0941, #4F1653); /* Specified gradient */
   color: #F0E4D3;
 }
 
@@ -182,27 +182,41 @@ nav {
 .modal-body-text strong { /* Keep strong text clear */
   color: #D9BB9B;
 }
+.modal-body-text-small { /* For smaller text in experience section */
+  font-size: 0.95rem; /* Reduced font size */
+  line-height: 1.5;
+}
+.modal-body-text-small strong {
+  color: #D9BB9B;
+}
 
-/* ===== PROJECTS & ACHIEVEMENTS (Unified Grid Layout) ===== */
+/* ===== PROJECTS & ACHIEVEMENTS (Carousel Layout) ===== */
 #projects .modal-box,
 #achievements .modal-box {
-  max-width: 900px; /* Adjusted to fit 2 cards comfortably */
+  max-width: 1050px; /* Adjusted to fit 3 cards comfortably (280*3 + 30*2 = 900px, leaves padding) */
   padding: 30px;
   overflow-x: hidden; /* Ensure no horizontal scrollbar */
 }
 
-.cards-grid { /* Replaced carousel-wrapper/track with a grid */
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); /* Auto-fit columns, min 380px to fit cards */
-  gap: 30px; /* Space between cards */
-  justify-items: center; /* Center cards in their grid cells */
+.carousel-wrapper { /* Re-enabled for projects and achievements */
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.carousel-track { /* Re-enabled for projects and achievements */
+  display: flex;
+  width: max-content; /* Allows content to exceed viewport */
   padding: 10px 0;
+  /* Animation will be applied by JS */
 }
 
 /* Common Card Styling for Projects and Achievements */
 .card {
-  width: 380px; /* Increased width to utilize more space */
-  height: 420px; /* Adjusted height to maintain aspect ratio */
+  flex-shrink: 0;
+  width: 280px; /* Fixed width for each card */
+  height: 380px; /* Portrait height */
+  margin-right: 30px; /* Gap between cards */
   position: relative;
   overflow: hidden;
   border-radius: 15px;
@@ -221,7 +235,7 @@ nav {
 
 .card img {
   width: 100%;
-  height: 60%; /* Adjusted height to make image slightly larger, still reduced for effect */
+  height: 50%; /* Reduced image height */
   object-fit: cover;
   border-radius: 10px;
   padding: 0; /* REMOVED white frame border */
@@ -251,6 +265,13 @@ nav {
 }
 
 
+/* Keyframes for Projects/Achievements Carousel (will be applied by JS) */
+@keyframes scrollProjects {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(var(--scroll-distance)); }
+}
+
+
 /* ===== EXPERIENCE ===== */
 #experience .modal-box {
   max-width: 1000px; /* Increased max-width again for more space */
@@ -273,7 +294,6 @@ nav {
   border-radius: 15px;
   width: 360px;
   color: #F0E4D3;
-  font-size: 0.95rem; /* Base font for exp-card details */
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
 }
 
