@@ -2,17 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Prateeksha's Cosmic Portfolio</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="background"></div>
   <canvas id="stars"></canvas>
   <div class="nebula"></div>
 
-  <!-- NAVIGATION -->
   <nav>
     <ul class="nav-right">
       <li onclick="openOnly('about')">About</li>
@@ -25,7 +24,6 @@
     </ul>
   </nav>
 
-  <!-- HERO SECTION -->
   <section id="hero">
     <div class="hero-text">
       <h1 class="gradient-text" id="typed"></h1>
@@ -34,7 +32,7 @@
     </div>
   </section>
 
-  <!-- ABOUT MODAL -->
+  <!-- About Modal -->
   <div class="modal" id="about">
     <div class="modal-box bg-purple">
       <span class="close" onclick="closeModal('about')">&times;</span>
@@ -50,26 +48,26 @@
     </div>
   </div>
 
-  <!-- SKILLS MODAL -->
+  <!-- Skills Modal -->
   <div class="modal" id="skills">
     <div class="modal-box bg-purple">
       <span class="close" onclick="closeModal('skills')">&times;</span>
       <h2 class="modal-title">Skills</h2>
       <div class="skills-icons">
-        <img src="icons/firebase.svg" alt="Firebase Icon">
-        <img src="icons/github.svg" alt="GitHub Icon">
-        <img src="icons/canva.svg" alt="Canva Icon">
-        <img src="icons/streamlit.svg" alt="Streamlit Icon">
-        <img src="icons/blynk.svg" alt="Blynk Icon">
-        <img src="icons/colab.svg" alt="Google Colab Icon">
-        <img src="icons/easyeda.svg" alt="EasyEDA Icon">
-        <img src="icons/cadence.svg" alt="Cadence Icon">
-        <img src="icons/kicad.svg" alt="KiCad Icon">
+        <img src="icons/firebase.svg" alt="Firebase">
+        <img src="icons/github.svg" alt="GitHub">
+        <img src="icons/canva.svg" alt="Canva">
+        <img src="icons/streamlit.svg" alt="Streamlit">
+        <img src="icons/blynk.svg" alt="Blynk">
+        <img src="icons/colab.svg" alt="Google Colab">
+        <img src="icons/easyeda.svg" alt="EasyEDA">
+        <img src="icons/cadence.svg" alt="Cadence">
+        <img src="icons/kicad.svg" alt="KiCad">
       </div>
     </div>
   </div>
 
-  <!-- PROJECTS MODAL -->
+  <!-- Projects Modal -->
   <div class="modal" id="projects">
     <div class="modal-box bg-purple">
       <span class="close" onclick="closeModal('projects')">&times;</span>
@@ -80,16 +78,13 @@
           <div class="card"><img src="images/projects/smps.jpg"><h3>⚡ 12V SMPS Circuit</h3><p>Custom-built SMPS for steady voltage.</p></div>
           <div class="card"><img src="images/projects/temp.jpg"><h3>🌡️ Temp Threshold System</h3><p>LM35-based temp alert circuit.</p></div>
           <div class="card"><img src="images/projects/cornea.jpg"><h3>👁️ Artificial Cornea</h3><p>Implant prototype simulation.</p></div>
-          <div class="card"><img src="images/projects/fracture.jpg"><h3>🦴 Fracture Repair</h3><p>Bone healing biomaterials model.</p></div>
-          <div class="card"><img src="images/projects/opamp.jpg"><h3>🔈 Op-Amp Amplifier</h3><p>Non‑inverting signal amplifier.</p></div>
-          <div class="card"><img src="images/projects/gsr.jpg"><h3>🧠 GSR Stress Monitor</h3><p>Detects stress via skin conductivity.</p></div>
-          <div class="card"><h3>🗼 AI Tower of Hanoi</h3><p>Smart puzzle solver.<br><a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank">🔗 Live</a></p></div>
+          <!-- repeat additional cards as needed -->
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ACHIEVEMENTS MODAL -->
+  <!-- Achievements Modal -->
   <div class="modal" id="achievements">
     <div class="modal-box bg-purple">
       <span class="close" onclick="closeModal('achievements')">&times;</span>
@@ -102,7 +97,7 @@
     </div>
   </div>
 
-  <!-- INTERESTS MODAL -->
+  <!-- Interests Modal -->
   <div class="modal" id="interests">
     <div class="modal-box bg-purple">
       <span class="close" onclick="closeModal('interests')">&times;</span>
@@ -118,50 +113,61 @@
     </div>
   </div>
 
-  <!-- EXPERIENCE MODAL -->
+  <!-- Experience Modal -->
   <div class="modal" id="experience">
-    <div class="modal-box bg-purple">
+    <div class="modal-box bg-gradient-wide">
       <span class="close" onclick="closeModal('experience')">&times;</span>
       <h2 class="modal-title">💼 Experience</h2>
       <div class="experience-grid">
         <div class="exp-card">
           <h3>💼 Internships</h3>
-          <p><strong>📊 Data Science Intern – Infotact (Jul 2025 – Present)</strong></p>
-          <ul><li>Built data & ML models.</li></ul>
-          <p><strong>🔬 Research Intern – NIT Trichy (Jun 2025)</strong></p>
+          <p><strong>📊 Data Science & ML Intern – Infotact Solutions (Jul 2025 – Present)</strong></p>
+          <ul><li>Working on Data science and ML Based Projects.</li></ul>
+          <p><strong>🔬 Summer Research Intern – NIT Trichy (Jun 2025 – Present)</strong></p>
           <ul>
-            <li>YOLO for medical images.</li>
-            <li>Dataset preprocessing, model tuning.</li>
+            <li>Developing YOLO-based medical image/video analysis system.</li>
+            <li>Preprocessing datasets and optimizing deep learning models.</li>
           </ul>
-          <p><strong>🏥 Biomedical Intern – Kauvery Hospital</strong></p>
+          <p><strong>🏥 Biomedical Intern – Kauvery Hospital (Dec 2024)</strong></p>
           <ul>
-            <li>ICU equipment handling & calibration.</li>
+            <li>Assisted in equipment maintenance and calibration.</li>
+            <li>Monitored patient vitals and learned device handling protocols.</li>
+            <li>Gained exposure to ICU and radiology workflows.</li>
           </ul>
         </div>
         <div class="exp-card">
           <h3>👥 Clubs</h3>
-          <p><strong>🎨 Designer – Electronics Club</strong></p>
-          <ul><li>Event branding, poster creation.</li></ul>
-          <p><strong>🎨 Designer – ECE Assoc.</strong></p>
-          <ul><li>Designed content for events.</li></ul>
-          <p><strong>🎨 Creatives & AIML – Aakash Labs</strong></p>
-          <ul><li>Visual design, AIML Projects.</li></ul>
+          <p><strong>🎨 Designer – Electronics Club (Oct 2024 – Present)</strong></p>
+          <ul>
+            <li>Create event invites, branding materials, and posters.</li>
+            <li>Work on team design coordination for campus events.</li>
+          </ul>
+          <p><strong>🎨 Designer – ECE Association (Oct 2024 – Present)</strong></p>
+          <ul>
+            <li>Designed digital content for academic events and conferences.</li>
+            <li>Helped maintain cohesive visual identity for the association.</li>
+          </ul>
+          <p><strong>🎨 Creatives & AIML – Aakash Research Labs (Jul 2025 – Present)</strong></p>
+          <ul>
+            <li>Designs visual material for Club events</li>
+            <li>Work on Technical and AIML Projects.</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- CONTACT MODAL -->
+  <!-- Contact Modal -->
   <div class="modal" id="contact">
-    <div class="modal-box bg-purple">
+    <div class="modal-box bg-purple contact-box">
       <span class="close" onclick="closeModal('contact')">&times;</span>
       <h2 class="modal-title">📬 Contact</h2>
-      <p>Email: <a href="mailto:bavaprateeksha123@gmail.com">bavaprateeksha123@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/bava-prateeksha-k-52811a28a" target="_blank">linkedin.com/in/bava-prateeksha-k</a></p>
+      <p>Email: <a class="contact-link" href="mailto:bavaprateeksha123@gmail.com">bavaprateeksha123@gmail.com</a></p>
+      <p>LinkedIn: <a class="contact-link" href="https://www.linkedin.com/in/bava-prateeksha-k-52811a28a" target="_blank">linkedin.com/in/bava-prateeksha-k</a></p>
     </div>
   </div>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer>
     <p>©️ 2025 Bava Prateeksha. All rights reserved.</p>
   </footer>
