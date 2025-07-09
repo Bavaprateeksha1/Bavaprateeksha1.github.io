@@ -32,8 +32,9 @@
     </div>
   </section>
 
+  <!-- About Modal -->
   <div class="modal" id="about">
-    <div class="modal-box bg-gradient">
+    <div class="modal-box bg-modal-gradient">
       <span class="close" onclick="closeModal('about')">&times;</span>
       <h2 class="modal-title">About</h2>
       <p>
@@ -47,8 +48,9 @@
     </div>
   </div>
 
+  <!-- Skills Modal -->
   <div class="modal" id="skills">
-    <div class="modal-box bg-purple">
+    <div class="modal-box bg-modal-gradient">
       <span class="close" onclick="closeModal('skills')">&times;</span>
       <h2 class="modal-title">Skills</h2>
       <div class="skills-icons">
@@ -65,74 +67,78 @@
     </div>
   </div>
 
+  <!-- Projects Modal -->
   <div class="modal" id="projects">
-    <div class="modal-box bg-gradient-wide">
+    <div class="modal-box bg-modal-gradient">
       <span class="close" onclick="closeModal('projects')">&times;</span>
       <h2 class="modal-title">💡 Projects</h2>
       <div class="carousel-wrapper">
         <div class="carousel-track">
-          <div class="card">
+          <!-- Project Cards (initial set) -->
+          <div class="card" data-image="images/projects/lifi.jpg">
             <img src="images/projects/lifi.jpg" alt="Audio Transmission Using Li-Fi">
             <div class="card-content">
               <h3>🔊 Audio Transmission Using Li‑Fi</h3>
               <p>Built a secure, energy‑efficient audio system using LED light modulation.</p>
             </div>
           </div>
-          <div class="card">
+          <div class="card" data-image="images/projects/smps.jpg">
             <img src="images/projects/smps.jpg" alt="12V SMPS Circuit">
             <div class="card-content">
               <h3>⚡ 12V SMPS Circuit</h3>
               <p>Designed and fabricated a Switch Mode Power Supply circuit for stable output.</p>
             </div>
           </div>
-          <div class="card">
+          <div class="card" data-image="images/projects/temp.jpg">
             <img src="images/projects/temp.jpg" alt="Temperature Threshold System">
             <div class="card-content">
               <h3>🌡️ Temperature Threshold System</h3>
               <p>Sensor‑based circuit using LM35 for real‑time temperature monitoring.</p>
             </div>
           </div>
-          <div class="card">
+          <div class="card" data-image="images/projects/cornea.jpg">
             <img src="images/projects/cornea.jpg" alt="Artificial Cornea Model">
             <div class="card-content">
               <h3>👁️ Artificial Cornea Model</h3>
               <p>Prototype built to mimic corneal implant functionality.</p>
             </div>
           </div>
-          <div class="card">
+          <div class="card" data-image="images/projects/fracture.jpg">
             <img src="images/projects/fracture.jpg" alt="Fracture Repair Model">
             <div class="card-content">
               <h3>🦴 Fracture Repair Model</h3>
               <p>Biomaterials‑based model demonstrating bone repair.</p>
             </div>
           </div>
-          <div class="card">
+          <div class="card" data-image="images/projects/opamp.jpg">
             <img src="images/projects/opamp.jpg" alt="Non-Inverting Amplifier">
             <div class="card-content">
               <h3>🔈 Non‑Inverting Amplifier</h3>
               <p>Op‑amp based analog circuit to amplify signals non‑inversely.</p>
             </div>
           </div>
-          <div class="card">
+          <div class="card" data-image="images/projects/gsr.jpg">
             <img src="images/projects/gsr.jpg" alt="GSR Stress Monitor">
             <div class="card-content">
               <h3>🧠 GSR Stress Monitor</h3>
               <p>Detected stress using galvanic skin response sensors.</p>
             </div>
           </div>
-          <div class="card">
+          <div class="card" data-image="images/projects/towerofhanoi.jpg"> <!-- Added a placeholder image for Tower of Hanoi -->
             <div class="card-content">
               <h3>🗼 AI‑Based Tower of Hanoi</h3>
               <p>Smart puzzle solver using AI.<br><a href="https://bavaprateeksha.github.io/Tower-of-hanoi/" target="_blank">🔗 Live Project</a></p>
             </div>
           </div>
-          </div>
+          <!-- More cards will be duplicated by JS for seamless loop -->
+        </div>
       </div>
     </div>
   </div>
 
+  <!-- Achievements Modal -->
   <div class="modal" id="achievements">
-    <div class="modal-box bg-gradient">
+    <div class="modal-box bg-modal-gradient">
       <span class="close" onclick="closeModal('achievements')">&times;</span>
       <h2 class="modal-title">🏆 Achievements</h2>
       <div class="achievements-carousel-wrapper">
@@ -163,8 +169,9 @@
     </div>
   </div>
 
+  <!-- Interests Modal -->
   <div class="modal" id="interests">
-    <div class="modal-box bg-gradient">
+    <div class="modal-box bg-modal-gradient">
       <span class="close" onclick="closeModal('interests')">&times;</span>
       <h2 class="modal-title">🧠 Areas of Interest</h2>
       <ul>
@@ -178,8 +185,9 @@
     </div>
   </div>
 
+  <!-- Experience Modal -->
   <div class="modal" id="experience">
-    <div class="modal-box bg-gradient-wide">
+    <div class="modal-box bg-modal-gradient">
       <span class="close" onclick="closeModal('experience')">&times;</span>
       <h2 class="modal-title">💼 Experience</h2>
       <div class="experience-grid">
@@ -221,17 +229,27 @@
     </div>
   </div>
 
+  <!-- Contact Modal -->
   <div class="modal" id="contact">
-    <div class="modal-box bg-gradient">
+    <div class="modal-box bg-modal-gradient">
       <span class="close" onclick="closeModal('contact')">&times;</span>
       <h2 class="modal-title">Contact</h2>
-      <p>
+      <p class="contact-text-align-left">
         Email: <a href="mailto:bavaprateeksha123@gmail.com">bavaprateeksha123@gmail.com</a><br>
         LinkedIn: <a href="https://www.linkedin.com/in/bava-prateeksha-k-52811a28a" target="_blank">linkedin.com/in/bava-prateeksha-k-52811a28a</a>
       </p>
     </div>
   </div>
 
+  <!-- Image Pop-up Modal (New) -->
+  <div class="modal" id="image-popup-modal">
+    <div class="modal-box image-popup-box bg-modal-gradient">
+      <span class="close" onclick="closeModal('image-popup-modal')">&times;</span>
+      <img id="popup-image" src="" alt="Project Image" class="rounded-image-popup">
+    </div>
+  </div>
+
+  <!-- Footer -->
   <footer>
     <p>©️ 2025 Bava Prateeksha. All rights reserved.</p>
   </footer>
