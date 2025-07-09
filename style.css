@@ -1,7 +1,7 @@
 /* ===== GLOBALS ===== */
 body, html {
-  margin: 0;
-  padding: 0;
+  margin: 0; /* Ensures no default margin */
+  padding: 0; /* Ensures no default padding */
   font-family: 'Poppins', sans-serif;
   height: 100%;
   overflow: hidden;
@@ -45,8 +45,16 @@ body, html {
   width: 100vw;
   height: 100vh;
   z-index: -8;
-  background: radial-gradient(circle at 20% 30%, rgba(0,0,80,0.4), transparent 60%),
-              radial-gradient(circle at 80% 70%, rgba(40,0,90,0.3), transparent 60%);
+  /* Enhanced Nebula with more shimmer */
+  background: radial-gradient(circle at 15% 25%, rgba(0,0,100,0.6), transparent 50%),
+              radial-gradient(circle at 85% 75%, rgba(60,0,120,0.5), transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(100,50,150,0.3), transparent 60%); /* Central shimmer */
+  animation: subtleGlow 30s infinite alternate; /* New subtle glow animation */
+}
+
+@keyframes subtleGlow {
+    0% { opacity: 0.9; }
+    100% { opacity: 1; }
 }
 
 /* ===== NAVBAR ===== */
@@ -69,15 +77,18 @@ nav {
 }
 
 .nav-right li {
-  padding: 8px 18px;
+  padding: 8px 18px; /* Maintain consistent padding for a "pill" shape */
   border-radius: 20px;
-  /* Updated Navbar Item Gradient */
-  background: linear-gradient(45deg, #575098, #A3A1BC, #575098);
-  color: #000; /* Keeping text color black for contrast as per previous */
+  /* NEW contrasting gradient for navbar items */
+  background: linear-gradient(45deg, #FF6B6B, #FFE66D, #FF6B6B); /* A vibrant, contrasting gradient */
+  color: #000; /* Keep text black for contrast */
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
   transition: transform .2s ease;
+  min-width: 100px; /* Set a minimum width to ensure some consistency */
+  text-align: center; /* Center text if min-width makes it wider */
+  box-sizing: border-box; /* Include padding in the width calculation */
 }
 .nav-right li:hover {
   transform: scale(1.1);
@@ -96,8 +107,8 @@ nav {
 
 #typed {
   font-size: 3rem;
-  /* Updated "Hi, I'm Prateeksha" Gradient */
-  background: linear-gradient(45deg, #575098, #A3A1BC, #575098);
+  /* NEW contrasting gradient for "Hi, I'm Prateeksha" */
+  background: linear-gradient(45deg, #4CAF50, #8BC34A, #4CAF50); /* A fresh green gradient */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -131,7 +142,7 @@ nav {
   position: fixed;
   top: 0; left: 0;
   width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.6); /* Slightly darker overlay for pop-ups */
+  background: rgba(0,0,0,0.6);
   display: none;
   justify-content: center;
   align-items: center;
@@ -141,13 +152,12 @@ nav {
 .modal-box {
   padding: 40px;
   border-radius: 20px;
-  width: 90%; /* General width */
-  max-width: 1200px; /* General max-width */
+  width: 90%;
+  max-width: 1200px;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
   box-sizing: border-box;
-  /* Common Modal Background Gradient (remains the same as per previous request) */
   background: linear-gradient(45deg, #433D8B, #060048, #433D8B);
   color: #F0E4D3;
 }
@@ -160,7 +170,7 @@ nav {
 
 /* ===== PROJECTS ===== */
 #projects .modal-box {
-  max-width: 1100px; /* Increased max-width for projects */
+  max-width: 1100px;
   padding: 30px;
   overflow-x: hidden;
 }
@@ -180,13 +190,12 @@ nav {
 /* Common Card Styling for Projects and Achievements */
 .card {
   flex-shrink: 0;
-  width: 280px; /* Fixed width for each card */
-  height: 380px; /* Portrait height */
-  margin-right: 30px; /* Gap between cards */
+  width: 280px;
+  height: 380px;
+  margin-right: 30px;
   position: relative;
   overflow: hidden;
   border-radius: 15px;
-  /* Common Card Background Gradient (remains the same) */
   background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
   color: #F0E4D3;
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
@@ -201,11 +210,13 @@ nav {
 
 .card img {
   width: 100%;
-  height: 60%; /* Image takes up top portion */
+  height: 50%; /* Reduced image height for polaroid effect */
   object-fit: cover;
-  border-radius: 15px; /* Apply border-radius to image for curved edges */
-  padding: 5px; /* Small padding to show card background around image */
-  box-sizing: border-box; /* Include padding in width/height */
+  border-radius: 10px; /* Slightly more curved edges for image */
+  padding: 8px; /* More padding for polaroid border effect */
+  background: white; /* White background for polaroid border */
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Slight shadow for polaroid pop */
 }
 
 .card .card-content {
@@ -238,7 +249,7 @@ nav {
 
 /* ===== ACHIEVEMENTS ===== */
 #achievements .modal-box {
-  max-width: 1000px; /* Consistent with projects for 3 cards */
+  max-width: 1000px;
   padding: 30px;
 }
 
@@ -256,31 +267,30 @@ nav {
 }
 
 .achievements-track .card {
-  width: 280px;
-  height: 380px;
-  margin-right: 0;
+  width: 280px; /* Explicitly set again, though inherited */
+  height: 380px; /* Explicitly set again, though inherited */
+  margin-right: 0; /* Remove right margin for centering in its own track */
 }
-/* Image styling for achievement cards is covered by the common .card img rule */
+/* Achievement image styling is covered by the common .card img rule */
 
 
 /* ===== EXPERIENCE ===== */
 #experience .modal-box {
-  max-width: 900px; /* Increased max-width to fit both cards comfortably */
-  overflow-y: auto; /* Keep vertical scroll for content */
+  max-width: 1000px; /* Increased max-width again for more space */
+  overflow-y: auto;
 }
 .experience-grid {
   display: flex;
-  flex-wrap: nowrap; /* Strictly horizontal, no wrapping */
+  flex-wrap: nowrap;
   justify-content: center;
-  gap: 30px;
+  gap: 50px; /* Increased gap between cards */
   margin-top: 30px;
-  overflow-x: hidden; /* Hide horizontal scrollbar if modal width is sufficient */
-  padding-bottom: 0; /* No need for padding if no scrollbar */
+  overflow-x: hidden;
+  padding-bottom: 0;
 }
 
 .exp-card {
   flex-shrink: 0;
-  /* Common Card Background Gradient */
   background: linear-gradient(45deg, #2C318C, #D9BB9B, #2C318C);
   padding: 20px;
   border-radius: 15px;
@@ -305,7 +315,7 @@ nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
+  gap: 40px; /* Increased gap for more space between icons */
   margin-top: 20px;
 }
 .skill-item {
@@ -332,8 +342,8 @@ nav {
 #contact .modal-box {
   max-width: 600px;
 }
-.modal#contact p.contact-text-align-left { /* New class for specific alignment */
-  text-align: left; /* Left align text */
+.modal#contact p.contact-text-align-left {
+  text-align: left;
   font-size: 1.1rem;
   line-height: 1.8;
 }
@@ -347,25 +357,51 @@ nav {
   color: #D9BB9B;
 }
 .contact-icon {
-  display: none; /* Ensure no icons are displayed */
+  display: none;
 }
+
+/* ===== GENERIC CARD DETAIL POP-UP MODAL ===== */
+.card-detail-popup-box {
+  max-width: 400px; /* Adjust size for popped-up card */
+  max-height: 90vh; /* Allow height to adjust to content */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+.card-detail-popup-box .card {
+  width: 100%; /* Make the cloned card fill the popup box width */
+  height: auto; /* Allow height to adjust */
+  margin: 0; /* Remove margin from cloned card */
+  box-shadow: none; /* Remove duplicate shadow */
+  cursor: default; /* Not clickable as a whole */
+}
+.card-detail-popup-box .card:hover {
+  transform: none; /* No hover effect on the popped-up card */
+}
+
 
 /* ===== IMAGE POP-UP MODAL ===== */
 .image-popup-box {
-  padding: 20px; /* Smaller padding for image modal */
-  max-width: 90vw; /* Max width relative to viewport */
-  max-height: 90vh; /* Max height relative to viewport */
+  padding: 20px;
+  max-width: 90vw;
+  max-height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Hide scrollbars */
+  overflow: hidden;
 }
 
 .image-popup-box img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* Ensure full image is visible, scale down if needed */
-  border-radius: 15px; /* Rounded corners for the pop-up image */
+  object-fit: contain;
+  border-radius: 15px;
+  padding: 0; /* No padding/white border on full image popup */
+  background: none; /* No background on full image popup */
+  box-shadow: none; /* No shadow on full image popup */
 }
 
 /* ===== CLOSE BUTTON ===== */
@@ -383,6 +419,7 @@ nav {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  z-index: 30; /* Ensure close button is on top */
 }
 
 /* ===== FOOTER ===== */
