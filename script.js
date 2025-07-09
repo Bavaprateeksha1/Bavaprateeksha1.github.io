@@ -4,22 +4,45 @@ function openOnly(id) {
   if (modal) modal.style.display = 'flex';
 }
 
-function closeModal(id){
+function closeModal(id) {
   const modal = document.getElementById(id);
   if (modal) modal.style.display = 'none';
 }
 
-window.addEventListener('click', e => {
-  if (e.target.classList.contains('modal')) {
-    e.target.style.display = 'none';
+window.addEventListener('click', event => {
+  if (event.target.classList.contains('modal')) {
+    event.target.style.display = 'none';
   }
 });
 
-const text = "Hi, I’m Bava Prateeksha";
+document.querySelectorAll('#projects .card').forEach(card => {
+  card.addEventListener('click', () => {
+    const clone = card.cloneNode(true);
+    const overlay = document.createElement('div');
+    overlay.className = 'modal';
+    overlay.style.display = 'flex';
+
+    const box = document.createElement('div');
+    box.className = 'modal-box bg-gradient';
+    box.innerHTML = clone.innerHTML;
+
+    const closeEl = document.createElement('span');
+    closeEl.className = 'close';
+    closeEl.innerHTML = '&times;';
+    closeEl.onclick = () => document.body.removeChild(overlay);
+
+    box.prepend(closeEl);
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+  });
+});
+
+// Typing effect
+const text = "Hi, I’m Prateeksha";
 let i = 0;
 const el = document.getElementById('typed');
-function type(){
-  if(i <= text.length){
+function type() {
+  if (i <= text.length) {
     el.innerText = text.slice(0, i) + (i % 2 ? '|' : '');
     i++;
     setTimeout(type, 120);
@@ -27,57 +50,33 @@ function type(){
 }
 type();
 
-// Star background
-const canvas = document.getElementById('stars'),
-      ctx = canvas.getContext('2d');
+// Sparkling Stars
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-const stars = [];
-for(let s=0; s<200; s++){
-  stars.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    r:Math.random()*3+1,
-    d:Math.random()*1+0.5
-  });
-}
-function drawStars(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle = '#ffffffaa';
-  stars.forEach(s => {
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
-    ctx.fill();
-    s.y += s.d;
-    if(s.y > canvas.height){
-      s.y = 0;
-      s.x = Math.random()*canvas.width;
-    }
-  });
-  requestAnimationFrame(drawStars);
-}
-drawStars();
 
-// Project Modal View
-document.querySelectorAll('#projects .card img').forEach(img => {
-  img.addEventListener('click', () => {
-    const overlay = document.createElement('div');
-    overlay.className = 'modal';
-    overlay.style.display = 'flex';
-    const box = document.createElement('div');
-    box.className = 'modal-box bg-purple';
-    const fullImage = document.createElement('img');
-    fullImage.src = img.src;
-    fullImage.style.maxWidth = '90vw';
-    fullImage.style.maxHeight = '90vh';
-    fullImage.style.borderRadius = '12px';
-    const closeEl = document.createElement('span');
-    closeEl.className = 'close';
-    closeEl.innerHTML = '&times;';
-    closeEl.onclick = () => document.body.removeChild(overlay);
-    box.appendChild(closeEl);
-    box.appendChild(fullImage);
-    overlay.appendChild(box);
-    document.body.appendChild(overlay);
+const stars = [];
+for (let i = 0; i < 120; i++) {
+  stars.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 2 + 1,
+    alpha: Math.random(),
+    delta: Math.random() * 0.02
   });
-});
+}
+
+function animateStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  stars.forEach(s => {
+    s.alpha += s.delta;
+    if (s.alpha <= 0 || s.alpha >= 1) s.delta = -s.delta;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
+    ctx.fillStyle = `rgba(255, 255, 255, ${s.alpha})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(animateStars);
+}
+animateStars();
